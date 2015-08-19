@@ -1,6 +1,16 @@
 angular.module("baranggoApp.controllers", [])
 
+.controller("MainController", function ($scope) {
+	console.log("Main");
+})
+
+.controller("HomeController", function ($scope) {
+	console.log("Home");
+})
+
 .controller("CensusController", function ($scope, Censuses) {
+	console.log("Census");
+
 	$scope.person = {};
 
 	var getAllCensuses = function () {
@@ -10,7 +20,7 @@ angular.module("baranggoApp.controllers", [])
 			alert("error: " + data);
 		});
 	};
-	getAllCensuses();
+	// getAllCensuses();
 
 	$scope.addPerson = function () {
 		Censuses.addPerson($scope.person.last_name, $scope.person.first_name, $scope.person.middle_name);

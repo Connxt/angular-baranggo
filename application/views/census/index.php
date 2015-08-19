@@ -9,6 +9,8 @@
 	<input ng-model="person.middle_name" type="text" />
 	<button type="button" ng-click="addPerson()">Add</button>
 
+	<div></div>
+
 	<?php include('/../_shared/js.php'); ?>
 </body>
 </html>
