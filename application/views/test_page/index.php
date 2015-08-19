@@ -4,6 +4,7 @@
 	<title></title>
 </head>
 <body>
-Test Page
+	Test Page
+	<?php include('/../_shared/js.php'); ?>
 </body>
 </html>
