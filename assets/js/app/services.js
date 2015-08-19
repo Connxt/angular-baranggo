@@ -6,7 +6,7 @@ angular.module("baranggoApp.services", [])
 	self.getAllCensuses = function () {
 		var deferred = $q.defer();
 
-		$http.get(CURRENT_CONTROLLER + "/get_sample_output").success(function (data) {
+		$http.post("census/get_all_censuses").success(function (data) {
 			deferred.resolve(data);
 		}).error(function (data) {
 			deferred.reject("Error");
@@ -16,7 +16,7 @@ angular.module("baranggoApp.services", [])
 	};
 
 	self.addPerson = function (lastName, firstName, middleName) {
-		$http.post(CURRENT_CONTROLLER + "/add_person", {
+		$http.post("census/add_person", {
 			lastName: lastName,
 			firstName: firstName,
 			middleName: middleName

@@ -1,6 +1,6 @@
 angular.module("baranggoApp.controllers", [])
 
-.controller("CensusesController", function ($scope, Censuses) {
+.controller("CensusController", function ($scope, Censuses) {
 	$scope.person = {};
 
 	var getAllCensuses = function () {

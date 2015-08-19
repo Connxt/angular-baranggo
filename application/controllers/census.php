@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require(APPPATH . "/libraries/REST_Controller.php");
 
-class Test_page extends REST_Controller {
+class Census extends REST_Controller {
 	public function __construct() {
 		parent::__construct();
 
@@ -10,11 +10,10 @@ class Test_page extends REST_Controller {
 	}
 
 	public function index_get() {
-		$data['current_controller'] = 'test_page';
-		$this->load->view('test_page/index', $data);
+		$this->load->view('census/index');
 	}
 
-	public function get_sample_output_get() {
+	public function get_all_censuses_post() {
 		echo json_encode($this->census_model->get_all_censuses());
 	}
 

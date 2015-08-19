@@ -15,7 +15,9 @@ class Census_Model extends CI_Model {
 		$this->db->insert('censuses', array(
 			'last_name' => $last_name,
 			'first_name' => $first_name,
-			'middle_name' => $middle_name
+			'middle_name' => $middle_name,
+			'created_at' => date('Y-m-d H:i:s'),
+			'updated_at' => date('Y-m-d H:i:s')
 		));
 	}
 }
