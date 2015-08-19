@@ -21,7 +21,7 @@ angular.module("baranggoApp.services", [])
 			firstName: firstName,
 			middleName: middleName
 		});
-	}
+	};
 
 	return self;
 });
