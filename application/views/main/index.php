@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="baranggoApp">
+<html lang="en" >
 <head>
 	<title>Main</title>
+	<?php include('/../_shared/css.php'); ?>
 </head>
-<body ng-controller="MainController">
+<body ng-app="baranggoApp" ng-controller="MainController">
 	header
-	<ul>
-		<li><a href="#/">Home</a></li>
-		<li><a href="#/census">Census</a></li>
+	<ul class="nav nav-pills nav-stacked">
+		<li ng-class="{ active: isActive('/') }"><a href="#/">Home</a></li>
+		<li ng-class="{ active: isActive('/census') }"><a href="#/census">Census</a></li>
 	</ul>
 	<div ng-view></div>
 	footer

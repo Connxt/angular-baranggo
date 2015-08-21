@@ -1,7 +1,9 @@
 angular.module("baranggoApp.controllers", [])
 
-.controller("MainController", function ($scope) {
-	console.log("Main");
+.controller("MainController", function ($scope, $location) {
+	$scope.isActive = function (viewLocation) {
+		return viewLocation === $location.path();
+	};
 })
 
 .controller("HomeController", function ($scope) {
