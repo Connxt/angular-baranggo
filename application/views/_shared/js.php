@@ -1,13 +1,31 @@
+<!-- jQuery -->
+<script src="<?php echo base_url(); ?>assets/js/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery/bootstrap.js"></script>
+
 <!-- Angular -->
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/angular-1.3.15/angular.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/angular-1.3.15/angular-route.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/angular-1.3.15/angular-resource.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular.js"></script>
 
-<!-- JQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-animate/angular-animate.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-cookies/angular-cookies.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-resource/angular-resource.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-sanitize/angular-sanitize.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-touch/angular-touch.js"></script>
 
-<!-- Bootstrap -->
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap/bootstrap.min.js"></script>
+<!-- Vendor -->
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-ui-router/angular-ui-router.js"></script> 
+<script src="<?php echo base_url(); ?>assets/js/angular/ngstorage/ngStorage.js"></script>
+
+<!-- bootstrap -->
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<!-- lazyload -->
+<script src="<?php echo base_url(); ?>assets/js/angular/oclazyload/ocLazyLoad.js"></script>
+
+<!-- translate -->
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-translate/angular-translate.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-translate/loader-static-files.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-translate/storage-cookie.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/angular/angular-translate/storage-local.js"></script>
 
 <script>
 	const APP_URL = "<?php echo base_url(); ?>/app/";
