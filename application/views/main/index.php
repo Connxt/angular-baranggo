@@ -4,7 +4,7 @@
 	<title>Baranggo - Main</title>
 	<?php include('/../../../app/views/partials/css.php'); ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini" ng-app="baranggoApp">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="baranggoApp" ng-controller="MainCtrl">
 	<?php include('/../../../app/views/partials/header.html'); ?>
 	<?php include('/../../../app/views/partials/sidebar.html'); ?>
 
