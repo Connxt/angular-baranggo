@@ -45,102 +45,102 @@
 	</div>
 	<!-- / navbar -->
 
-<!-- menu -->
-<div class="app-aside hidden-xs {{app.settings.asideColor}}">
-    <div class="aside-wrap">
-        <!-- if you want to use a custom scroll when aside fixed, use the slimScroll
-<div class="navi-wrap" ui-jq="slimScroll" ui-options="{height:'100%', size:'8px'}">
--->
-        <div class="navi-wrap">
-            <!-- nav -->
-            <nav ui-nav class="navi">
-                <!-- list -->
-                <ul class="nav">
-                    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                        <span translate="aside.nav.HEADER">Navigation</span>
-                    </li>
-                    <li>
-                        <a href class="auto">
-                            <span class="pull-right text-muted">
-<i class="fa fa-fw fa-angle-right text"></i>
-<i class="fa fa-fw fa-angle-down text-active"></i>
-</span>
-                            <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-                            <span class="font-bold" translate="aside.nav.DASHBOARD">Dashboard</span>
-                        </a>
-                        <ul class="nav nav-sub dk">
-                            <li class="nav-sub-header">
-                                <a href>
-                                    <span translate="aside.nav.DASHBOARD">Dashboard</span>
-                                </a>
-                            </li>
-                            <li ui-sref-active="active">
-                                <a ui-sref="app.dashboard-v1">
-                                    <span>Dashboard v1</span>
-                                </a>
-                            </li>
-                            <li ui-sref-active="active">
-                                <a ui-sref="app.dashboard-v2">
-                                    <b class="label bg-info pull-right">N</b>
-                                    <span>Dashboard v2</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li ui-sref-active="active">
-                        <a ui-sref="app.calendar">
-                            <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
-                            <span class="font-bold" translate="aside.nav.CALENDAR">Calendar</span>
-                        </a>
-                    </li>
-                    <li ui-sref-active="active">
-                        <a ui-sref="app.mail.list">
-                            <b class="badge bg-info pull-right">9</b>
-                            <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
-                            <span class="font-bold" translate="aside.nav.EMAIL">Email</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href class="auto">
-                            <span class="pull-right text-muted">
-<i class="fa fa-fw fa-angle-right text"></i>
-<i class="fa fa-fw fa-angle-down text-active"></i>
-</span>
-                            <i class="glyphicon glyphicon-th-large icon text-success"></i>
-                            <span class="font-bold">Apps</span>
-                        </a>
-                        <ul class="nav nav-sub dk">
-                            <li class="nav-sub-header">
-                                <a href>
-                                    <span>Apps</span>
-                                </a>
-                            </li>
-                            <li ui-sref-active="active">
-                                <a ui-sref="apps.note">
-                                    <span>Note</span>
-                                </a>
-                            </li>
-                            <li ui-sref-active="active">
-                                <a ui-sref="apps.contact">
-                                    <span>Contacts</span>
-                                </a>
-                            </li>
-                            <li ui-sref-active="active">
-                                <a ui-sref="app.weather">
-                                    <span>Weather</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="line dk"></li>
-                </ul>
-                <!-- / list -->
-            </nav>
-            <!-- / nav -->
-        </div>
-    </div>
-</div>
-<!-- / menu -->
+	<!-- menu -->
+	<div class="app-aside hidden-xs {{app.settings.asideColor}}">
+	    <div class="aside-wrap">
+	        <!-- if you want to use a custom scroll when aside fixed, use the slimScroll
+				<div class="navi-wrap" ui-jq="slimScroll" ui-options="{height:'100%', size:'8px'}">
+			-->
+	        <div class="navi-wrap">
+	            <!-- nav -->
+	            <nav ui-nav class="navi">
+	                <!-- list -->
+	                <ul class="nav">
+	                    <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+	                        <span translate="aside.nav.HEADER">Navigation</span>
+	                    </li>
+	                    <li>
+	                        <a href class="auto">
+	                            <span class="pull-right text-muted">
+									<i class="fa fa-fw fa-angle-right text"></i>
+									<i class="fa fa-fw fa-angle-down text-active"></i>
+								</span>
+	                            <i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
+	                            <span class="font-bold" translate="aside.nav.DASHBOARD">Dashboard</span>
+	                        </a>
+	                        <ul class="nav nav-sub dk">
+	                            <li class="nav-sub-header">
+	                                <a href>
+	                                    <span translate="aside.nav.DASHBOARD">Dashboard</span>
+	                                </a>
+	                            </li>
+	                            <li ui-sref-active="active">
+	                                <a ui-sref="app.dashboard-v1">
+	                                    <span>Dashboard v1</span>
+	                                </a>
+	                            </li>
+	                            <li ui-sref-active="active">
+	                                <a ui-sref="app.dashboard-v2">
+	                                    <b class="label bg-info pull-right">N</b>
+	                                    <span>Dashboard v2</span>
+	                                </a>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                    <li ui-sref-active="active">
+	                        <a ui-sref="app.calendar">
+	                            <i class="glyphicon glyphicon-calendar icon text-info-dker"></i>
+	                            <span class="font-bold" translate="aside.nav.CALENDAR">Calendar</span>
+	                        </a>
+	                    </li>
+	                    <li ui-sref-active="active">
+	                        <a ui-sref="app.mail.list">
+	                            <b class="badge bg-info pull-right">9</b>
+	                            <i class="glyphicon glyphicon-envelope icon text-info-lter"></i>
+	                            <span class="font-bold" translate="aside.nav.EMAIL">Email</span>
+	                        </a>
+	                    </li>
+	                    <li>
+	                        <a href class="auto">
+	                            <span class="pull-right text-muted">
+									<i class="fa fa-fw fa-angle-right text"></i>
+									<i class="fa fa-fw fa-angle-down text-active"></i>
+								</span>
+	                            <i class="glyphicon glyphicon-th-large icon text-success"></i>
+	                            <span class="font-bold">Apps</span>
+	                        </a>
+	                        <ul class="nav nav-sub dk">
+	                            <li class="nav-sub-header">
+	                                <a href>
+	                                    <span>Apps</span>
+	                                </a>
+	                            </li>
+	                            <li ui-sref-active="active">
+	                                <a ui-sref="apps.note">
+	                                    <span>Note</span>
+	                                </a>
+	                            </li>
+	                            <li ui-sref-active="active">
+	                                <a ui-sref="apps.contact">
+	                                    <span>Contacts</span>
+	                                </a>
+	                            </li>
+	                            <li ui-sref-active="active">
+	                                <a ui-sref="app.weather">
+	                                    <span>Weather</span>
+	                                </a>
+	                            </li>
+	                        </ul>
+	                    </li>
+	                    <li class="line dk"></li>
+	                </ul>
+	                <!-- / list -->
+	            </nav>
+	            <!-- / nav -->
+	        </div>
+	    </div>
+	</div>
+	<!-- / menu -->
 
 
 
