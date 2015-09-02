@@ -17,5 +17,5 @@
 <script src="<?php echo base_url(); ?>app/services.js"></script>
 
 <script>
-	const APP_URL = "<?php echo base_url(); ?>/app/";
+	const APP_URL = "<?php echo base_url(); ?>app/";
 </script>

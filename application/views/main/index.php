@@ -2,11 +2,11 @@
 <html lang="en" >
 <head>
 	<title>Baranggo - Main</title>
-	<?php include('/../_shared/css.php'); ?>
+	<?php include('/../../../app/views/partials/css.php'); ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="baranggoApp">
-	<?php include('/../_shared/header.php'); ?>
-	<?php include('/../_shared/sidebar.php'); ?>
+	<?php include('/../../../app/views/partials/header.html'); ?>
+	<?php include('/../../../app/views/partials/sidebar.html'); ?>
 
 	<div class="wrapper">
 		<div class="content-wrapper">
@@ -14,6 +14,6 @@
 		</div>
 	</div>
 
-	<?php include('/../_shared/js.php'); ?>
+	<?php include('/../../../app/views/partials/js.php'); ?>
 </body>
 </html>
