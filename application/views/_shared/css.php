@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/animate.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/simple-line-icons.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/app.css" type="text/css" />
+<!-- Bootstrap -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>app/css/bootstrap/bootstrap.min.css" />
+
+<!-- AdminLTE -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>app/css/adminlte/AdminLTE.css" />
+<link rel="stylesheet" href="<?php echo base_url(); ?>app/css/adminlte/skins/_all-skins.min.css" />
