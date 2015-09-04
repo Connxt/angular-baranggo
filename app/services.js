@@ -4,4 +4,14 @@ angular.module("baranggoApp.services", [])
 	var self = this;
 
 	return self;
+})
+
+.factory("Censuses", function ($http, $q) {
+	var self = this;
+
+	self.getAllCensuses = function () {
+		return $http.post("censuses/get_all_censuses", {});
+	}
+
+	return self;
 });
