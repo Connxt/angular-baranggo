@@ -10,6 +10,6 @@ angular.module("baranggoApp.controllers", [])
 
 })
 
-.controller("StatisticsCtrl", function ($scope) {
+.controller("PersonsCtrl", function ($scope) {
 
 });

@@ -7,8 +7,8 @@ angular.module("baranggoApp", ["baranggoApp.controllers", "baranggoApp.services"
 			controller: "HomeCtrl"
 		})
 
-		.when("/statistics", {
-			templateUrl: APP_URL + "views/statistics.html",
-			controller: "StatisticsCtrl"	
+		.when("/persons", {
+			templateUrl: APP_URL + "views/persons.html",
+			controller: "PersonsCtrl"	
 		});
 });

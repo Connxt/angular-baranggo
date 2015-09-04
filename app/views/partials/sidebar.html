@@ -7,9 +7,25 @@
 			<li ng-class="{ active: isActive('/') }">
 				<a href="#/"><i class="fa fa-dashboard"></i> <span>Home</span></i></a>
 			</li>
-			<li ng-class="{ active: isActive('/statistics') }">
-				<a href="#/statistics"><i class="fa fa-dashboard"></i> <span>Statistics</span></i></a>
+			<li ng-class="{ active: isActive('/persons') }">
+				<a href="#/persons"><i class="fa fa-users"></i> <span>Persons</span></i></a>
 			</li>
+
+			<li class="treeview active">
+			<li ng-class="{ active: isActive('/certificates') }">
+				<a href="#/certificates"><i class="fa fa-certificate"></i> <span>Certificates</span>
+					<i class="fa fa-angle-left pull-right"></i>
+				</a>
+
+				<ul class="treeview-menu menu-open" style="display: block;">
+                <li><a href="#"><i class="fa fa-files-o"></i> Baranggay Clearance</a></li>
+                <li><a href="#"><i class="fa fa-files-o"></i> Baranggay Business Clearance</a></li>
+                <li><a href="#"><i class="fa fa-files-o"></i> Certificate of Closure</a></li>
+              </ul>
+
+			</li>
+			</li>
+            
 		</ul>
 	</section>
 	<!-- /.sidebar -->
