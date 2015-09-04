@@ -12,4 +12,8 @@ class Censuses extends REST_Controller {
 	public function get_all_censuses_post() {
 		echo json_encode($this->census_model->get_all_censuses());
 	}
+
+	public function add_census_post() {
+		
+	}
 }

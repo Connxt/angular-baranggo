@@ -7,9 +7,9 @@ angular.module("baranggoApp.controllers", [])
 })
 
 .controller("HomeCtrl", function ($scope, Censuses) {
-	Censuses.getAllCensuses().success(function (response) {
-		console.log(response);
-	});
+	Censuses.getAll().then(function (response) {
+		
+	})
 })
 
 .controller("PersonsCtrl", function ($scope) {

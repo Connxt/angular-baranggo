@@ -1,17 +1,23 @@
 angular.module("baranggoApp.services", [])
 
-.factory("Users", function ($http, $q) {
+.factory("Censuses", function ($http) {
 	var self = this;
+
+	self.getAll = function () {
+		return $http.post("censuses/get_all_censuses", {});
+	};
+
+	self.add = function () {
+		return $http.post("censuses/add_census", {
+
+		});
+	}
 
 	return self;
 })
 
-.factory("Censuses", function ($http, $q) {
+.factory("Users", function ($http, $q) {
 	var self = this;
-
-	self.getAllCensuses = function () {
-		return $http.post("censuses/get_all_censuses", {});
-	}
 
 	return self;
 });
