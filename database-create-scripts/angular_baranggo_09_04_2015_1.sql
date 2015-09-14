@@ -12,7 +12,7 @@
 
 -- Dumping database structure for baranggo_app
 CREATE DATABASE IF NOT EXISTS `baranggo_app` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `baranggo_app`;
+USE `baranggo_app`;baranggo_appusers
 
 
 -- Dumping structure for table baranggo_app.censuses

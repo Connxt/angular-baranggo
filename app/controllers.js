@@ -8,10 +8,14 @@ angular.module("baranggoApp.controllers", [])
 
 .controller("HomeCtrl", function ($scope, Censuses) {
 	Censuses.getAll().then(function (response) {
-		
+		console.log(response);
 	})
 })
 
-.controller("PersonsCtrl", function ($scope) {
+.controller("CensusCtrl", function ($scope) {
+
+})
+
+.controller("NewRecordCtrl", function ($scope) {
 
 });
