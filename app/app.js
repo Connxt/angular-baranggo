@@ -24,6 +24,6 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
 	.state('new-record', {
 	    url: '/new-record',
 	    templateUrl: APP_URL + 'views/new-record.html',
-	    controller: 'NewRecordCtrl'
+	    controller: 'NewRecordCtrl as person'
 	})
 });

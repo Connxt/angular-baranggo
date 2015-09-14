@@ -14,14 +14,14 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Id No</label>
-                                    <input class="form-control" id="exampleInputEmail1" type="number" placeholder="1012201">
+                                    <label for="idNo">Id No</label>
+                                    <input class="form-control" id="idNo" type="number" placeholder="1012201">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Household No</label>
-                                    <input class="form-control" id="exampleInputEmail1" type="number" placeholder="1012201">
+                                    <label for="householdNo">Household No</label>
+                                    <input class="form-control" id="householdNo" type="number" placeholder="1012201">
                                 </div>
                             </div>
                         </div>
@@ -30,55 +30,63 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">First Name</label>
-                                    <input class="form-control" id="exampleInputEmail1" type="text" placeholder="Juan">
+                                    <label for="firstName">First Name</label>
+                                    <input class="form-control" id="firstName" type="text" placeholder="Juan">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Last Name</label>
-                                    <input class="form-control" id="exampleInputPassword1" type="text" placeholder="Dela Cruz">
+                                    <label for="lastName">Last Name</label>
+                                    <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Middle Name</label>
-                                    <input class="form-control" id="exampleInputPassword1" type="text" placeholder="Santiago">
+                                    <label for="middleName">Middle Name</label>
+                                    <input class="form-control" id="middleName" type="text" placeholder="Santiago">
                                 </div>
                             </div>
                         </div>
                         <!-- /.row -->
+
                         <div class="row">
+                        
                             <div class="col-md-2">
+
                                 <div class="form-group">
                                     <label>Civil Status</label>
-                                    <select class="form-control">
+                                    <select class="form-control" ng-model="civilStatus">
                                         <option>Single</option>
                                         <option>Married</option>
                                         <option>Widowed</option>
                                         <option>Seperated</option>
                                     </select>
                                 </div>
+                                <p>{{civilStatus}}</p>
                             </div>
+                                
                             <div class="col-md-2">
+                            
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <select class="form-control">
+                                    <select class="form-control" ng-model="gender">
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>
                                 </div>
+
+                                <p>{{gender}}</p>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Place of Birth</label>
-                                    <input class="form-control" id="exampleInputPassword1" type="text" placeholder="Kabankalan City">
+                                    <label for="placeOfBirth">Place of Birth</label>
+                                    <input class="form-control" id="placeOfBirth" type="text" placeholder="Kabankalan City">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Date of Birth</label>
-                                    <input class="form-control" id="exampleInputPassword1" type="date">
+                                    <label for="dateOfBirth">Date of Birth</label>
+                                    <input class="form-control" id="dateOfBirth" type="date">
                                 </div>
                             </div>
                         </div>
@@ -87,17 +95,133 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label>Adress</label>
-                                    <textarea class="form-control" placeholder="Enter ..." rows="3"></textarea>
+                                    <textarea class="form-control" id="address"placeholder="Enter ..." rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
                         <!-- /.row -->
                         <div class="row">
                             <div class="col-md-3">
-
                                 <div class="form-group">
-                                    <label>What is your highest educational attainment?</label>
-                                    <select class="form-control">
+                                    <label for="lengthOfStay">Length of Stay</label>
+                                    <div class="input-group">
+                                        <input name="lengthOfStay" id="lengthOfStay" type="number" class="form-control" ng-model="lengthOfStay">
+                                        <div class="input-group-addon">
+                                            <label class="radio-inline">
+                                                <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="months" ng-model="lengthOfStayUnit"> months
+                                            </label>
+                                        </div>
+                                        <div class="input-group-addon">
+                                            <label class="radio-inline">
+                                                <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="years" ng-model="lengthOfStayUnit"> years
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="length_of_stay_new_error" class="error-alert"></div>
+                                    <div id="length_of_stay_unit_new_error" class="error-alert"></div>
+
+                                    <p>{{lengthOfStay}}   {{lengthOfStayUnit}} </p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optIsEmployed">Are you employed?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optIsEmployed" id="optIsEmployed" type="radio" checked="" value="Yes" ng-model="optIsEmployed"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optIsEmployed" id="optionsRadios2" type="radio" value="No" ng-model="optIsEmployed"> No
+                                        </label>
+                                        <p>{{optIsEmployed}} </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optSSS">Do you have SSS?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optSSS" id="optSSS" type="radio" checked="" value="Yes" ng-model="optSSS"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optSSS" id="optSSS" type="radio" value="No" ng-model="optSSS"> No
+                                        </label>
+                                        <p>{{optSSS}} </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optPhilHealth">Do you have PhilHealth?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optPhilHealth" id="optPhilHealth" type="radio" checked="" value="Yes" ng-model="optPhilHealth"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optPhilHealth" id="optPhilHealth" type="radio" value="No" ng-model="optPhilHealth"> No
+                                        </label>
+                                        <p>{{optPhilHealth}} </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optVoter">Are you a registered voter?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optVoter" id="optVoter" type="radio" checked="" value="Yes" ng-model="optVoter"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optVoter" id="optVoter" type="radio" value="No" ng-model="optVoter"> No
+                                        </label>
+                                        <p>{{optVoter}} </p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optElectricity">Do you electricity in your home?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optElectricity" id="optElectricity" type="radio" checked="" value="Yes" ng-model="optElectricity"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optElectricity" id="optElectricity" type="radio" value="No" ng-model="optElectricity"> No
+                                        </label>
+                                        <p>{{optElectricity}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optToilet">Do you have a toilet?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optToilet" id="optToilet" type="radio" checked="" value="Yes" ng-model="optToilet"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optToilet" id="optToilet" type="radio" value="No" ng-model="optToilet"> No
+                                        </label>
+                                        <p>{{optToilet}}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="optHandicapped">Are you handicapped?</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input name="optHandicapped" id="optHandicapped" type="radio" checked="" value="Yes" ng-model="optHandicapped"> Yes
+                                        </label>
+                                        <label>
+                                            <input name="optHandicapped" id="optHandicapped" type="radio" value="No" ng-model="optHandicapped"> No
+                                        </label>
+                                        <p>{{optHandicapped}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col-md-3 -->
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Source of water</label>
+                                    <select class="form-control" ng-model="sourceOfWater">
+                                        <option>Deep Well</option>
+                                        <option>KCWD</option>
+                                    </select>
+                                    <p>{{sourceOfWater}}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Highest educational attainment</label>
+                                    <select class="form-control" ng-model="educationalAttainment">
                                         <option>Elementary Graduate</option>
                                         <option>Elementary Undergraduate</option>
                                         <option>High School Graduatee</option>
@@ -107,250 +231,27 @@
                                         <option>No Formal Educatio</option>
                                         <option>Post Graduate</option>
                                     </select>
+                                    <p>{{educationalAttainment}}</p>
                                 </div>
-
+                            </div>
+                            <!-- /.col-md-3 -->
+                        </div>
+                        <br>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-9">
                                 <div class="form-group">
-                                    <label for="optIsEmployed">Are you employed?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optIsEmployed" id="optIsEmployed" type="radio" checked="" value="Yes"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optIsEmployed" id="optionsRadios2" type="radio" value="No"> No
-                                        </label>
-                                    </div>
-                                </div>
-                                
-                                
-
-                                <div class="form-group">
-                                    <label for="optHasSSS">Do you have SSS?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optHasSSS" id="optHasSSS" type="radio" checked="" value="Yes"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optHasSSS" id="optHasSSS" type="radio" value="No"> No
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Do you have PhilHealth?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2"> No
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Are you a registered voter?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2"> No
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="length_of_stay_new">Length of Stay</label>
-                                    <div class="input-group">
-                                        <input name="length_of_stay_new" id="length_of_stay_new" type="number" class="form-control">
-                                        
-                                        <div class="input-group-addon">
-                                            <label class="radio-inline">
-                                                <input name="length_of_stay_unit_new" id="length_of_stay_unit_new" type="radio" value="months"> months
-                                            </label>
-                                        </div>
-                                        <div class="input-group-addon">
-                                            <label class="radio-inline">
-                                                <input name="length_of_stay_unit_new" id="length_of_stay_unit_new" type="radio" value="years"> years
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div id="length_of_stay_new_error" class="error-alert"></div>
-                                    <div id="length_of_stay_unit_new_error" class="error-alert"></div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Source of water</label>
-                                    <select class="form-control">
-                                        <option>Deep Well</option>
-                                        <option>KCWD</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Do you electricity in your home?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2"> No
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Do you have a toilet?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2"> No
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Are you handicapped?</label>
-                                    <div class="radio">
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1"> Yes
-                                        </label>
-                                        <label>
-                                            <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2"> No
-                                        </label>
-                                    </div>
+                                    <label>Adress</label>
+                                    <textarea class="form-control" placeholder="Enter ..." rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <!-- /.row -->
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-primary" type="submit" ng-click="person.save()">Submit</button>
                     </div>
                 </form>
-            </div>
-            <!-- /.box -->
-            <!-- general form elements disabled -->
-            <div class="box box-warning">
-                <div class="box-header with-border">
-                    <h3 class="box-title">General Elements</h3>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <form role="form">
-                        <!-- text input -->
-                        <div class="form-group">
-                            <label>Text</label>
-                            <input class="form-control" type="text" placeholder="Enter ...">
-                        </div>
-                        <div class="form-group">
-                            <label>Text Disabled</label>
-                            <input disabled="" class="form-control" type="text" placeholder="Enter ...">
-                        </div>
-                        <!-- textarea -->
-                        <div class="form-group">
-                            <label>Textarea</label>
-                            <textarea class="form-control" placeholder="Enter ..." rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Textarea Disabled</label>
-                            <textarea disabled="" class="form-control" placeholder="Enter ..." rows="3"></textarea>
-                        </div>
-                        <!-- input states -->
-                        <div class="form-group has-success">
-                            <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Input with success</label>
-                            <input class="form-control" id="inputSuccess" type="text" placeholder="Enter ...">
-                        </div>
-                        <div class="form-group has-warning">
-                            <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Input with warning</label>
-                            <input class="form-control" id="inputWarning" type="text" placeholder="Enter ...">
-                        </div>
-                        <div class="form-group has-error">
-                            <label class="control-label" for="inputError"><i class="fa fa-times-circle-o"></i> Input with error</label>
-                            <input class="form-control" id="inputError" type="text" placeholder="Enter ...">
-                        </div>
-                        <!-- checkbox -->
-                        <div class="form-group">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Checkbox 1
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Checkbox 2
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input disabled="" type="checkbox"> Checkbox disabled
-                                </label>
-                            </div>
-                        </div>
-                        <!-- radio -->
-                        <div class="form-group">
-                            <div class="radio">
-                                <label>
-                                    <input name="optionsRadios" id="optionsRadios1" type="radio" checked="" value="option1"> Option one is this and that—be sure to include why it's great
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input name="optionsRadios" id="optionsRadios2" type="radio" value="option2"> Option two can be something else and selecting it will deselect option one
-                                </label>
-                            </div>
-                            <div class="radio">
-                                <label>
-                                    <input name="optionsRadios" disabled="" id="optionsRadios3" type="radio" value="option3"> Option three is disabled
-                                </label>
-                            </div>
-                        </div>
-                        <!-- select -->
-                        <div class="form-group">
-                            <label>Select</label>
-                            <select class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Select Disabled</label>
-                            <select disabled="" class="form-control">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                        <!-- Select multiple-->
-                        <div class="form-group">
-                            <label>Select Multiple</label>
-                            <select class="form-control" multiple="">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Select Multiple Disabled</label>
-                            <select disabled="" class="form-control" multiple="">
-                                <option>option 1</option>
-                                <option>option 2</option>
-                                <option>option 3</option>
-                                <option>option 4</option>
-                                <option>option 5</option>
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <!-- /.box-body -->
             </div>
             <!-- /.box -->
         </div>

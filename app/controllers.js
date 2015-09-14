@@ -17,5 +17,9 @@ angular.module("baranggoApp.controllers", [])
 })
 
 .controller("NewRecordCtrl", function ($scope) {
+	var vm = this;
 
+	this.save = function() {
+		console.log("Hello World!");
+	}
 });
