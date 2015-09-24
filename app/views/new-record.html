@@ -15,13 +15,13 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="idNo">Id No</label>
-                                    <input class="form-control" id="idNo" type="number" placeholder="1012201">
+                                    <input class="form-control" id="idNo" type="number" placeholder="1012201" ng-model="person.id">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="householdNo">Household No</label>
-                                    <input class="form-control" id="householdNo" type="number" placeholder="1012201">
+                                    <label for="householdNo">Residence Id</label>
+                                    <input class="form-control" id="resedenceId" type="number" placeholder="1012201" ng-model="person.resedenceId">
                                 </div>
                             </div>
                         </div>
@@ -31,19 +31,19 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="firstName">First Name</label>
-                                    <input class="form-control" id="firstName" type="text" placeholder="Juan">
+                                    <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="person.firstName">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="lastName">Last Name</label>
-                                    <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz">
+                                    <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.lastName">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="middleName">Middle Name</label>
-                                    <input class="form-control" id="middleName" type="text" placeholder="Santiago">
+                                    <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middleName">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
 
                                 <div class="form-group">
                                     <label>Civil Status</label>
-                                    <select class="form-control" ng-model="civilStatus">
+                                    <select class="form-control" ng-model="person.civilStatus" >
                                         <option>Single</option>
                                         <option>Married</option>
                                         <option>Widowed</option>
@@ -69,7 +69,7 @@
                             
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <select class="form-control" ng-model="gender">
+                                    <select class="form-control" ng-model="person.gender">
                                         <option>Male</option>
                                         <option>Female</option>
                                     </select>
@@ -80,13 +80,13 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="placeOfBirth">Place of Birth</label>
-                                    <input class="form-control" id="placeOfBirth" type="text" placeholder="Kabankalan City">
+                                    <input class="form-control" id="person.placeOfBirth" type="text" placeholder="Kabankalan City">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="dateOfBirth">Date of Birth</label>
-                                    <input class="form-control" id="dateOfBirth" type="date">
+                                    <input class="form-control" id="person.dateOfBirth" type="date">
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label>Adress</label>
-                                    <textarea class="form-control" id="address"placeholder="Enter ..." rows="3"></textarea>
+                                    <textarea class="form-control" id="address"placeholder="Enter ..." rows="3" ng-model="person.address"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -105,15 +105,15 @@
                                 <div class="form-group">
                                     <label for="lengthOfStay">Length of Stay</label>
                                     <div class="input-group">
-                                        <input name="lengthOfStay" id="lengthOfStay" type="number" class="form-control" ng-model="lengthOfStay">
+                                        <input name="lengthOfStay" id="lengthOfStay" type="number" class="form-control" ng-model="person.lengthOfStay">
                                         <div class="input-group-addon">
                                             <label class="radio-inline">
-                                                <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="months" ng-model="lengthOfStayUnit"> months
+                                                <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="months" ng-model="person.lengthOfStayUnit"> months
                                             </label>
                                         </div>
                                         <div class="input-group-addon">
                                             <label class="radio-inline">
-                                                <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="years" ng-model="lengthOfStayUnit"> years
+                                                <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="years" ng-model="person.lengthOfStayUnit"> years
                                             </label>
                                         </div>
                                     </div>
@@ -126,84 +126,84 @@
                                     <label for="optIsEmployed">Are you employed?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optIsEmployed" id="optIsEmployed" type="radio" checked="" value="Yes" ng-model="optIsEmployed"> Yes
+                                            <input name="optIsEmployed" id="optIsEmployed" type="radio" checked="" value="Yes" ng-model="person.isEmployed"> Yes
                                         </label>
                                         <label>
-                                            <input name="optIsEmployed" id="optionsRadios2" type="radio" value="No" ng-model="optIsEmployed"> No
+                                            <input name="optIsEmployed" id="optionsRadios2" type="radio" value="No" ng-model="person.isEmployed"> No
                                         </label>
-                                        <p>{{optIsEmployed}} </p>
+                                        <p>{{erson.isEmployed}} </p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="optSSS">Do you have SSS?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optSSS" id="optSSS" type="radio" checked="" value="Yes" ng-model="optSSS"> Yes
+                                            <input name="optSSS" id="optSSS" type="radio" checked="" value="Yes" ng-model="person.withSSS"> Yes
                                         </label>
                                         <label>
-                                            <input name="optSSS" id="optSSS" type="radio" value="No" ng-model="optSSS"> No
+                                            <input name="optSSS" id="optSSS" type="radio" value="No" ng-model="person.withSSS"> No
                                         </label>
-                                        <p>{{optSSS}} </p>
+                                        <p>{{person.withSSS}} </p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="optPhilHealth">Do you have PhilHealth?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optPhilHealth" id="optPhilHealth" type="radio" checked="" value="Yes" ng-model="optPhilHealth"> Yes
+                                            <input name="optPhilHealth" id="optPhilHealth" type="radio" checked="" value="Yes" ng-model="person.withPhilHealth"> Yes
                                         </label>
                                         <label>
-                                            <input name="optPhilHealth" id="optPhilHealth" type="radio" value="No" ng-model="optPhilHealth"> No
+                                            <input name="optPhilHealth" id="optPhilHealth" type="radio" value="No" ng-model="person.withPhilHealth"> No
                                         </label>
-                                        <p>{{optPhilHealth}} </p>
+                                        <p>{{person.withPhilHealth}} </p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="optVoter">Are you a registered voter?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optVoter" id="optVoter" type="radio" checked="" value="Yes" ng-model="optVoter"> Yes
+                                            <input name="optVoter" id="optVoter" type="radio" checked="" value="Yes" ng-model="person.isVoter"> Yes
                                         </label>
                                         <label>
-                                            <input name="optVoter" id="optVoter" type="radio" value="No" ng-model="optVoter"> No
+                                            <input name="person.isVoter" id="optVoter" type="radio" value="No" ng-model="person.isVoter"> No
                                         </label>
-                                        <p>{{optVoter}} </p>
+                                        <p>{{person.isVoter}} </p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="optElectricity">Do you electricity in your home?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optElectricity" id="optElectricity" type="radio" checked="" value="Yes" ng-model="optElectricity"> Yes
+                                            <input name="optElectricity" id="optElectricity" type="radio" checked="" value="Yes" ng-model="person.withElectricity"> Yes
                                         </label>
                                         <label>
-                                            <input name="optElectricity" id="optElectricity" type="radio" value="No" ng-model="optElectricity"> No
+                                            <input name="optElectricity" id="optElectricity" type="radio" value="No" ng-model="person.withElectricity"> No
                                         </label>
-                                        <p>{{optElectricity}}</p>
+                                        <p>{{person.withElectricity}}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="optToilet">Do you have a toilet?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optToilet" id="optToilet" type="radio" checked="" value="Yes" ng-model="optToilet"> Yes
+                                            <input name="optToilet" id="optToilet" type="radio" checked="" value="Yes" ng-model="person.withToilet"> Yes
                                         </label>
                                         <label>
-                                            <input name="optToilet" id="optToilet" type="radio" value="No" ng-model="optToilet"> No
+                                            <input name="optToilet" id="optToilet" type="radio" value="No" ng-model="person.withToilet"> No
                                         </label>
-                                        <p>{{optToilet}}</p>
+                                        <p>{{person.withToilet}}</p>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="optHandicapped">Are you handicapped?</label>
                                     <div class="radio">
                                         <label>
-                                            <input name="optHandicapped" id="optHandicapped" type="radio" checked="" value="Yes" ng-model="optHandicapped"> Yes
+                                            <input name="optHandicapped" id="optHandicapped" type="radio" checked="" value="Yes" ng-model="person.isHandicapped"> Yes
                                         </label>
                                         <label>
-                                            <input name="optHandicapped" id="optHandicapped" type="radio" value="No" ng-model="optHandicapped"> No
+                                            <input name="optHandicapped" id="optHandicapped" type="radio" value="No" ng-model="person.isHandicapped"> No
                                         </label>
-                                        <p>{{optHandicapped}}</p>
+                                        <p>{{person.isHandicapped}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -215,13 +215,13 @@
                                         <option>Deep Well</option>
                                         <option>KCWD</option>
                                     </select>
-                                    <p>{{sourceOfWater}}</p>
+                                    <p>{{person.sourceOfWater}}</p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Highest educational attainment</label>
-                                    <select class="form-control" ng-model="educationalAttainment">
+                                    <select class="form-control" ng-model="person.educationalAttainment">
                                         <option>Elementary Graduate</option>
                                         <option>Elementary Undergraduate</option>
                                         <option>High School Graduatee</option>
@@ -231,7 +231,7 @@
                                         <option>No Formal Educatio</option>
                                         <option>Post Graduate</option>
                                     </select>
-                                    <p>{{educationalAttainment}}</p>
+                                    <p>{{person.educationalAttainment}}</p>
                                 </div>
                             </div>
                             <!-- /.col-md-3 -->
