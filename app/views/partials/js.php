@@ -11,6 +11,9 @@
 <script src="<?php echo base_url(); ?>app/lib/angular-1.3.15/angular.js"></script>
 <script src="<?php echo base_url(); ?>app/lib/angular-ui-router/angular-ui-router.min.js"></script>
 
+<!-- Angular Validation -->
+<script src="<?php echo base_url(); ?>app/lib/angular-validation/angular-validation-rule.min.js"></script>
+<script src="<?php echo base_url(); ?>app/lib/angular-validation/angular-validation.min.js"></script>
 
 <!-- Smart-Table -->
 <script src="<?php echo base_url(); ?>app/lib/smart-table/smart-table.min.js"></script>
@@ -20,6 +23,7 @@
 <script src="<?php echo base_url(); ?>app/app.js"></script>
 <script src="<?php echo base_url(); ?>app/controllers.js"></script>
 <script src="<?php echo base_url(); ?>app/services.js"></script>
+
 
 
 

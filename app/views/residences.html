@@ -5,7 +5,7 @@
             <select class="form-control input-md pull-right" ng-model="itemsPerPage" ng-change="perPage()" ng-options="('show '+size+' per page') for size in pageSizes"></select>
         </div>
         <div class="col-md-2 col-md-offset-4">
-            <button class="btn btn-block btn-primary" ng-click="toggleModal()">New Record</button>
+            <button class="btn btn-block btn-primary" ng-click="toggleModal()">New Residence</button>
         </div>
         <div class="col-md-3">
             <div class="input-group input-group-md add-on">
@@ -31,21 +31,20 @@
                         <table st-table="rowCollection" class="table table-striped" >
                             <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Birth Date</th>
-                                    <th>Balance</th>
-                                    <th>Email</th>
-                                    <th>Actions</th>
+                                    <th>Block No</th>
+                                    <th>Lot No</th>
+                                    <th>Street</th>
+                                    <th>Subdivision</th>
+                                    <th>Baranggay</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in census.rowCollection">
-                                    <td>{{row.firstName}}</td>
-                                    <td>{{row.lastName}}</td>
-                                    <td>{{row.birthDate}}</td>
-                                    <td>{{row.balance}}</td>
-                                    <td>{{row.email}}</td>
+                                    <td>{{row.blockNo}}</td>
+                                    <td>{{row.lotNo}}</td>
+                                    <td>{{row.street}}</td>
+                                    <td>{{row.subdivision}}</td>
+                                    <td>{{row.baranggay}}</td>
                                     <td>
                                         <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
@@ -71,43 +70,28 @@
         <!-- /.col -->
     </div>
     <div ui-view></div>
-    <modal title="Add New Record" visible="showModal">
+    
+    <modal title="Add New Residence" visible="showModal">
         <!-- form start -->
         <form role="form">
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="idNo">Id No</label>
-                            <input class="form-control" id="idNo" type="number" placeholder="1012201" ng-model="person.id">
+                            <label for="blockNo">Block No</label>
+                            <input class="form-control" id="blockNo" type="text" placeholder="" ng-model="vm.blockNo">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="householdNo">Residence Id</label>
-                            <input class="form-control" id="resedenceId" type="number" placeholder="1012201" ng-model="person.resedenceId">
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <br>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="firstName">First Name</label>
-                            <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="person.firstName">
+                            <label for="lotNo">Lot No</label>
+                            <input class="form-control" id="lotNo" type="text" placeholder="Dela Cruz" ng-model="vm.lotNo">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="lastName">Last Name</label>
-                            <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.lastName">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="middleName">Middle Name</label>
-                            <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middleName">
+                            <label for="street">Street</label>
+                            <input class="form-control" id="street" type="text" placeholder="Santiago" ng-model="vm.street">
                         </div>
                     </div>
                 </div>
@@ -115,202 +99,35 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label>Civil Status</label>
-                            <select class="form-control" ng-model="person.civilStatus">
-                                <option>Single</option>
-                                <option>Married</option>
-                                <option>Widowed</option>
-                                <option>Seperated</option>
-                            </select>
-                        </div>
-                        <p>{{civilStatus}}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Gender</label>
-                            <select class="form-control" ng-model="person.gender">
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
-                        <p>{{gender}}</p>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="placeOfBirth">Place of Birth</label>
-                            <input class="form-control" id="person.placeOfBirth" type="text" placeholder="Kabankalan City">
+                            <label for="subdivision">Subdivision</label>
+                            <input class="form-control" id="subdivision" type="text" placeholder="" ng-model="vm.subdivision">
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="dateOfBirth">Date of Birth</label>
-                            <input class="form-control" id="person.dateOfBirth" type="date">
+                            <label for="barangay">Barangay</label>
+                            <input class="form-control" id="barangay" type="text" placeholder="Dela Cruz" ng-model="vm.barangay">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input class="form-control" id="city" type="text" placeholder="Santiago" ng-model="vm.city">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="province">Province</label>
+                            <input class="form-control" id="province" type="text" placeholder="Santiago" ng-model="vm.province">
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Adress</label>
-                            <textarea class="form-control" id="address" placeholder="Enter ..." rows="3" ng-model="person.address"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="lengthOfStay">Length of Stay</label>
-                            <div class="input-group">
-                                <input name="lengthOfStay" id="lengthOfStay" type="number" class="form-control" ng-model="person.lengthOfStay">
-                                <div class="input-group-addon">
-                                    <label class="radio-inline">
-                                        <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="months" ng-model="person.lengthOfStayUnit"> months
-                                    </label>
-                                </div>
-                                <div class="input-group-addon">
-                                    <label class="radio-inline">
-                                        <input name="lengthOfStayUnit" id="lengthOfStayUnit" type="radio" value="years" ng-model="person.lengthOfStayUnit"> years
-                                    </label>
-                                </div>
-                            </div>
-                            <div id="length_of_stay_new_error" class="error-alert"></div>
-                            <div id="length_of_stay_unit_new_error" class="error-alert"></div>
-                            <p>{{lengthOfStay}} {{lengthOfStayUnit}} </p>
-                        </div>
-                        <div class="form-group">
-                            <label for="optIsEmployed">Are you employed?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optIsEmployed" id="optIsEmployed" type="radio" checked="" value="Yes" ng-model="person.isEmployed"> Yes
-                                </label>
-                                <label>
-                                    <input name="optIsEmployed" id="optionsRadios2" type="radio" value="No" ng-model="person.isEmployed"> No
-                                </label>
-                                <p>{{erson.isEmployed}} </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="optSSS">Do you have SSS?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optSSS" id="optSSS" type="radio" checked="" value="Yes" ng-model="person.withSSS"> Yes
-                                </label>
-                                <label>
-                                    <input name="optSSS" id="optSSS" type="radio" value="No" ng-model="person.withSSS"> No
-                                </label>
-                                <p>{{person.withSSS}} </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="optPhilHealth">Do you have PhilHealth?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optPhilHealth" id="optPhilHealth" type="radio" checked="" value="Yes" ng-model="person.withPhilHealth"> Yes
-                                </label>
-                                <label>
-                                    <input name="optPhilHealth" id="optPhilHealth" type="radio" value="No" ng-model="person.withPhilHealth"> No
-                                </label>
-                                <p>{{person.withPhilHealth}} </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="optVoter">Are you a registered voter?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optVoter" id="optVoter" type="radio" checked="" value="Yes" ng-model="person.isVoter"> Yes
-                                </label>
-                                <label>
-                                    <input name="person.isVoter" id="optVoter" type="radio" value="No" ng-model="person.isVoter"> No
-                                </label>
-                                <p>{{person.isVoter}} </p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="optElectricity">Do you electricity in your home?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optElectricity" id="optElectricity" type="radio" checked="" value="Yes" ng-model="person.withElectricity"> Yes
-                                </label>
-                                <label>
-                                    <input name="optElectricity" id="optElectricity" type="radio" value="No" ng-model="person.withElectricity"> No
-                                </label>
-                                <p>{{person.withElectricity}}</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="optToilet">Do you have a toilet?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optToilet" id="optToilet" type="radio" checked="" value="Yes" ng-model="person.withToilet"> Yes
-                                </label>
-                                <label>
-                                    <input name="optToilet" id="optToilet" type="radio" value="No" ng-model="person.withToilet"> No
-                                </label>
-                                <p>{{person.withToilet}}</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="optHandicapped">Are you handicapped?</label>
-                            <div class="radio">
-                                <label>
-                                    <input name="optHandicapped" id="optHandicapped" type="radio" checked="" value="Yes" ng-model="person.isHandicapped"> Yes
-                                </label>
-                                <label>
-                                    <input name="optHandicapped" id="optHandicapped" type="radio" value="No" ng-model="person.isHandicapped"> No
-                                </label>
-                                <p>{{person.isHandicapped}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-md-4 -->
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Source of water</label>
-                            <select class="form-control" ng-model="sourceOfWater">
-                                <option>Deep Well</option>
-                                <option>KCWD</option>
-                            </select>
-                            <p>{{person.sourceOfWater}}</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Highest educational attainment</label>
-                            <select class="form-control" ng-model="person.educationalAttainment">
-                                <option>Elementary Graduate</option>
-                                <option>Elementary Undergraduate</option>
-                                <option>High School Graduatee</option>
-                                <option>College Graduate</option>
-                                <option>College Undergraduat</option>
-                                <option>Vocationa</option>
-                                <option>No Formal Educatio</option>
-                                <option>Post Graduate</option>
-                            </select>
-                            <p>{{person.educationalAttainment}}</p>
-                        </div>
-                    </div>
-                    <!-- /.col-md-3 -->
-                </div>
-                <br>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="form-group">
-                            <label>Adress</label>
-                            <textarea class="form-control" placeholder="Enter ..." rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
-            <!-- /.box-body -->
-            <!-- <div class="box-footer">
-                        <button class="btn btn-primary" type="submit" ng-click="person.save()">Submit</button>
-                    </div> -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline">Save changes</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </form>
     </modal>

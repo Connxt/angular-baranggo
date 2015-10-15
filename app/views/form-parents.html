@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="panel  panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><b>Father's Info</b></h4>
+        </div>
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    {{residenceId}}
+                </div>
+                <!-- /.row -->
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="person.firstName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.lastName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="middleName">Middle Name</label>
+                            <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middleName">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input class="form-control" id="person.dateOfBirth" type="date">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="placeOfBirth">Place Of Birth</label>
+                            <input class="form-control" id="placeOfBirth" type="text" placeholder="Kabankalan City" ng-model="person.placeOfBirth">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="panel  panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><b> Mother's Info</b></h4>
+        </div>
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    {{residenceId}}
+                </div>
+                <!-- /.row -->
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="person.firstName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.lastName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="middleName">Middle Name</label>
+                            <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middleName">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <input class="form-control" id="person.dateOfBirth" type="date">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="placeOfBirth">Place Of Birth</label>
+                            <input class="form-control" id="placeOfBirth" type="text" placeholder="Kabankalan City" ng-model="person.placeOfBirth">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+        </form>
+        <hr />
+    </div>
+    <!-- /.row -->
+    <br />
+    <br />
+    <div class="col-xs-2 col-xs-offset-3 pull-right">
+        <a ui-sref="form.parents" class="btn btn-block btn-primary">
+    Next<span class="fa  fa-arrow-right"></span>
+    </a></div>
