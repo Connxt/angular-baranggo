@@ -1,9 +1,10 @@
+<form role="form" name="ParentForm">
 <div class="row">
     <div class="panel  panel-default">
         <div class="panel-heading">
             <h4 class="panel-title"><b>Father's Info</b></h4>
         </div>
-        <form role="form">
+        
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -16,42 +17,42 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherFirstName.$invalid }">
                             <label for="firstName">First Name</label>
-                            <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="person.firstName">
+                            <input class="form-control" name="fatherFirstName" type="text" placeholder="Juan" ng-model="person.parent.fatherFirstName" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherLastName.$invalid }">
                             <label for="lastName">Last Name</label>
-                            <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.lastName">
+                            <input class="form-control" name="fatherLastName" type="text" placeholder="Dela Cruz" ng-model="person.parent.fatherLastName" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="middleName">Middle Name</label>
-                            <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middleName">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherMiddleName.$invalid }">
+                            <label for="fatherMiddleName">Middle Name</label>
+                            <input class="form-control" name="fatherMiddleName" type="text" placeholder="Santiago" ng-model="person.parent.fatherMiddleName" validator="required" no-validation-message="true">
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <input class="form-control" id="person.dateOfBirth" type="date">
+                            <input class="form-control" name="fatherDateOfBirth" ng-model="person.parent.fatherDateOfBirth" type="date">
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
+                    <!-- <div class="col-md-3">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
                             <label for="placeOfBirth">Place Of Birth</label>
-                            <input class="form-control" id="placeOfBirth" type="text" placeholder="Kabankalan City" ng-model="person.placeOfBirth">
+                            <input class="form-control" name="fatherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="person.parent.fatherPlaceOfBirth">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.row -->
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 </div>
 <!-- /.row -->
@@ -60,7 +61,7 @@
         <div class="panel-heading">
             <h4 class="panel-title"><b> Mother's Info</b></h4>
         </div>
-        <form role="form">
+        <!-- <form role="form"> -->
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -73,21 +74,21 @@
                 <br>
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.motherFirstName.$invalid }">
                             <label for="firstName">First Name</label>
-                            <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="person.firstName">
+                            <input class="form-control" name="motherFirstName" type="text" placeholder="Juan" ng-model="person.parent.motherFirstName" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.motherLastName.$invalid }">
                             <label for="lastName">Last Name</label>
-                            <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.lastName">
+                            <input class="form-control" name="motherLastName" type="text" placeholder="Dela Cruz" ng-model="person.parent.motherLastName" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.motherMiddleName.$invalid }">
                             <label for="middleName">Middle Name</label>
-                            <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middleName">
+                            <input class="form-control" name="motherMiddleName" type="text" placeholder="Santiago" ng-model="person.parent.motherMiddleName" validator="required" no-validation-message="true">
                         </div>
                     </div>
                 </div>
@@ -96,25 +97,29 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <input class="form-control" id="person.dateOfBirth" type="date">
+                            <input class="form-control" name="motherDateOfBirth" ng-model="person.mother.dateOfBirth" type="date">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <div class="form-group">
                             <label for="placeOfBirth">Place Of Birth</label>
-                            <input class="form-control" id="placeOfBirth" type="text" placeholder="Kabankalan City" ng-model="person.placeOfBirth">
+                            <input class="form-control" name="motherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="person.parent.motherPlaceOfBirth">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.row -->
             </div>
-        </form>
+        
         <hr />
     </div>
     <!-- /.row -->
+    <p>{{person.parent}}</p>
     <br />
     <br />
+    
+    </form>
+
     <div class="col-xs-2 col-xs-offset-3 pull-right">
-        <a ui-sref="form.parents" class="btn btn-block btn-primary">
+        <a ui-sref="form.confirm" class="btn btn-block btn-primary">
     Next<span class="fa  fa-arrow-right"></span>
     </a></div>

@@ -104,6 +104,9 @@ angular.module("baranggoApp.controllers", [])
     //     alert('awesome!');
     // };
 
+    // COLLAPSE =====================
+  $scope.isCollapsed = false;   
+
     var vm = this;
     vm.addChild = addChild;
     vm.person = {};

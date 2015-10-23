@@ -1,4 +1,4 @@
-<form name="MainForm">
+<form name="Form">
     <div class="row">
         <div class="panel  panel-default">
             <div class="panel-heading">
@@ -70,6 +70,25 @@
                             <div class="form-group">
                                 <label for="dateOfBirth">Date of Birth</label>
                                 <input class="form-control" id="vm.person.dateOfBirth" type="date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ ' has-error': Form.phone.$invalid }">
+                                <label for="phone">Phone</label>
+                                <input class="form-control" name="phone" id="phone" type="text"
+                                ng-model="vm.person.phone" 
+                                placeholder="09123456789"
+                                validator="number"
+                                no-validation-message="true">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group" ng-class="{ ' has-error': Form.email.$invalid }">
+                                <label for="email">Email</label>
+                                <input class="form-control" name="email" id="email" type="text"
+                                ng-model="vm.person.email"
+                                placeholder="you@company.com"
+                                validator="email" no-validation-message="true">
                             </div>
                         </div>
                     </div>
@@ -178,7 +197,7 @@
             <div class="panel-heading">
                 <h4 class="panel-title"><b>Spouse Info</b></h4>
             </div>
-            <form role="form">
+            <form role="form" name="SpouseForm">
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-4">
@@ -191,21 +210,21 @@
                     <br>
                     <div class="row">
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ ' has-error': SpouseForm.spouseFirstname.$invalid }">
                                 <label for="firstName">First Name</label>
-                                <input class="form-control" id="firstName" type="text" placeholder="Juan" ng-model="vm.person.spouse.firstName">
+                                <input class="form-control" name="spouseFirstname" id="spouseFirstname" type="text" placeholder="Juan" ng-model="vm.person.spouse.firstName" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ ' has-error': SpouseForm.spouseLastName.$invalid }">
                                 <label for="lastName">Last Name</label>
-                                <input class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="vm.person.spouse.lastName">
+                                <input class="form-control" name="spouseLastName" id="spouseLastName" type="text" placeholder="Dela Cruz" ng-model="vm.person.spouse.lastName" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{ ' has-error': SpouseForm.spouseMiddleName.$invalid }">
                                 <label for="middleName">Middle Name</label>
-                                <input class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="vm.person.spouse.middleName">
+                                <input class="form-control" name="spouseMiddleName" id="spouseMiddleName" type="text" placeholder="Santiago" ng-model="vm.person.spouse.middleName" validator="required" no-validation-message="true">
                             </div>
                         </div>
                     </div>
@@ -224,7 +243,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="dateOfBirth">Date of Birth</label>
-                                <input class="form-control" id="vm.person.spouse.dateOfBirth" type="date">
+                                <input class="form-control" ng-model="vm.person.spouse.dateOfBirth" type="date">
                             </div>
                         </div>
                     </div>
@@ -309,7 +328,7 @@
     <p>{{vm.children}}</p>
     <p>{{Form.child.firstName.$untouched}}</p>
     <div class="row">
-        <b><h3>List of Children(s)</h3></b>
+        <b><h3>List of children</h3></b>
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
@@ -364,11 +383,12 @@
     <!-- /.row -->
     <br />
     <br />
+    <p>{{vm.person}}</p>
     <div class="col-xs-2 col-xs-offset-3 pull-right">
-    <button ui-sref="form.parents" class="btn btn-block btn-primary" ng-disabled="MainForm.$invalid || MainForm.firstName.$untouched"> Next
+    <button ui-sref="form.parents" class="btn btn-block btn-primary" ng-disabled="Form.$invalid || Form.firstName.$untouched"> Next
             <span class="fa  fa-arrow-right"></span>
         </button>
 
-        {{}}
+        
     </div>
 </form>
