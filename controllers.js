@@ -6,8 +6,8 @@ angular.module("baranggoApp.controllers", [])
     };
 }])
 
-.controller("HomeCtrl", ['Censuses', function(Censuses) {
-    Censuses.getAll().then(function(response) {
+.controller("HomeCtrl", ['Persons', function(Persons) {
+    Persons.getAll().then(function(response) {
         console.log(response);
     })
 }])
