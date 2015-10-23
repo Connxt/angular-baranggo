@@ -137,6 +137,95 @@ angular.module("baranggoApp.services", [])
 	return self;
 })
 
+.factory("Residences", function ($http, $q) {
+	var self = this;
+
+	self.getAll = function () {
+		return $http.get("api/residences", {});
+	};
+
+	self.get = function (id) {
+		return $http.get("api/residence/id/" + id + "/", {});
+	};
+
+	self.add = function (blockNo, lotNo, street, purok, latitude, longitude, barangayId, code) {
+		return $http.post("api/residence", {
+			blockNo: "blockNo",
+			lotNo: "lotNo",
+			street: "street",
+			purok: "purok",
+			latitude: "latitude",
+			longitude: "longitude",
+			barangayId: "barangayId",
+			code: "code"
+		})
+	};
+
+	return self;
+})
+
+.factory("BarangayClearances", function ($http, $q) {
+	var self = this;
+
+	self.getAll = function () {
+		return $http.get("api/barangay_clearances", {});
+	};
+
+	self.get = function (id) {
+		return $http.get("api/barangay_clearance/id/" + id + "/", {});
+	};
+
+	self.add = function (personId, reason, remarks) {
+		return $http.post("api/barangay_clearance", {
+			personId: 74,
+			reason: "reason",
+			remarks: "remarks"
+		});
+	};
+})
+
+.factory("BarangayBusinessClearances", function ($http, $q) {
+	var self = this;
+
+	self.getAll = function () {
+		return $http.get("api/barangay_business_clearances", {});
+	};
+
+	self.get = function (id) {
+		return $http.get("api/barangay_business_clearance/id/" + id + "/", {});
+	};
+
+	self.add = function (personId, businessName, businessAddress, businessType) {
+		return $http.post("api/barangay_business_clearance", {
+			personId: 74,
+			businessName: "businessName",
+			businessAddress: "businessAddress",
+			businessType: "businessType"
+		});
+	};
+})
+
+.factory("CertificatesOfClosure", function ($http, $q) {
+	var self = this;
+
+	self.getAll = function () {
+		return $http.get("api/certificates_of_closure", {});
+	};
+
+	self.get = function (id) {
+		return $http.get("api/certificate_of_closure/id/" + id + "/", {});
+	};
+
+	self.add = function (personId, businessName, businessAddress, businessType) {
+		return $http.post("api/certificate_of_closure", {
+			personId: 74,
+			businessName: "businessName",
+			businessAddress: "businessAddress",
+			dateClosed: "1992-10-07"
+		});
+	};
+})
+
 .factory("Users", function ($http, $q) {
 	var self = this;
 

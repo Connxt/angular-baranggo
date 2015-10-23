@@ -11,6 +11,9 @@ class Api extends REST_Controller {
 		$this->load->model('sibling_model');
 		$this->load->model('child_model');
 		$this->load->model('residence_model');
+		$this->load->model('barangay_clearance_model');
+		$this->load->model('barangay_business_clearance_model');
+		$this->load->model('certificate_of_closure_model');
 	}
 
 	/**
@@ -209,5 +212,85 @@ class Api extends REST_Controller {
 
 	public function residence_get() {
 		$this->response($this->residence_model->get($this->get('id')));
+	}
+
+	public function residence_post() {
+		$residence_id = $this->residence_model->add(
+			$this->post('blockNo'),
+			$this->post('lotNo'),
+			$this->post('street'),
+			$this->post('purok'),
+			$this->post('latitude'),
+			$this->post('longitude'),
+			$this->post('barangayId'),
+			$this->post('code')
+		);
+
+		$this->response($this->residence_model->get($residence_id));
+	}
+
+	/**
+	 * Barangay Clearances
+	 */
+	public function barangay_clearances_get() {
+		$this->response($this->barangay_clearance_model->get_all());
+	}
+
+	public function barangay_clearance_get() {
+		$this->response($this->barangay_clearance_model->get($this->get('id')));
+	}
+
+	public function barangay_clearance_post() {
+		$barangay_clearance_id = $this->barangay_clearance_model->add(
+			$this->post('personId'),
+			$this->post('reason'),
+			$this->post('remarks')
+		);
+
+		$this->response($this->barangay_clearance_model->get($barangay_clearance_id));
+	}
+
+	/**
+	 * Barangay Business Clearances
+	 */
+	public function barangay_business_clearances_get() {
+		$this->response($this->barangay_business_clearance_model->get_all());
+	}
+
+	public function barangay_business_clearance_get() {
+		$this->response($this->barangay_business_clearance_model->get($this->get('id')));
+	}
+
+	public function barangay_business_clearance_post() {
+		$barangay_business_clearance_id = $this->barangay_business_clearance_model->add(
+			$this->post('personId'),
+			$this->post('businessName'),
+			$this->post('businessAddress'),
+			$this->post('businessType')
+		);
+
+		$this->response($this->barangay_business_clearance_model->get($barangay_business_clearance_id));
+	}
+
+	/**
+	 * Barangay Business Clearances
+	 */
+	public function certificates_of_closure_get() {
+		$this->response($this->barangay_business_clearance_model->get_all());
+	}
+
+	public function certificate_of_closure_get() {
+		$this->response($this->certificate_of_closure_model->get($this->get('id')));
+	}
+
+	public function certificate_of_closure_post() {
+		$certificate_of_closure_id = $this->certificate_of_closure_model->add(
+			$this->post('personId'),
+			$this->post('businessName'),
+			$this->post('businessAddress'),
+			$this->post('dateClosed')
+		);
+
+		$this->response($this->certificate_of_closure_model->get($certificate_of_closure_id));
 	}
 }

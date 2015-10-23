@@ -13,7 +13,7 @@ class Barangay_Clearance_Model extends CI_Model {
 		return $this->db->query('SELECT * FROM barangay_clearances WHERE id=' . $id)->row();
 	}
 
-	function add($person_id, $reason, $remarks, $date_issued, $created_at) {
+	function add($person_id, $reason, $remarks) {
 		$this->db->insert('barangay_clearances', array(
 			'person_id' => $person_id,
 			'reason' => $reason,

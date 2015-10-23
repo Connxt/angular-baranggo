@@ -12,4 +12,20 @@ class Residence_Model extends CI_Model {
 	function get($id) {
 		return $this->db->query('SELECT * FROM residences WHERE id=' . $id)->row();
 	}
+
+	function add($block_no, $lot_no, $street, $purok, $latitude, $longitude, $barangay_id, $code) {
+		$this->db->insert('residences', array(
+			'block_no' => $block_no,
+			'lot_no' => $lot_no,
+			'street' => $street,
+			'purok' => $purok,
+			'latitude' => $latitude,
+			'longitude' => $longitude,
+			'barangay_id' => $barangay_id,
+			'code' => $code,
+			'created_at' => date('Y-m-d H:i:s')
+		));
+
+		return $this->db->insert_id();
+	}
 }

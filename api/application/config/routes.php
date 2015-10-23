@@ -53,8 +53,39 @@ $route['default_controller'] = '';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+/**
+ * Persons
+ */
 $route['persons']['get'] = 'api/persons';
 $route['person/id/(:num)']['get'] = 'api/person/id/$1';
 $route['person']['post'] = 'api/person';
 $route['person']['put'] = 'api/person';
 $route['person/id/(:num)']['delete'] = 'api/person/id/$1';
+
+/**
+ * Residences
+ */
+$route['residences']['get'] = 'api/residences';
+$route['residence/id/(:num)']['get'] = 'api/residence/id/$1';
+$route['residence']['post'] = 'api/residence';
+
+/**
+ * Barangay Clearances
+ */
+$route['barangay_clearances']['get'] = 'api/barangay_clearances';
+$route['barangay_clearance/id/(:num)']['get'] = 'api/barangay_clearance/id/$1';
+$route['barangay_clearance']['post'] = 'api/barangay_clearance';
+
+/**
+ * Barangay Business Clearances
+ */
+$route['barangay_business_clearances']['get'] = 'api/barangay_business_clearances';
+$route['barangay_business_clearance/id/(:num)']['get'] = 'api/barangay_business_clearance/id/$1';
+$route['barangay_business_clearance']['post'] = 'api/barangay_business_clearance';
+
+/**
+ * Certificates Of Closure
+ */
+$route['certificates_of_closure']['get'] = 'api/certificates_of_closure';
+$route['certificate_of_closure/id/(:num)']['get'] = 'api/certificate_of_closure/id/$1';
+$route['certificate_of_closure']['post'] = 'api/certificate_of_closure';
