@@ -89,3 +89,9 @@ $route['barangay_business_clearance']['post'] = 'api/barangay_business_clearance
 $route['certificates_of_closure']['get'] = 'api/certificates_of_closure';
 $route['certificate_of_closure/id/(:num)']['get'] = 'api/certificate_of_closure/id/$1';
 $route['certificate_of_closure']['post'] = 'api/certificate_of_closure';
+
+/**
+ * Users
+ */
+$route['users']['get'] = 'api/users';
+$route['user/id/(:num)']['get'] = 'api/user/id/$1';

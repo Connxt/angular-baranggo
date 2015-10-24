@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table baranggo_api.users: ~1 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `password`, `last_name`, `first_name`, `middle_name`, `barangay_id`) VALUES
-	(1, '123', '202cb962ac59075b964b07152d234b70', 'Felipe', 'Jan Ryan', 'Malicay', NULL);
+	(1, '123', '202cb962ac59075b964b07152d234b70', 'Felipe', 'Jan Ryan', 'Malicay', 1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

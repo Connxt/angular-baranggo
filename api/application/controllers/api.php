@@ -14,6 +14,7 @@ class Api extends REST_Controller {
 		$this->load->model('barangay_clearance_model');
 		$this->load->model('barangay_business_clearance_model');
 		$this->load->model('certificate_of_closure_model');
+		$this->load->model('user_model');
 	}
 
 	/**
@@ -211,7 +212,14 @@ class Api extends REST_Controller {
 	}
 
 	public function residence_get() {
-		$this->response($this->residence_model->get($this->get('id')));
+		$residence = $this->residence_model->get($this->get('id'));
+
+		if(is_null($residence)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$this->response($residence);
+		}
 	}
 
 	public function residence_post() {
@@ -237,7 +245,14 @@ class Api extends REST_Controller {
 	}
 
 	public function barangay_clearance_get() {
-		$this->response($this->barangay_clearance_model->get($this->get('id')));
+		$barangay_clearance = $this->barangay_clearance_model->get($this->get('id'));
+
+		if(is_null($barangay_clearance)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$this->response($barangay_clearance);
+		}
 	}
 
 	public function barangay_clearance_post() {
@@ -258,7 +273,14 @@ class Api extends REST_Controller {
 	}
 
 	public function barangay_business_clearance_get() {
-		$this->response($this->barangay_business_clearance_model->get($this->get('id')));
+		$barangay_business_clearance = $this->barangay_business_clearance_model->get($this->get('id'));
+
+		if(is_null($barangay_business_clearance)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$this->response($barangay_business_clearance);
+		}
 	}
 
 	public function barangay_business_clearance_post() {
@@ -280,7 +302,14 @@ class Api extends REST_Controller {
 	}
 
 	public function certificate_of_closure_get() {
-		$this->response($this->certificate_of_closure_model->get($this->get('id')));
+		$certificate_of_closure = $this->certificate_of_closure_model->get($this->get('id'));
+
+		if(is_null($certificate_of_closure)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$this->response($certificate_of_closure);
+		}
 	}
 
 	public function certificate_of_closure_post() {
@@ -292,5 +321,23 @@ class Api extends REST_Controller {
 		);
 
 		$this->response($this->certificate_of_closure_model->get($certificate_of_closure_id));
+	}
+
+	/**
+	 * Users
+	 */
+	public function users_get() {
+		$this->response($this->user_model->get_all());
+	}
+
+	public function user_get() {
+		$user = $this->user_model->get($this->get('id'));
+
+		if(is_null($user)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$this->response($user);
+		}
 	}
 }

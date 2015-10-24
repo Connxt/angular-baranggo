@@ -8,7 +8,7 @@ angular.module("baranggoApp.services", [])
 	};
 
 	self.get = function (id) {
-		return $http.get("api/person/id/" + id + "/", {});
+		return $http.get("api/person/id/" + id, {});
 	};
 
 	self.add = function (lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, children) {
@@ -177,7 +177,7 @@ angular.module("baranggoApp.services", [])
 	};
 
 	self.get = function (id) {
-		return $http.get("api/residence/id/" + id + "/", {});
+		return $http.get("api/residence/id/" + id, {});
 	};
 
 	self.add = function (blockNo, lotNo, street, purok, latitude, longitude, barangayId, code) {
@@ -204,7 +204,7 @@ angular.module("baranggoApp.services", [])
 	};
 
 	self.get = function (id) {
-		return $http.get("api/barangay_clearance/id/" + id + "/", {});
+		return $http.get("api/barangay_clearance/id/" + id, {});
 	};
 
 	self.add = function (personId, reason, remarks) {
@@ -224,7 +224,7 @@ angular.module("baranggoApp.services", [])
 	};
 
 	self.get = function (id) {
-		return $http.get("api/barangay_business_clearance/id/" + id + "/", {});
+		return $http.get("api/barangay_business_clearance/id/" + id, {});
 	};
 
 	self.add = function (personId, businessName, businessAddress, businessType) {
@@ -245,7 +245,7 @@ angular.module("baranggoApp.services", [])
 	};
 
 	self.get = function (id) {
-		return $http.get("api/certificate_of_closure/id/" + id + "/", {});
+		return $http.get("api/certificate_of_closure/id/" + id, {});
 	};
 
 	self.add = function (personId, businessName, businessAddress, dateClosed) {
@@ -260,6 +260,14 @@ angular.module("baranggoApp.services", [])
 
 .factory("Users", function ($http, $q) {
 	var self = this;
+
+	self.getAll = function () {
+		return $http.get("api/users", {});
+	};
+
+	self.get = function (id) {
+		return $http.get("api/user/id/" + id, {});
+	};
 
 	return self;
 });
