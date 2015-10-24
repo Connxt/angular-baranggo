@@ -35,7 +35,7 @@ angular.module("baranggoApp.services", [])
 			educationalAttainment: College,
 			isEmployed: isEmployed,
 			isVoter: isVoter,
-			isDeceased: 0,
+			isDeceased: 0, // should not be changed
 			withPhilhealth: withPhilhealth,
 			withSSS: withSSS,
 			withElectricity: withElectricity,
@@ -46,97 +46,123 @@ angular.module("baranggoApp.services", [])
 			spouseGender: spouseGender,
 			spouseDateOfBirth: spouseDateOfBirth,
 			residenceId: residenceId,
-			siblings: [{
-				/**
-				 * Sample format
-				 */
-				// lastName: "lastName",
-				// firstName: "firstName",
-				// middleName: "middleName",
-				// gender: "gender",
-				// dateOfBirth: "1992-10-07",
-			}],
-			children: [{
-				/**
-				 * Sample Format
-				 */
-				// lastName: "lastName",
-				// firstName: "firstName",
-				// middleName: "middleName",
-				// gender: "gender",
-				// dateOfBirth: "1992-10-07",
-			}]
+			siblings: siblings,
+			// [
+			// 	{
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
+			children: children,
+			// [
+			// 	{
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
 		});
 	};
 
 	self.update = function (id, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, siblingsToBeAdded, siblingsToBeRemoved, children, childrenToBeAdded, childrenToBeRemoved) {
 		return $http.put("api/person", {
 			id: id,
-			lastName: "lastName",
-			firstName: "firstName",
-			middleName: "middleName",
-			dateOfBirth: "1992-10-07",
-			placeOfBirth: "placeOfBirth",
-			gender: "gender",
-			motherLastName: "motherLastName",
-			motherFirstName: "motherFirstName",
-			motherMiddleName: "motherMiddleName",
-			motherDateOfBirth: "1992-10-07",
-			fatherLastName: "fatherLastName",
-			fatherFirstName: "fatherFirstName",
-			fatherMiddleName: "fatherMiddleName",
-			fatherDateOfBirth: "1992-10-07",
-			contactNo: "contactNo",
-			email: "email",
-			civilStatus: "civilStatus",
-			religion: "religion",
-			annualIncome: "100000",
-			educationalAttainment: "College",
-			isEmployed: "1",
-			isVoter: "1",
-			isDeceased: "0",
-			withPhilhealth: "1",
-			withSSS: "1",
-			withElectricity: "1",
-			withWater: "1",
-			spouseLastName: "spouseLastName",
-			spouseFirstName: "spouseFirstName",
-			spouseMiddleName: "spouseMiddleName",
-			spouseGender: "spouseGender",
-			spouseDateOfBirth: "1992-10-07",
-			residenceId: "00000000001",
-			siblings: [{
-				id: 10,
-				lastName: "lastName",
-				firstName: "firstName",
-				middleName: "middleName",
-				gender: "gender",
-				dateOfBirth: "1992-10-07",
-			}],
-			siblingsToBeAdded: [{
-				lastName: "lastName",
-				firstName: "firstName",
-				middleName: "middleName",
-				gender: "gender",
-				dateOfBirth: "1992-10-07",
-			}],
-			siblingsToBeRemoved: [1, 2, 3, 4, 5],
-			children: [{
-				id: 10,
-				lastName: "lastName",
-				firstName: "firstName",
-				middleName: "middleName",
-				gender: "gender",
-				dateOfBirth: "1992-10-07",
-			}],
-			childrenToBeAdded: [{
-				lastName: "lastName",
-				firstName: "firstName",
-				middleName: "middleName",
-				gender: "gender",
-				dateOfBirth: "1992-10-07",
-			}],
-			childrenToBeRemoved: [1, 2, 3, 4, 5]
+			lastName: lastName,
+			firstName: firstName,
+			middleName: middleName,
+			dateOfBirth: dateOfBirth,
+			placeOfBirth: placeOfBirth,
+			gender: gender,
+			motherLastName: motherLastName,
+			motherFirstName: motherFirstName,
+			motherMiddleName: motherMiddleName,
+			motherDateOfBirth: motherDateOfBirth,
+			fatherLastName: fatherLastName,
+			fatherFirstName: fatherFirstName,
+			fatherMiddleName: fatherMiddleName,
+			fatherDateOfBirth: fatherDateOfBirth,
+			contactNo: contactNo,
+			email: email,
+			civilStatus: civilStatus,
+			religion: religion,
+			annualIncome: fatherDateOfBirth,
+			educationalAttainment: College,
+			isEmployed: isEmployed,
+			isVoter: isVoter,
+			isDeceased: 0, // should not be changed
+			withPhilhealth: withPhilhealth,
+			withSSS: withSSS,
+			withElectricity: withElectricity,
+			withWater: withWater,
+			spouseLastName: spouseLastName,
+			spouseFirstName: spouseFirstName,
+			spouseMiddleName: spouseMiddleName,
+			spouseGender: spouseGender,
+			spouseDateOfBirth: spouseDateOfBirth,
+			residenceId: residenceId,
+			siblings: sibings,
+			// [
+			// 	{
+			// 		id: 10,
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
+			siblingsToBeAdded: siblingsToBeAdded,
+			// [
+			// 	{
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07",
+			// 	}
+			// ]
+			siblingsToBeRemoved: siblingsToBeRemoved,
+			// [
+			// 	1,
+			// 	2,
+			// 	3,
+			// 	4,
+			// 	5
+			// ]
+			children: children,
+			// [
+			// 	{
+			// 		id: 10,
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
+			childrenToBeAdded: childrenToBeRemoved,
+			// [
+			// 	{
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
+			childrenToBeRemoved: childrenToBeRemoved
+			// [
+			// 	1,
+			// 	2,
+			// 	3,
+			// 	4,
+			// 	5
+			// ]
 		});
 	};
 
@@ -183,9 +209,9 @@ angular.module("baranggoApp.services", [])
 
 	self.add = function (personId, reason, remarks) {
 		return $http.post("api/barangay_clearance", {
-			personId: 74,
-			reason: "reason",
-			remarks: "remarks"
+			personId: personId,
+			reason: reason,
+			remarks: remarks
 		});
 	};
 })
@@ -203,10 +229,10 @@ angular.module("baranggoApp.services", [])
 
 	self.add = function (personId, businessName, businessAddress, businessType) {
 		return $http.post("api/barangay_business_clearance", {
-			personId: 74,
-			businessName: "businessName",
-			businessAddress: "businessAddress",
-			businessType: "businessType"
+			personId: personId,
+			businessName: businessName,
+			businessAddress: businessAddress,
+			businessType: businessType
 		});
 	};
 })
@@ -222,12 +248,12 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/certificate_of_closure/id/" + id + "/", {});
 	};
 
-	self.add = function (personId, businessName, businessAddress, businessType) {
+	self.add = function (personId, businessName, businessAddress, dateClosed) {
 		return $http.post("api/certificate_of_closure", {
-			personId: 74,
-			businessName: "businessName",
-			businessAddress: "businessAddress",
-			dateClosed: "1992-10-07"
+			personId: personId,
+			businessName: businessName,
+			businessAddress: businessAddress,
+			dateClosed: dateClosed
 		});
 	};
 })

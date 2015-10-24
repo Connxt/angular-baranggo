@@ -10,53 +10,53 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
         url: '/home',
-        templateUrl: APP_URL + 'views/home.html',
+        templateUrl: 'views/home.html',
         controller: 'HomeCtrl as vm'
     })
 
     // nested list with custom controller
     .state('censuses', {
         url: '/censuses',
-        templateUrl: APP_URL + 'views/censuses.html',
+        templateUrl: 'views/censuses.html',
         controller: 'CensusCtrl as census'
     })
 
     .state('new-record', {
         url: '/new-record',
-        templateUrl: APP_URL + 'views/new-record.html',
+        templateUrl: 'views/new-record.html',
         controller: 'NewRecordCtrl as vm'
     })
 
     .state('residences', {
         url: '/residences',
-        templateUrl: APP_URL + 'views/residences.html',
+        templateUrl: 'views/residences.html',
         controller: 'ResidenceCtrl'
     })
 
     .state('form', {
         url: '/form',
-        templateUrl: APP_URL + 'views/form.html',
+        templateUrl: 'views/form.html',
         controller: 'FormCtrl as vm'
     })
 
     .state('form.address', {
             url: '/address',
-            templateUrl: APP_URL + 'views/form-address.html',
+            templateUrl: 'views/form-address.html',
             controller: 'FormCtrl'
         })
         .state('form.profile', {
             url: '/profile',
-            templateUrl: APP_URL + 'views/form-profile.html',
+            templateUrl: 'views/form-profile.html',
             controller: 'FormCtrl'
         })
         .state('form.parents', {
             url: '/parents',
-            templateUrl: APP_URL + 'views/form-parents.html',
+            templateUrl: 'views/form-parents.html',
             controller: 'FormCtrl'
         })
         .state('form.confirm', {
             url: '/confirm',
-            templateUrl: APP_URL + 'views/form-confirm.html',
+            templateUrl: 'views/form-confirm.html',
             controller: 'FormCtrl as vm'
         });
 })
