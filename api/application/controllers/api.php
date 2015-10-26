@@ -21,7 +21,15 @@ class Api extends REST_Controller {
 	 * Persons
 	 */
 	public function persons_get() {
-		$this->response($this->person_model->get_all());
+		$persons = $this->person_model->get_all();
+
+		foreach($persons as $person) {
+			$person->temp_person_info = $this->temp_person_info_model->get($person->id);
+			$person->siblings = $this->sibling_model->get_by_person_id($person->id);
+			$person->children = $this->child_model->get_by_person_id($person->id);
+		}
+
+		$this->response($persons);
 	}
 
 	public function person_get() {
