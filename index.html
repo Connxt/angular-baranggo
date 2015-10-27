@@ -94,20 +94,22 @@
 				</li>
 
 				<li class="treeview active">
-				<li ng-class="{ active: isActive('/certificates') }">
-					<a href="#/certificates"><i class="fa fa-certificate"></i> <span>Certificates</span>
-						<i class="fa fa-angle-left pull-right"></i>
-					</a>
+					<li ng-class="{ active: isActive('/certificates') }">
+						<a href="#/certificates"><i class="fa fa-certificate"></i> <span>Certificates</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
 
-					<ul class="treeview-menu menu-open" style="display: block;">
-					<li><a href="#"><i class="fa fa-angle-right"></i> Baranggay Clearance</a></li>
-					<li><a href="#"><i class="fa fa-angle-right"></i> Baranggay Business Clearance</a></li>
-					<li><a href="#"><i class="fa fa-angle-right"></i> Certificate of Closure</a></li>
-				  </ul>
+						<ul class="treeview-menu menu-open" style="display: block;">
+						<li><a href="#"><i class="fa fa-angle-right"></i> Baranggay Clearance</a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i> Baranggay Business Clearance</a></li>
+						<li><a href="#"><i class="fa fa-angle-right"></i> Certificate of Closure</a></li>
+					  </ul>
 
+					</li>
 				</li>
+				<li ng-class="{ active: isActive('/') }">
+					<a ui-sref="map"><i class="fa fa-dashboard"></i> <span>Map</span></i></a>
 				</li>
-				
 			</ul>
 		</section>
 		<!-- /.sidebar -->
@@ -139,6 +141,8 @@
 	<!-- Smart-Table -->
 	<script src="lib/smart-table/smart-table.min.js"></script>
 
+	
+	
 	<!-- App -->
 	<script src="app.js"></script>
 	<script src="controllers.js"></script>
