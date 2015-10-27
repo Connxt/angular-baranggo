@@ -91,6 +91,7 @@ angular.module("baranggoApp.controllers", [])
     };
 }])
 
+<<<<<<< HEAD
 .controller('FormCtrl', ['$scope', 'Persons', function($scope, Persons) {
     var vm = this;
     $scope.isCollapsed = false;
@@ -114,6 +115,12 @@ angular.module("baranggoApp.controllers", [])
     }
 
     // we will store all of our form data in this object
+=======
+.controller('FormCtrl', ['$scope', function($scope) {
+    // we will store all of our form data in this object
+
+
+>>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
     // $scope.formData = {};
     // $scope.person = {};
     // // $scope.residenceId = $scope.person.residenceId;
@@ -124,7 +131,27 @@ angular.module("baranggoApp.controllers", [])
     // };
 
     // COLLAPSE =====================
+<<<<<<< HEAD
   
+=======
+  $scope.isCollapsed = false;   
+
+    var vm = this;
+    vm.addChild = addChild;
+    vm.person = {};
+    vm.children = [];
+    
+
+    vm.save = function() {
+        console.log("Hello World!");
+    }
+
+    function addChild(child) {
+        child.id = new Date().getTime();
+        vm.children.push(child);
+        console.log(vm.children);
+    }
+>>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
 
     
 

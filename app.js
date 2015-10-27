@@ -57,7 +57,11 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
         .state('form.confirm', {
             url: '/confirm',
             templateUrl: 'views/form-confirm.html',
+<<<<<<< HEAD
             controller: 'FormCtrl'
+=======
+            controller: 'FormCtrl as vm'
+>>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
         });
 })
 

@@ -11,6 +11,7 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/person/id/" + id, {});
 	};
 
+<<<<<<< HEAD
 
 	// self.add = function (lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, children) {
 	// 	return $http.post("api/posterson", {
@@ -77,6 +78,65 @@ angular.module("baranggoApp.services", [])
 		console.log("Service: " + person);
 		return $http.post("api/person", person);
 	}; 
+=======
+	self.add = function (lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, children) {
+		return $http.post("api/person", {
+			lastName: lastName,
+			firstName: firstName,
+			middleName: middleName,
+			dateOfBirth: dateOfBirth,
+			placeOfBirth: placeOfBirth,
+			gender: gender,
+			motherLastName: motherLastName,
+			motherFirstName: motherFirstName,
+			motherMiddleName: motherMiddleName,
+			motherDateOfBirth: motherDateOfBirth,
+			fatherLastName: fatherLastName,
+			fatherFirstName: fatherFirstName,
+			fatherMiddleName: fatherMiddleName,
+			fatherDateOfBirth: fatherDateOfBirth,
+			contactNo: contactNo,
+			email: email,
+			civilStatus: civilStatus,
+			religion: religion,
+			annualIncome: annualIncome,
+			educationalAttainment: College,
+			isEmployed: isEmployed,
+			isVoter: isVoter,
+			isDeceased: 0, // should not be changed
+			withPhilhealth: withPhilhealth,
+			withSSS: withSSS,
+			withElectricity: withElectricity,
+			withWater: withWater,
+			spouseLastName: spouseLastName,
+			spouseFirstName: spouseFirstName,
+			spouseMiddleName: spouseMiddleName,
+			spouseGender: spouseGender,
+			spouseDateOfBirth: spouseDateOfBirth,
+			residenceId: residenceId,
+			siblings: siblings,
+			// [
+			// 	{
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
+			children: children,
+			// [
+			// 	{
+			// 		lastName: "lastName",
+			// 		firstName: "firstName",
+			// 		middleName: "middleName",
+			// 		gender: "Male",
+			// 		dateOfBirth: "1992-10-07"
+			// 	}
+			// ]
+		});
+	};
+>>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
 
 	self.update = function (id, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, siblingsToBeAdded, siblingsToBeRemoved, children, childrenToBeAdded, childrenToBeRemoved) {
 		return $http.put("api/person", {
