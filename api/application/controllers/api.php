@@ -21,9 +21,7 @@ class Api extends REST_Controller {
 	 * Persons
 	 */
 	public function persons_get() {
-<<<<<<< HEAD
 		$this->response($this->person_model->get_all());
-=======
 		$persons = $this->person_model->get_all();
 
 		foreach($persons as $person) {
@@ -33,7 +31,6 @@ class Api extends REST_Controller {
 		}
 
 		$this->response($persons);
->>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
 	}
 
 	public function person_get() {
