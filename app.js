@@ -8,7 +8,7 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     $stateProvider
 
     // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
+    .state('home', {
         url: '/home',
         templateUrl: 'views/home.html',
         controller: 'HomeCtrl as vm'
@@ -40,25 +40,34 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     })
 
     .state('form.address', {
-            url: '/address',
-            templateUrl: 'views/form-address.html',
-            controller: 'FormCtrl'
-        })
-        .state('form.profile', {
-            url: '/profile',
-            templateUrl: 'views/form-profile.html',
-            controller: 'FormCtrl'
-        })
-        .state('form.parents', {
-            url: '/parents',
-            templateUrl: 'views/form-parents.html',
-            controller: 'FormCtrl'
-        })
-        .state('form.confirm', {
-            url: '/confirm',
-            templateUrl: 'views/form-confirm.html',
-            controller: 'FormCtrl'
-        });
+        url: '/address',
+        templateUrl: 'views/form-address.html',
+        controller: 'FormCtrl'
+    })
+
+    .state('form.profile', {
+        url: '/profile',
+        templateUrl: 'views/form-profile.html',
+        controller: 'FormCtrl'
+    })
+
+    .state('form.parents', {
+        url: '/parents',
+        templateUrl: 'views/form-parents.html',
+        controller: 'FormCtrl'
+    })
+
+    .state('form.confirm', {
+        url: '/confirm',
+        templateUrl: 'views/form-confirm.html',
+        controller: 'FormCtrl'
+    })
+
+    .state('map', {
+        url:'/map',
+        templateUrl: 'views/map.html',
+        controller: 'MapCtrl'
+    });
 })
 
 .directive('modal', function() {
