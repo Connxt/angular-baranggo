@@ -1,0 +1,151 @@
+<div class="text-center">
+    <span class="fa fa-thumbs-up"></span>
+    <h3>Almost Done!</h3>
+
+    
+</div>
+<section class="invoice">
+    <div class="panel box box-primary">
+        <div class="box-header with-border">
+            <h4 class="box-title">
+                          <a ng-click="isCollapsed1 = !isCollapsed1">
+                            Personal Information
+                          </a>
+                        </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed1? 'collapse':''">
+            <div class="box-body">
+                <address>
+                    Name: <strong class="text-light-blue">John Anthony Pecson</strong>
+                </address>
+                <address>
+                    <!-- <strong>Admin, Inc.</strong> -->
+                    Address: <strong class="text-light-blue">795 Folsom Ave, Suite 600 San Francisco, CA 94107</strong>
+                    <br> Phone: <strong class="text-light-blue">(804) 123-5432</strong>
+                    <br> Email: <strong class="text-light-blue">info@almasaeedstudio.com </strong>
+                    <br /> Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
+                    <br /> Place of birth: <strong class="text-light-blue">Kabankalan City </strong>
+                    <br /> Status: <strong class="text-light-blue">Single</strong>
+                    <br /> Gender: <strong class="text-light-blue">Male</strong>
+                    <br /> Education: <strong class="text-light-blue">College Graduate</strong>
+                    <br />
+                    <br /> Employed? <strong class="text-light-blue">Yes</strong>
+                    <br /> SSS? <strong class="text-light-blue">Yes</strong>
+                    <br /> Philhealth? <strong class="text-light-blue">Yes</strong>
+                    <br /> Voter? <strong class="text-light-blue">Yes</strong>
+                    <br /> Electricity? <strong class="text-light-blue">Yes</strong>
+                </address>
+                <address>
+                </address>
+            </div>
+        </div>
+    </div>
+    <div class="panel box box-primary">
+        <div class="box-header with-border">
+            <h4 class="box-title">
+                          <a ng-click="isCollapsed2 = !isCollapsed2">
+                            Spouse Information
+                          </a>
+                        </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed2? 'collapse':''">
+            <div class="box-body">
+                <address>
+                    Name: <strong class="text-light-blue">Jane Doe</strong>
+                    <br />
+                     Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
+                    <br /> Gender: <strong class="text-light-blue">Male</strong>
+                </address>
+            <h5><strong class="text-light-blue">Children</strong></h5>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Pecson</td>
+                    <td>Jake</td>
+                    <td>Doe</td>
+                    <td>December 25, 2020</td>
+                    <td>Male</td>
+                  </tr>
+                  <tr>
+                    <td>Pecson</td>
+                    <td>Joe</td>
+                    <td>Doe</td>
+                    <td>January 1, 2022</td>
+                    <td>Male</td>
+                  </tr>
+                  <tr>
+                    <td>Pecson</td>
+                    <td>Jenny</td>
+                    <td>Doe</td>
+                    <td>November 1, 2024</td>
+                    <td>Female</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="panel box box-primary">
+        <div class="box-header with-border">
+            <h4 class="box-title">
+                          <a ng-click="isCollapsed3 = !isCollapsed3">
+                            Parent Information
+                          </a>
+                        </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed3? 'collapse':''">
+            <div class="box-body">
+                <div class="col-md-6">
+                    <h5><strong class="text-light-blue">Father</strong></h5>
+                    <address>
+                        Name: <strong class="text-light-blue">John Anthony Pecson</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
+                        <br /> Gender: <strong class="text-light-blue">Male</strong>
+                        <br />
+                    </address>
+                </div>
+                <div class="col-md-6">
+                    <h5><strong class="text-light-blue">Mother</strong></h5>
+                    <address>
+                        Mother's Name: <strong class="text-light-blue">John Anthony Pecson</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
+                        <br /> Gender: <strong class="text-light-blue">Male</strong>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- /.row -->
+    <!-- this row will not appear when printing -->
+
+    <br />
+    <p>
+        {{vm.person | json}}
+    </p>
+    <br />
+
+    <div class="row no-print">
+        <div class="col-xs-12">
+            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+            <button class="btn btn-success pull-right" ng-click="vm.save()"><i class="fa fa-check"></i>Submit Form</button>
+            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+        </div>
+    </div>
+
+
+</section>
+

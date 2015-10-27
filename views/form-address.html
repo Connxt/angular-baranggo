@@ -1,0 +1,22 @@
+<form name="Form">
+    <div class="form-group" ng-class="{ ' has-error': Form.name.$invalid }">
+        <label for="name">Please provide a valid Residence ID</label>
+        <input type="text" class="form-control" name="name" ng-model="person.residenceId" validator="number" no-validation-message="true">
+        <!-- number-error-message="<label class='control-label'></label>" number--success-message="Good Number" -->
+    </div>
+</form>
+<p>Found Address:</p>
+<pre>
+ <!-- Found Address: {{ formData }} -->
+  </pre>
+<div>
+    <a href="">New member? Get your Residence ID.</a>
+</div>
+<br />
+<div class="form-group row">
+    <div class="col-xs-3 col-xs-offset-3 pull-right">
+        <button ui-sref="form.profile" class="btn btn-block btn-primary" ng-disabled="Form.name.$invalid"> Next
+            <span class="fa  fa-arrow-right"></span>
+        </button>
+    </div>
+</div>
