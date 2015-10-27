@@ -91,7 +91,6 @@ angular.module("baranggoApp.controllers", [])
     };
 }])
 
-<<<<<<< HEAD
 .controller('FormCtrl', ['$scope', 'Persons', function($scope, Persons) {
     var vm = this;
     $scope.isCollapsed = false;
@@ -113,46 +112,29 @@ angular.module("baranggoApp.controllers", [])
             console.log(res);
         });
     }
+}])
 
-    // we will store all of our form data in this object
-=======
-.controller('FormCtrl', ['$scope', function($scope) {
-    // we will store all of our form data in this object
+//     // we will store all of our form data in this object
+// .controller('FormCtrl', ['$scope', function($scope) {
+//     // we will store all of our form data in this object
+//   $scope.isCollapsed = false;   
 
-
->>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
-    // $scope.formData = {};
-    // $scope.person = {};
-    // // $scope.residenceId = $scope.person.residenceId;
-
-    // // function to process the form
-    // $scope.processForm = function() {
-    //     alert('awesome!');
-    // };
-
-    // COLLAPSE =====================
-<<<<<<< HEAD
-  
-=======
-  $scope.isCollapsed = false;   
-
-    var vm = this;
-    vm.addChild = addChild;
-    vm.person = {};
-    vm.children = [];
+//     var vm = this;
+//     vm.addChild = addChild;
+//     vm.person = {};
+//     vm.children = [];
     
 
-    vm.save = function() {
-        console.log("Hello World!");
-    }
+//     vm.save = function() {
+//         console.log("Hello World!");
+//     }
 
-    function addChild(child) {
-        child.id = new Date().getTime();
-        vm.children.push(child);
-        console.log(vm.children);
-    }
->>>>>>> 5e67328fd182e34181dd3b17564f82ad3953ba5e
+//     function addChild(child) {
+//         child.id = new Date().getTime();
+//         vm.children.push(child);
+//         console.log(vm.children);
+//     }
 
     
 
-}]);
+// }]);
