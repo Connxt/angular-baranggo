@@ -48,7 +48,7 @@
                                     <option>Seperated</option>
                                 </select>
                             </div>
-                            <p>{{civilStatus}}</p>
+                            <p>{{vm.person.civilStatus}}</p>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -72,6 +72,10 @@
                                 <input class="form-control" id="vm.person.dateOfBirth" type="date">
                             </div>
                         </div>
+
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group" ng-class="{ ' has-error': Form.phone.$invalid }">
                                 <label for="phone">Phone</label>
@@ -91,7 +95,9 @@
                                 validator="email" no-validation-message="true">
                             </div>
                         </div>
-                    </div>
+                    </div><!-- /.row -->
+
+
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-md-12">
@@ -238,7 +244,7 @@
                                     <option ng-selected="true">Female</option>
                                 </select>
                             </div>
-                            <p>{{vm.person.gender}}</p>
+                            <p>{{vm.person.spouse.gender}}</p>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
@@ -324,12 +330,12 @@
     </div>
     <!-- /.row -->
     <br />
-    <div class="callout callout-info" ng-hide="vm.children.length>0">
+    <div class="callout callout-info" ng-hide="vm.person.children.length>0">
         <h4>No children added yet.</h4>
         <p>To add new children, fillup the form above and click the "Add" button.</p>
     </div>
     <hr />
-    <p>{{vm.children}}</p>
+    <p>{{vm.person.children}}</p>
     <p>{{Form.child.firstName.$untouched}}</p>
     <div class="row">
         <b><h3>List of children</h3></b>
@@ -354,7 +360,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="child in vm.children">
+                                <tr ng-repeat="child in vm.person.children">
                                     <td>{{child.firstName}}</td>
                                     <td>{{child.lastName}}</td>
                                     <td>{{child.middleName}}</td>

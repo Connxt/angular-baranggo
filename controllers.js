@@ -7,6 +7,13 @@ angular.module("baranggoApp.controllers", [])
 }])
 
 .controller("HomeCtrl", ['Persons', function(Persons) {
+
+    var day = moment(moment()._d).format('Do');
+    var month = moment(moment()._d).format('MMMM')
+
+    alert(day + " day of " + month);
+
+
     Persons.getAll().then(function(response) {
         console.log(response);
     })
@@ -89,21 +96,34 @@ angular.module("baranggoApp.controllers", [])
 
 .controller('FormCtrl', ['$scope', 'Persons', function($scope, Persons) {
     var vm = this;
-    $scope.isCollapsed = false;
+
+    vm.person = {};
+    vm.person.residenceId = 1;
+    vm.person.children = [];
+    vm.person.siblings = [];
+
+
+    // vm.person.parent = {};
+   
 
     vm.addChild = addChild;
     vm.save = save;
 
-    vm.person = {};
-    vm.children = [];
+    
+
+     $scope.isCollapsed = false;
+
+
 
     function addChild(child) {
         child.id = new Date().getTime();
-        vm.children.push(child);
-        console.log(vm.children);
+        vm.person.children.push(child);
+        console.log(vm.person.children);
     }
 
     function save() {
+        console.log("Personal Info : " + JSON.stringify(vm.person));
+        console.log("Personal Info non JSON : " + vm.person);
         Persons.add(vm.person).then(function(res) {
             console.log(res);
         });
@@ -112,7 +132,11 @@ angular.module("baranggoApp.controllers", [])
 
 .controller('MapCtrl', ['$scope', function ($scope) {
     
-}]);
+}])
+
+.controller('ReportsCtrl', ['$scope', function($scope){
+    
+}])
 
 //     // we will store all of our form data in this object
 // .controller('FormCtrl', ['$scope', function($scope) {

@@ -67,6 +67,12 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
         url:'/map',
         templateUrl: 'views/map.html',
         controller: 'MapCtrl'
+    })
+
+    .state('brgy-clearance', {
+        url:'/brgy-clearance',
+        templateUrl: 'views/reports/baranggay_clearance.html',
+        controller: 'ReportsCtrl'
     });
 })
 
