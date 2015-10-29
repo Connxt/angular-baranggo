@@ -6,7 +6,7 @@ class Sibling_Model extends CI_Model {
 	}
 
 	function get_all() {
-		return $this->db->query('SELECT * FROM persons')->result();
+		return $this->db->query('SELECT * FROM siblings')->result();
 	}
 
 	function get($id) {
