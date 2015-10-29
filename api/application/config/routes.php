@@ -101,3 +101,10 @@ $route['certificate_of_closure']['post'] = 'api/certificate_of_closure';
  */
 $route['users']['get'] = 'api/users';
 $route['user/id/(:num)']['get'] = 'api/user/id/$1';
+
+/**
+ * Settings
+ */
+$route['settings']['get'] = 'api/settings';
+$route['setting']['post'] = 'api/setting';
+$route['setting']['put'] = 'api/setting';

@@ -18,6 +18,7 @@ class Api extends REST_Controller {
 		$this->load->model('barangay_business_clearance_model');
 		$this->load->model('certificate_of_closure_model');
 		$this->load->model('user_model');
+		$this->load->model('setting_model');
 	}
 
 	/**
@@ -273,7 +274,19 @@ class Api extends REST_Controller {
 			$this->post('code')
 		);
 
-		$this->response($this->residence_model->get($residence_id));
+		$residence = $this->residence_model->get($residence_id);
+		$barangay = $this->barangay_model->get($residence->barangay_id);
+		$city = $this->city_model->get($barangay->city_id);
+		$province = $this->province_model->get($city->province_id);
+
+		$residence->barangay = $barangay->barangay;
+		$residence->city_id = $city->id;
+		$residence->city = $city->city;
+		$residence->zip_code = $city->zip_code;
+		$residence->province_id = $province->id;
+		$residence->province = $province->province;
+
+		$this->response($residence);
 	}
 
 	/**
@@ -419,4 +432,69 @@ class Api extends REST_Controller {
 			$this->response($user);
 		}
 	}
+
+	/**
+	 * Settings
+	 */
+	public function settings_get() {
+		$setting = $this->setting_model->get();
+
+		if(is_null($setting)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$barangay = $this->barangay_model->get($setting->barangay_id);
+			$city = $this->city_model->get($barangay->city_id);
+			$province = $this->province_model->get($city->province_id);
+
+			$setting->barangay = $barangay->barangay;
+			$setting->city_id = $city->id;
+			$setting->city = $city->city;
+			$setting->zip_code = $city->zip_code;
+			$setting->province_id = $province->id;
+			$setting->province = $province->province;
+
+			$this->response($setting);
+		}
+	}
+
+	public function setting_post() {
+		$this->setting_model->add(
+			$this->post('barangayId')
+		);
+
+		$setting = $this->setting_model->get();
+		$barangay = $this->barangay_model->get($setting->barangay_id);
+		$city = $this->city_model->get($barangay->city_id);
+		$province = $this->province_model->get($city->province_id);
+
+		$setting->barangay = $barangay->barangay;
+		$setting->city_id = $city->id;
+		$setting->city = $city->city;
+		$setting->zip_code = $city->zip_code;
+		$setting->province_id = $province->id;
+		$setting->province = $province->province;
+
+		$this->response($setting);
+	}
+
+	public function settng_put() {
+		$this->setting_model->update(
+			$this->put('barangayId')
+		);
+
+		$setting = $this->setting_model->get();
+		$barangay = $this->barangay_model->get($setting->barangay_id);
+		$city = $this->city_model->get($barangay->city_id);
+		$province = $this->province_model->get($city->province_id);
+
+		$setting->barangay = $barangay->barangay;
+		$setting->city_id = $city->id;
+		$setting->city = $city->city;
+		$setting->zip_code = $city->zip_code;
+		$setting->province_id = $province->id;
+		$setting->province = $province->province;
+
+		$this->response($setting);
+	}	
 }
