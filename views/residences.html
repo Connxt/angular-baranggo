@@ -39,12 +39,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in census.rowCollection">
-                                    <td>{{row.blockNo}}</td>
-                                    <td>{{row.lotNo}}</td>
+                                <tr ng-repeat="row in vm.residences">
+                                    <td>{{row.block_no}}</td>
+                                    <td>{{row.lot_no}}</td>
                                     <td>{{row.street}}</td>
                                     <td>{{row.subdivision}}</td>
-                                    <td>{{row.baranggay}}</td>
+                                    <td>{{row.brgy}}</td>
                                     <td>
                                         <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
@@ -79,55 +79,77 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="blockNo">Block No</label>
-                            <input class="form-control" id="blockNo" type="text" placeholder="" ng-model="vm.blockNo">
+                            <input class="form-control" id="blockNo" type="text" placeholder="Block 8" ng-model="vm.residence.blockNo">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="lotNo">Lot No</label>
-                            <input class="form-control" id="lotNo" type="text" placeholder="Dela Cruz" ng-model="vm.lotNo">
+                            <input class="form-control" id="lotNo" type="text" placeholder="Lot 1" ng-model="vm.residence.lotNo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input class="form-control" id="street" type="text" placeholder="Adela St." ng-model="vm.residence.street">
+                        </div>
+                    </div>
+                    </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="sitio">Sitio/Purok</label>
+                            <input class="form-control" id="sitio" type="text" placeholder="Naga" ng-model="vm.residence.sitio">
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="subdivision">Subdivision</label>
+                            <input class="form-control" id="subdivision" type="text" placeholder="FZO Subdivision" ng-model="vm.residence.subdivision">
+                        </div>
+                    </div>
+
+                     
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="brgy">Barangay</label>
+                            <input class="form-control" id="brgy" type="text" placeholder="Brgy 1" ng-model="vm.residence.brgy">
+                        </div>
+                    </div>
+
+                    </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input class="form-control" id="city" type="text" placeholder="Kabankalan City" ng-model="vm.residence.city">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="province">Province</label>
+                            <input class="form-control" id="province" type="text" placeholder="Negros Occidental" ng-model="vm.residence.province">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="street">Street</label>
-                            <input class="form-control" id="street" type="text" placeholder="Santiago" ng-model="vm.street">
+                            <label for="zip">Zip Code</label>
+                            <input class="form-control" id="zip" type="text" placeholder="6111" ng-model="vm.residence.zip">
                         </div>
                     </div>
+
                 </div>
-                <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="subdivision">Subdivision</label>
-                            <input class="form-control" id="subdivision" type="text" placeholder="" ng-model="vm.subdivision">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="barangay">Barangay</label>
-                            <input class="form-control" id="barangay" type="text" placeholder="Dela Cruz" ng-model="vm.barangay">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="city">City</label>
-                            <input class="form-control" id="city" type="text" placeholder="Santiago" ng-model="vm.city">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="province">Province</label>
-                            <input class="form-control" id="province" type="text" placeholder="Santiago" ng-model="vm.province">
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
+                
                 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" ng-click="vm.save(vm.residence)">Save changes</button>
             </div>
         </form>
     </modal>

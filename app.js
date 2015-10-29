@@ -18,7 +18,7 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     .state('censuses', {
         url: '/censuses',
         templateUrl: 'views/censuses.html',
-        controller: 'CensusCtrl as census'
+        controller: 'CensusCtrl as vm'
     })
 
     .state('new-record', {
@@ -30,7 +30,7 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     .state('residences', {
         url: '/residences',
         templateUrl: 'views/residences.html',
-        controller: 'ResidenceCtrl'
+        controller: 'ResidenceCtrl as vm'
     })
 
     .state('form', {
@@ -71,7 +71,19 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
 
     .state('brgy-clearance', {
         url:'/brgy-clearance',
-        templateUrl: 'views/reports/baranggay_clearance.html',
+        templateUrl: 'views/reports/brgy-clearance.html',
+        controller: 'ReportsCtrl'
+    })
+
+    .state('brgy-bus-clearance', {
+        url:'/brgy-bus-clearance',
+        templateUrl: 'views/reports/brgy-bus-clearance.html',
+        controller: 'ReportsCtrl'
+    })
+
+    .state('cert-of-closure', {
+        url:'/cert-of-closure',
+        templateUrl: 'views/reports/cert-of-closure.html',
         controller: 'ReportsCtrl'
     });
 })

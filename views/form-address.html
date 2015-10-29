@@ -1,22 +1,27 @@
 <form name="Form">
-    <div class="form-group" ng-class="{ ' has-error': Form.name.$invalid }">
-        <label for="name">Please provide a valid Residence ID</label>
-        <input type="text" class="form-control" name="name" ng-model="person.residenceId" validator="number" no-validation-message="true">
-        <!-- number-error-message="<label class='control-label'></label>" number--success-message="Good Number" -->
+    <!-- <div class="form-group" ng-class="{ ' has-error': Form.residenceId.$invalid }">
+        <label for="residenceId">Please provide a valid Residence ID</label>
+        <input type="text" class="form-control" id="residenceId" name="residenceId" ng-model="person.residenceId" validator="number" no-validation-message="true">
+        number-error-message="<label class='control-label'></label>" number--success-message="Good Number" 
+    </div> -->
+    <div class="form-group" ng-class="{ ' has-error': Form.residenceId.$invalid }">
+        <label for="phone">Please provide a valid Residence ID</label>
+        <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="vm.person.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(vm.person.residenceId)">
+    </div>
+    <p>Found Address:</p>
+    <pre><p>
+    Block {{vm.foundAddress.block_no}} Lot {{vm.foundAddress.lot_no}}, {{vm.foundAddress.street}} St., Sitio {{vm.foundAddress.sitio}}, {{vm.foundAddress.subdivision}} Subdivision,<br>
+    Barangay {{vm.foundAddress.brgy}}, {{vm.foundAddress.city}} City <br>
+    {{vm.foundAddress.zip}}, {{vm.foundAddress.province}}</p></pre>
+    <div>
+        <a href="">New member? Get your Residence ID.</a>
+    </div>
+    <br />
+    <div class="form-group row">
+        <div class="col-xs-3 col-xs-offset-3 pull-right">
+            <button ui-sref="form.profile" class="btn btn-block btn-primary" ng-disabled="Form.$invalid || !Form.$dirty"> Next
+                <span class="fa  fa-arrow-right"></span>
+            </button>
+        </div>
     </div>
 </form>
-<p>Found Address:</p>
-<pre>
- <!-- Found Address: {{ formData }} -->
-  </pre>
-<div>
-    <a href="">New member? Get your Residence ID.</a>
-</div>
-<br />
-<div class="form-group row">
-    <div class="col-xs-3 col-xs-offset-3 pull-right">
-        <button ui-sref="form.profile" class="btn btn-block btn-primary" ng-disabled="Form.name.$invalid"> Next
-            <span class="fa  fa-arrow-right"></span>
-        </button>
-    </div>
-</div>

@@ -236,11 +236,16 @@ class Api extends REST_Controller {
 			$this->post('blockNo'),
 			$this->post('lotNo'),
 			$this->post('street'),
-			$this->post('purok'),
+			$this->post('subdivision'),
 			$this->post('latitude'),
 			$this->post('longitude'),
 			$this->post('barangayId'),
-			$this->post('code')
+			$this->post('brgy'),
+			$this->post('city'),
+			$this->post('province'),
+			$this->post('code'),
+			$this->post('zip'),
+			$this->post('sitio')
 		);
 
 		$this->response($this->residence_model->get($residence_id));

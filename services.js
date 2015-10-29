@@ -248,17 +248,21 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/residence/id/" + id, {});
 	};
 
-	self.add = function (blockNo, lotNo, street, purok, latitude, longitude, barangayId, code) {
-		return $http.post("api/residence", {
-			blockNo: blockNo,
-			lotNo: lotNo,
-			street: street,
-			purok: purok,
-			latitude: latitude,
-			longitude: longitude,
-			barangayId: barangayId,
-			code: code
-		})
+	// self.add = function (blockNo, lotNo, street, subdivision, latitude, longitude, barangayId, code) {
+	// 	return $http.post("api/residence", {
+	// 		blockNo: blockNo,
+	// 		lotNo: lotNo,
+	// 		street: street,
+	// 		subdivision: subdivision,
+	// 		latitude: latitude,
+	// 		longitude: longitude,
+	// 		barangayId: barangayId,
+	// 		code: code
+	// 	})
+	// };
+
+	self.add = function(residence) {
+		return $http.post("api/residence",residence)
 	};
 
 	return self;
