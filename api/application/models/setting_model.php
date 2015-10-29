@@ -10,7 +10,7 @@ class Setting_Model extends CI_Model {
 	}
 
 	function add($barangay_id) {
-		$this->db->delete('settings');
+		$this->db->truncate('settings');
 		$this->db->insert('settings', array(
 			'barangay_id' => $barangay_id
 		));
