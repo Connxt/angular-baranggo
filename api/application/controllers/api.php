@@ -307,7 +307,7 @@ class Api extends REST_Controller {
 			$barangay->city = $city->city;
 			$barangay->province_id = $province->id;
 			$barangay->province = $province->province;
-			
+
 			$this->response($barangay);
 		}
 	}
