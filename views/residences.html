@@ -1,20 +1,22 @@
 <div class="container">
     <br>
     <div class="row">
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <select class="form-control input-md pull-right" ng-model="itemsPerPage" ng-change="perPage()" ng-options="('show '+size+' per page') for size in pageSizes"></select>
-        </div>
-        <div class="col-md-2 col-md-offset-4">
-            <button class="btn btn-block btn-primary" ng-click="toggleModal()">New Residence</button>
-        </div>
+        </div> -->
+
         <div class="col-md-3">
             <div class="input-group input-group-md add-on">
-                <input type="text" class="form-control search-query" ng-model="query" ng-change="search()" placeholder="Search">
+                <input type="text" class="form-control search-query" ng-model="searchKey"  placeholder="Search">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                 </div>
             </div>
         </div>
+        <div class="col-md-2 col-md-offset-4">
+            <button class="btn btn-block btn-primary" ng-click="toggleModal()">New Residence</button>
+        </div>
+        
         <br />
         <br />
         <br />
@@ -31,20 +33,14 @@
                         <table st-table="rowCollection" class="table table-striped" >
                             <thead>
                                 <tr>
-                                    <th>Block No</th>
-                                    <th>Lot No</th>
-                                    <th>Street</th>
-                                    <th>Subdivision</th>
-                                    <th>Baranggay</th>
+                                    <th>Resident Id</th>
+                                    <th>Address</th>                                  
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in vm.residences">
-                                    <td>{{row.block_no}}</td>
-                                    <td>{{row.lot_no}}</td>
-                                    <td>{{row.street}}</td>
-                                    <td>{{row.subdivision}}</td>
-                                    <td>{{row.brgy}}</td>
+                                <tr ng-repeat="row in vm.residences | filter:searchKey">
+                                    <td>{{row.id}}</td>
+                                    <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Barangay {{row.brgy}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
                                     <td>
                                         <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>

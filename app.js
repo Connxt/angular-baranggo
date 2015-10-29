@@ -72,19 +72,19 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     .state('brgy-clearance', {
         url:'/brgy-clearance',
         templateUrl: 'views/reports/brgy-clearance.html',
-        controller: 'ReportsCtrl'
+        controller: 'BrgyClearanceCtrl'
     })
 
     .state('brgy-bus-clearance', {
         url:'/brgy-bus-clearance',
         templateUrl: 'views/reports/brgy-bus-clearance.html',
-        controller: 'ReportsCtrl'
+        controller: 'BrgyBusinessClearanceCtrl'
     })
 
     .state('cert-of-closure', {
         url:'/cert-of-closure',
         templateUrl: 'views/reports/cert-of-closure.html',
-        controller: 'ReportsCtrl'
+        controller: 'CertificateOfClosureCtrl'
     });
 })
 

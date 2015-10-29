@@ -8,13 +8,14 @@
         <label for="phone">Please provide a valid Residence ID</label>
         <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="vm.person.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(vm.person.residenceId)">
     </div>
-    <p>Found Address:</p>
-    <pre><p>
+    
+    <p ng-hide="isEmpty(vm.foundAddress)">Found Address:</p>
+    <pre  ng-hide="isEmpty(vm.foundAddress)"><p>
     Block {{vm.foundAddress.block_no}} Lot {{vm.foundAddress.lot_no}}, {{vm.foundAddress.street}} St., Sitio {{vm.foundAddress.sitio}}, {{vm.foundAddress.subdivision}} Subdivision,<br>
     Barangay {{vm.foundAddress.brgy}}, {{vm.foundAddress.city}} City <br>
     {{vm.foundAddress.zip}}, {{vm.foundAddress.province}}</p></pre>
     <div>
-        <a href="">New member? Get your Residence ID.</a>
+        <a ui-sref="residences">New member? Get your Residence ID.</a>
     </div>
     <br />
     <div class="form-group row">
