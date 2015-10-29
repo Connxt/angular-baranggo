@@ -243,15 +243,15 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/settings", {});
 	};
 
-	self.add = function (brgyId) {
+	self.add = function (barangayId) {
 		return $http.post("api/setting", {
-			barangayId: brgyId
+			barangayId: barangayId
 		});
 	};
 
-	self.update = function (brgyId)) {
+	self.update = function (barangayId)) {
 		return $http.put("api/setting", {
-			barangayId: brgyId
+			barangayId: barangayId
 	});
 
 	return self;
