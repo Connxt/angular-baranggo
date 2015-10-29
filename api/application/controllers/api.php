@@ -230,6 +230,7 @@ class Api extends REST_Controller {
 			$residence->barangay = $barangay->barangay;
 			$residence->city_id = $city->id;
 			$residence->city = $city->city;
+			$residence->zip_code = $city->zip_code;
 			$residence->province_id = $province->id;
 			$residence->province = $province->province;
 		}
@@ -251,6 +252,7 @@ class Api extends REST_Controller {
 			$residence->barangay = $barangay->barangay;
 			$residence->city_id = $city->id;
 			$residence->city = $city->city;
+			$residence->zip_code = $city->zip_code;
 			$residence->province_id = $province->id;
 			$residence->province = $province->province;
 
@@ -286,6 +288,7 @@ class Api extends REST_Controller {
 
 			$barangay->city_id = $city->id;
 			$barangay->city = $city->city;
+			$barangay->zip_code = $city->zip_code;
 			$barangay->province_id = $province->id;
 			$barangay->province = $province->province;
 		}
@@ -305,6 +308,7 @@ class Api extends REST_Controller {
 
 			$barangay->city_id = $city->id;
 			$barangay->city = $city->city;
+			$barangay->zip_code = $city->zip_code;
 			$barangay->province_id = $province->id;
 			$barangay->province = $province->province;
 
