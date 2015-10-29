@@ -1,30 +1,46 @@
 angular.module("baranggoApp.controllers", [])
 
-.controller("MainCtrl", ['$location', '$scope', function($location, $scope) {
+.controller("MainCtrl", ['$location', '$scope', 'Settings', function($location, $scope, Settings) {
     var vm = this;
     vm.settings = {};
+    var settings = {};
 
     vm.showSettingsModal = false;
-
     vm.toggleModal = function() {
         vm.showSettingsModal = !vm.showSettingsModal;
     };
 
-    vm.save = function(settings) {
-        console.log(settings);
-        window.localStorage['brgy'] = settings.brgy;
-        window.localStorage['city'] = settings.city;
-        window.localStorage['province'] = settings.province;
-        window.localStorage['zip'] = settings.zip;
-    }
-
+        
     // Initialize fields
-    if (window.localStorage['brgy'] != undefined  && window.localStorage['city'] != undefined && window.localStorage['province'] != undefined && window.localStorage['zip'] != undefined) {
-        vm.settings.brgy = window.localStorage['brgy'];
-        vm.settings.city = window.localStorage['city'];
-        vm.settings.province = window.localStorage['province'];
-        vm.settings.zip = window.localStorage['zip'];
+     var isEmpty = function(obj) {
+      for(var prop in obj) {
+          if(obj.hasOwnProperty(prop))
+              return false;
+      }
+      return true;
     };
+    
+    vm.getSettings = function() {
+        Barangay.get(vm.settings.brgyId).then(function(res) {
+         settings = res.data;
+         console.log(settings);
+        })
+    }
+    vm.getSettings();
+
+
+    if (!isEmpty(settings)) {
+        vm.settings.brgy = settings.barangay;
+        vm.settings.city = settings.city;
+        vm.settings.province = settings.province;
+        vm.settings.zip = settings.zip_code;
+    };
+
+    vm.save = function(settings) {
+        Settings.add(settings.brgyId).then(function(res) {
+            console.log(res);
+        });
+    }
 
 
     $scope.isActive = function(viewLocation) {

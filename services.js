@@ -11,132 +11,12 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/person/id/" + id, {});
 	};
 
-// alert
-// alert
-
-	// self.add = function (lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, children) {
-	// 	return $http.post("api/posterson", {
-	// 		lastName: lastName,
-	// 		firstName: firstName,
-	// 		middleName: middleName,
-	// 		dateOfBirth: dateOfBirth,
-	// 		placeOfBirth: placeOfBirth,
-	// 		gender: gender,
-	// 		motherLastName: motherLastName,
-	// 		motherFirstName: motherFirstName,
-	// 		motherMiddleName: motherMiddleName,
-	// 		motherDateOfBirth: motherDateOfBirth,
-	// 		fatherLastName: fatherLastName,
-	// 		fatherFirstName: fatherFirstName,
-	// 		fatherMiddleName: fatherMiddleName,
-	// 		fatherDateOfBirth: fatherDateOfBirth,
-	// 		contactNo: contactNo,
-	// 		email: email,
-	// 		civilStatus: civilStatus,
-	// 		religion: religion,
-	// 		annualIncome: annualIncome,
-	// 		educationalAttainment: College,
-	// 		isEmployed: isEmployed,
-	// 		isVoter: isVoter,
-	// 		isDeceased: 0, // should not be changed
-	// 		withPhilhealth: withPhilhealth,
-	// 		withSSS: withSSS,
-	// 		withElectricity: withElectricity,
-	// 		withWater: withWater,
-	// 		spouseLastName: spouseLastName,
-	// 		spouseFirstName: spouseFirstName,
-	// 		spouseMiddleName: spouseMiddleName,
-	// 		spouseGender: spouseGender,
-	// 		spouseDateOfBirth: spouseDateOfBirth,
-	// 		residenceId: residenceId,
-	// 		siblings: siblings,
-	// 		// [
-	// 		// 	{
-	// 		// 		lastName: "lastName",
-	// 		// 		firstName: "firstName",
-	// 		// 		middleName: "middleName",
-	// 		// 		gender: "Male",
-	// 		// 		dateOfBirth: "1992-10-07"
-	// 		// 	}
-	// 		// ]
-	// 		children: children,
-	// 		// [
-	// 		// 	{
-	// 		// 		lastName: "lastName",
-	// 		// 		firstName: "firstName",
-	// 		// 		middleName: "middleName",
-	// 		// 		gender: "Male",
-	// 		// 		dateOfBirth: "1992-10-07"
-	// 		// 	}
-	// 		// ]
-	// 	});
-	
-	// };
-
-
 
 	self.add = function(person) {
 		alert("Service: " + person);
 		return $http.post("api/person", person);
 	}; 
-	// self.add = function (lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, children) {
-	// 	return $http.post("api/person", {
-	// 		lastName: lastName,
-	// 		firstName: firstName,
-	// 		middleName: middleName,
-	// 		dateOfBirth: dateOfBirth,
-	// 		placeOfBirth: placeOfBirth,
-	// 		gender: gender,
-	// 		motherLastName: motherLastName,
-	// 		motherFirstName: motherFirstName,
-	// 		motherMiddleName: motherMiddleName,
-	// 		motherDateOfBirth: motherDateOfBirth,
-	// 		fatherLastName: fatherLastName,
-	// 		fatherFirstName: fatherFirstName,
-	// 		fatherMiddleName: fatherMiddleName,
-	// 		fatherDateOfBirth: fatherDateOfBirth,
-	// 		contactNo: contactNo,
-	// 		email: email,
-	// 		civilStatus: civilStatus,
-	// 		religion: religion,
-	// 		annualIncome: annualIncome,
-	// 		educationalAttainment: College,
-	// 		isEmployed: isEmployed,
-	// 		isVoter: isVoter,
-	// 		isDeceased: 0, // should not be changed
-	// 		withPhilhealth: withPhilhealth,
-	// 		withSSS: withSSS,
-	// 		withElectricity: withElectricity,
-	// 		withWater: withWater,
-	// 		spouseLastName: spouseLastName,
-	// 		spouseFirstName: spouseFirstName,
-	// 		spouseMiddleName: spouseMiddleName,
-	// 		spouseGender: spouseGender,
-	// 		spouseDateOfBirth: spouseDateOfBirth,
-	// 		residenceId: residenceId,
-	// 		siblings: siblings,
-	// 		// [
-	// 		// 	{
-	// 		// 		lastName: "lastName",
-	// 		// 		firstName: "firstName",
-	// 		// 		middleName: "middleName",
-	// 		// 		gender: "Male",
-	// 		// 		dateOfBirth: "1992-10-07"
-	// 		// 	}
-	// 		// ]
-	// 		children: children,
-	// 		// [
-	// 		// 	{
-	// 		// 		lastName: "lastName",
-	// 		// 		firstName: "firstName",
-	// 		// 		middleName: "middleName",
-	// 		// 		gender: "Male",
-	// 		// 		dateOfBirth: "1992-10-07"
-	// 		// 	}
-	// 		// ]
-	// 	});
-	// };
-
+	
 	self.update = function (id, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, siblingsToBeAdded, siblingsToBeRemoved, children, childrenToBeAdded, childrenToBeRemoved) {
 		return $http.put("api/person", {
 			id: id,
@@ -340,6 +220,27 @@ angular.module("baranggoApp.services", [])
 	self.get = function (id) {
 		return $http.get("api/user/id/" + id, {});
 	};
+
+	return self;
+})
+
+.factory("Settings", function ($http, $q) {
+	var self = this;
+
+	self.get = function () {
+		return $http.get("api/settings", {});
+	};
+
+	self.add = function (brgyId) {
+		return $http.post("api/setting", {
+			barangayId: brgyId
+		});
+	};
+
+	self.update = function (brgyId)) {
+		return $http.put("api/setting", {
+			barangayId: brgyId
+	});
 
 	return self;
 });
