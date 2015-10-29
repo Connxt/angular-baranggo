@@ -148,6 +148,18 @@ angular.module("baranggoApp.services", [])
 	return self;
 })
 
+.factory("Barangays", function ($http, $q) {
+	var self = this;
+
+	self.getAll = function () {
+		return $http.get("api/barangays", {});
+	};
+
+	self.get = function (id) {
+		return $http.get("api/barangay/id/" + id, {});
+	};
+})
+
 .factory("BarangayClearances", function ($http, $q) {
 	var self = this;
 
