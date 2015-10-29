@@ -127,10 +127,10 @@
                  <div class="col-md-3">
                  <label for="barangay">Barangay Id</label>
                     <div class="input-group input-group-md add-on">
-                        <input type="text" class="form-control search-query" ng-model="searchKey"  placeholder="Barangay Id">
+                        <input type="text" class="form-control search-query" ng-model="vm.settings.brgyId"  placeholder="Barangay Id">
 
                         <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-default" type="submit" ng-click="vm.getSettings()"><i class="fa fa-search"></i></button>
                         </div>
                     </div>
                 </div>

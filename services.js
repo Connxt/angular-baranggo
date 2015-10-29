@@ -158,6 +158,8 @@ angular.module("baranggoApp.services", [])
 	self.get = function (id) {
 		return $http.get("api/barangay/id/" + id, {});
 	};
+
+	return self;
 })
 
 .factory("BarangayClearances", function ($http, $q) {
@@ -249,10 +251,11 @@ angular.module("baranggoApp.services", [])
 		});
 	};
 
-	self.update = function (barangayId)) {
+	self.update = function (barangayId) {
 		return $http.put("api/setting", {
 			barangayId: barangayId
-	});
+		})
+	};
 
 	return self;
 });

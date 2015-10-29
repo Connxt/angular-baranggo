@@ -1,6 +1,6 @@
 angular.module("baranggoApp.controllers", [])
 
-.controller("MainCtrl", ['$location', '$scope', 'Settings', function($location, $scope, Settings) {
+.controller("MainCtrl", ['$location', '$scope', 'Settings', 'Barangays', function($location, $scope, Settings, Barangays) {
     var vm = this;
     vm.settings = {};
     var settings = {};
@@ -21,23 +21,25 @@ angular.module("baranggoApp.controllers", [])
     };
     
     vm.getSettings = function() {
-        Barangay.get(vm.settings.brgyId).then(function(res) {
+        Barangays.get(vm.settings.brgyId).then(function(res) {
          settings = res.data;
          console.log(settings);
+
+            if (!isEmpty(settings)) {
+                vm.settings.brgy = settings.barangay;
+                vm.settings.city = settings.city;
+                vm.settings.province = settings.province;
+                vm.settings.zip = settings.zip_code;
+            };
         })
     }
     vm.getSettings();
 
 
-    if (!isEmpty(settings)) {
-        vm.settings.brgy = settings.barangay;
-        vm.settings.city = settings.city;
-        vm.settings.province = settings.province;
-        vm.settings.zip = settings.zip_code;
-    };
+   
 
     vm.save = function(settings) {
-        Settings.add(settings.brgyId).then(function(res) {
+        Settings.add(vm.settings.brgyId).then(function(res) {
             console.log(res);
         });
     }
