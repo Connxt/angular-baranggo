@@ -70,6 +70,12 @@ $route['residence/id/(:num)']['get'] = 'api/residence/id/$1';
 $route['residence']['post'] = 'api/residence';
 
 /**
+ * Barangays
+ */
+$route['barangays']['get'] = 'api/barangays';
+$route['barangay/id/(:num)']['get'] = 'api/barangay/id/$1';
+
+/**
  * Barangay Clearances
  */
 $route['barangay_clearances']['get'] = 'api/barangay_clearances';

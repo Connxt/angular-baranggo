@@ -6,7 +6,7 @@ class Child_Model extends CI_Model {
 	}
 
 	function get_all() {
-		return $this->db->query('SELECT * FROM persons')->result();
+		return $this->db->query('SELECT * FROM children')->result();
 	}
 
 	function get($id) {
