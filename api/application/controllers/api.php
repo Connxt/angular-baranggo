@@ -267,7 +267,7 @@ class Api extends REST_Controller {
 			$this->post('subdivision'),
 			$this->post('latitude'),
 			$this->post('longitude'),
-			$this->post('barangayId')
+			$this->post('barangayId'),
 			$this->post('zip'),
 			$this->post('code')
 		);
