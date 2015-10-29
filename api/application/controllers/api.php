@@ -11,6 +11,9 @@ class Api extends REST_Controller {
 		$this->load->model('sibling_model');
 		$this->load->model('child_model');
 		$this->load->model('residence_model');
+		$this->load->model('barangay_model');
+		$this->load->model('city_model');
+		$this->load->model('province_model');
 		$this->load->model('barangay_clearance_model');
 		$this->load->model('barangay_business_clearance_model');
 		$this->load->model('certificate_of_closure_model');
@@ -217,7 +220,21 @@ class Api extends REST_Controller {
 	 * Residences
 	 */
 	public function residences_get() {
-		$this->response($this->residence_model->get_all());
+		$residences = $this->residence_model->get_all();
+
+		foreach($residences as $residence) {
+			$barangay = $this->barangay_model->get($residence->barangay_id);
+			$city = $this->city_model->get($barangay->city_id);
+			$province = $this->province_model->get($city->province_id);
+
+			$residence->barangay = $barangay->barangay;
+			$residence->city_id = $city->id;
+			$residence->city = $city->city;
+			$residence->province_id = $province->id;
+			$residence->province = $province->province;
+		}
+
+		$this->response($residences);
 	}
 
 	public function residence_get() {
@@ -227,6 +244,16 @@ class Api extends REST_Controller {
 			$this->response(new stdClass());
 		}
 		else {
+			$barangay = $this->barangay_model->get($residence->barangay_id);
+			$city = $this->city_model->get($barangay->city_id);
+			$province = $this->province_model->get($city->province_id);
+
+			$residence->barangay = $barangay->barangay;
+			$residence->city_id = $city->id;
+			$residence->city = $city->city;
+			$residence->province_id = $province->id;
+			$residence->province = $province->province;
+
 			$this->response($residence);
 		}
 	}
@@ -236,16 +263,13 @@ class Api extends REST_Controller {
 			$this->post('blockNo'),
 			$this->post('lotNo'),
 			$this->post('street'),
+			$this->post('sitio'),
 			$this->post('subdivision'),
 			$this->post('latitude'),
 			$this->post('longitude'),
-			$this->post('barangayId'),
-			$this->post('brgy'),
-			$this->post('city'),
-			$this->post('province'),
-			$this->post('code'),
+			$this->post('barangayId')
 			$this->post('zip'),
-			$this->post('sitio')
+			$this->post('code')
 		);
 
 		$this->response($this->residence_model->get($residence_id));

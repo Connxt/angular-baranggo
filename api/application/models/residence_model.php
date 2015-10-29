@@ -13,21 +13,18 @@ class Residence_Model extends CI_Model {
 		return $this->db->query('SELECT * FROM residences WHERE id=' . $id)->row();
 	}
 
-	function add($block_no, $lot_no, $street, $subdivision, $latitude, $longitude, $barangay_id, $brgy, $city, $province, $code, $zip, $sitio) {
+	function add($block_no, $lot_no, $street, $sitio, $subdivision, $latitude, $longitude, $barangay_id, $zip, $code) {
 		$this->db->insert('residences', array(
 			'block_no' => $block_no,
 			'lot_no' => $lot_no,
 			'street' => $street,
-			'subdivision' => $subdivision,
-			// 'latitude' => $latitude,
-			// 'longitude' => $longitude,
-			// 'barangay_id' => $barangay_id,
-			'brgy' => $brgy,
-			'city' => $city,
-			'province' => $province,
-			'zip' => $zip,
 			'sitio' => $sitio,
-			// 'code' => $code,
+			'subdivision' => $subdivision,
+			'latitude' => $latitude,
+			'longitude' => $longitude,
+			'barangay_id' => $barangay_id,
+			'zip' => $zip,
+			'code' => $code,
 			'created_at' => date('Y-m-d H:i:s')
 		));
 
