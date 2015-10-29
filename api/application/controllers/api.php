@@ -268,11 +268,48 @@ class Api extends REST_Controller {
 			$this->post('latitude'),
 			$this->post('longitude'),
 			$this->post('barangayId'),
-			$this->post('zip'),
 			$this->post('code')
 		);
 
 		$this->response($this->residence_model->get($residence_id));
+	}
+
+	/**
+	 * Barangays
+	 */
+	public function barangays_get() {
+		$barangays = $this->barangay_model->get_all();
+
+		foreach($barangays as $barangay) {
+			$city = $this->city_model->get($barangay->city_id);
+			$province = $this->province_model->get($city->province_id);
+
+			$barangay->city_id = $city->id;
+			$barangay->city = $city->city;
+			$barangay->province_id = $province->id;
+			$barangay->province = $province->province;
+		}
+
+		$this->response($barangays);
+	}
+
+	public function barangay_get() {
+		$barangay = $this->barangay_model->get($this->get('id'));
+
+		if(is_null($barangay)) {
+			$this->response(new stdClass());
+		}
+		else {
+			$city = $this->city_model->get($barangay->city_id);
+			$province = $this->province_model->get($city->province_id);
+
+			$barangay->city_id = $city->id;
+			$barangay->city = $city->city;
+			$barangay->province_id = $province->id;
+			$barangay->province = $province->province;
+			
+			$this->response($barangay);
+		}
 	}
 
 	/**
