@@ -1,23 +1,24 @@
 <div class="container">
     <br>
     <div class="row">
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <select class="form-control input-md pull-right" ng-model="itemsPerPage" ng-change="perPage()" ng-options="('show '+size+' per page') for size in pageSizes"></select>
-        </div>
-        <div class="col-md-2 col-md-offset-4">
-            <!-- <button class="btn btn-block btn-primary" ng-click="toggleModal()">New Record</button> -->
-            <a ui-sref="form.address">
-                <button class="btn btn-block btn-primary">New Record</button>
-            </a>
-        </div>
+        </div> -->
+
         <div class="col-md-3">
             <div class="input-group input-group-md add-on">
-                <input type="text" class="form-control search-query" ng-model="query" ng-change="search()" placeholder="Search">
+                <input type="text" class="form-control search-query" ng-model="searchKey"  placeholder="Search">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                 </div>
             </div>
         </div>
+        <div class="col-md-3 col-md-offset-5">
+            <a ui-sref="form.address">
+                <button class="btn btn-block btn-primary">New Record</button>
+            </a>
+        </div>
+        
         <br />
         <br />
         <br />
@@ -43,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="row in vm.persons">
+                                <tr ng-repeat="row in vm.persons | filter: searchKey">
                                     <td>{{row.first_name}}</td>
                                     <td>{{row.last_name}}</td>
                                     <td>{{row.gender}}</td>

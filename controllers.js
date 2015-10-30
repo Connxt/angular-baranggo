@@ -135,28 +135,6 @@ angular.module("baranggoApp.controllers", [])
 
 }])
 
-.controller("NewRecordCtrl", ['$scope', function($scope) {
-    var vm = this;
-    vm.addItem = addItem;
-    vm.addChild = addChild;
-    vm.person = {};
-    vm.children = [];
-
-
-    vm.save = function() {
-        console.log("Hello World!");
-    }
-
-    function addChild() {
-        alert("Hello World")
-        console.log("Adding child");
-    }
-
-    function addItem() {
-      console.log("Hello World.");
-    }
-}])
-
 .controller('ResidenceCtrl', ['$scope', 'Residences', 'Settings',  function($scope, Residences, Settings) {
     var vm = this;
     vm.residence = {};
@@ -183,7 +161,7 @@ angular.module("baranggoApp.controllers", [])
      vm.getSettings = function() {
             Settings.get().then(function(res) {
                 settings = res.data;
-                vm.residence.brgyId = settings.barangay_id;
+                vm.residence.barangayId = settings.barangay_id;
                 vm.residence.brgy = settings.barangay;
                 vm.residence.city = settings.city;
                 vm.residence.province = settings.province;
@@ -267,7 +245,13 @@ angular.module("baranggoApp.controllers", [])
 
     vm.save = function() {
         console.log("Personal Info : " + JSON.stringify(vm.person));
-        console.log("Personal Info non JSON : " + vm.person);
+        // console.log("Personal Info non JSON : " + vm.person);
+        vm.person.isEmployed =  vm.person.isEmployed == 'Yes' ? 1 : 0;
+        vm.person.withSSS =  vm.person.withSSS == 'Yes' ? 1 : 0;
+        vm.person.withPhilhealth =  vm.person.withPhilhealth == 'Yes' ? 1 : 0;
+        vm.person.isVoter =  vm.person.isVoter == 'Yes' ? 1 : 0;
+        vm.person.withElectricity =  vm.person.withElectricity == 'Yes' ? 1 : 0;
+
         Persons.add(vm.person).then(function(res) {
             console.log(res);
         });
@@ -285,7 +269,14 @@ angular.module("baranggoApp.controllers", [])
 .controller('MapCtrl', ['$scope', function ($scope) {
     
 }])
-.controller('BrgyClearanceCtrl', ['$scope', function($scope){
+
+.controller('BrgyClearanceCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
+
+var personId = $stateParams.personId;
+var purpose = $stateParams.purpose;
+
+console.log("PersonId: " + personId + " Purpose: " + purpose);
+
 var imgUrl = 'images/clearance_logo.png';
 var convertImgToBase64 = function(url, callback){
     var img = new Image();
@@ -545,6 +536,65 @@ setTimeout(function() {
 convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
 }, 1);
 
+
+}])
+
+.controller('BrgyClearanceListCtrl', ['$scope', 'BarangayClearances', 'Persons', '$state', function($scope, BarangayClearances, Persons, $state){
+    var vm = this;
+    vm.persons = [];
+    vm.brgyClearance = {};
+
+
+
+    BarangayClearances.getAll().then(function(res){
+        console.log(res.data);
+    })
+
+
+    Persons.getAll().then(function(res) {
+        vm.persons = res.data;
+    })
+
+    $scope.showModal = false;
+
+    $scope.toggleModal = function() {
+        $scope.showModal = !$scope.showModal;
+    };
+
+    $scope.showPurposeModal = false;
+
+    $scope.togglePurposesModal = function() {
+        $scope.showPurposeModal = !$scope.showPurposeModal;
+    };
+
+    $scope.promptPurpose = function(id) {
+        vm.brgyClearance.id = id;
+        $scope.toggleModal();
+        $scope.togglePurposesModal();
+        // $state.go('brgy-clearance', { personId: id , purpose: 'Employment' });
+    }
+
+    $scope.printPreview = function() {
+        $scope.togglePurposesModal();
+        
+        $state.go('brgy-clearance', { personId: vm.brgyClearance.id , purpose: vm.brgyClearance.purpose });
+    }
+
+}])
+
+.controller('BrgyBusinessClearanceListCtrl', ['$scope', 'BarangayBusinessClearances', function($scope, BarangayBusinessClearances){
+    BarangayBusinessClearances.getAll().then(function(res){
+        console.log(res.data);
+    })
+
+
+
+}])
+
+.controller('CertificateOfClosureListCtrl', ['$scope', 'CertificatesOfClosure', function($scope, CertificatesOfClosure){
+    CertificatesOfClosure.getAll().then(function(res){
+        console.log(res.data);
+    })
 
 }])
 

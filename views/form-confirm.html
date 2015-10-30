@@ -14,24 +14,24 @@
         <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed1? 'collapse':''">
             <div class="box-body">
                 <address>
-                    Name: <strong class="text-light-blue">John Anthony Pecson</strong>
+                    Name: <strong class="text-light-blue">{{vm.person.firstName}} {{vm.person.middleName.charAt(0)}}. {{vm.person.lastName}}</strong>
                 </address>
                 <address>
                     <!-- <strong>Admin, Inc.</strong> -->
-                    Address: <strong class="text-light-blue">795 Folsom Ave, Suite 600 San Francisco, CA 94107</strong>
-                    <br> Phone: <strong class="text-light-blue">(804) 123-5432</strong>
-                    <br> Email: <strong class="text-light-blue">info@almasaeedstudio.com </strong>
-                    <br /> Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
-                    <br /> Place of birth: <strong class="text-light-blue">Kabankalan City </strong>
-                    <br /> Status: <strong class="text-light-blue">Single</strong>
-                    <br /> Gender: <strong class="text-light-blue">Male</strong>
-                    <br /> Education: <strong class="text-light-blue">College Graduate</strong>
+                    Address: <strong class="text-light-blue"> Block {{vm.foundAddress.block_no}} Lot {{vm.foundAddress.lot_no}}, {{vm.foundAddress.street}} St., Sitio {{vm.foundAddress.sitio}}, {{vm.foundAddress.subdivision}} Subdivision, Brgy. {{vm.foundAddress.barangay}}, {{vm.foundAddress.city}} City, {{vm.foundAddress.zip_code}}, {{vm.foundAddress.province}}</strong>
+                    <br> Contact #: <strong class="text-light-blue">{{vm.person.contactNo}}</strong>
+                    <br> Email: <strong class="text-light-blue">{{vm.person.email}}</strong>
+                    <br /> Date of birth: <strong class="text-light-blue">{{vm.person.dateOfBirth  | date:'MMMM dd, yyyy'}}</strong>
+                    <br /> Place of birth: <strong class="text-light-blue">{{vm.person.placeOfBirth}} </strong>
+                    <br /> Status: <strong class="text-light-blue">{{vm.person.civilStatus}}</strong>
+                    <br /> Gender: <strong class="text-light-blue">{{vm.person.gender}}</strong>
+                    <br /> Education: <strong class="text-light-blue">{{vm.person.educationalAttainment}}</strong>
                     <br />
-                    <br /> Employed? <strong class="text-light-blue">Yes</strong>
-                    <br /> SSS? <strong class="text-light-blue">Yes</strong>
-                    <br /> Philhealth? <strong class="text-light-blue">Yes</strong>
-                    <br /> Voter? <strong class="text-light-blue">Yes</strong>
-                    <br /> Electricity? <strong class="text-light-blue">Yes</strong>
+                    <br /> Employed? <strong class="text-light-blue">{{ vm.person.isEmployed }}</strong>
+                    <br /> SSS? <strong class="text-light-blue">{{ vm.person.withSSS }}</strong>
+                    <br /> Philhealth? <strong class="text-light-blue">{{ vm.person.withPhilhealth }}</strong>
+                    <br /> Voter? <strong class="text-light-blue">{{ vm.person.isVoter}}</strong>
+                    <br /> Electricity? <strong class="text-light-blue">{{ vm.person.withElectricity }}</strong>
                 </address>
                 <address>
                 </address>
@@ -49,43 +49,25 @@
         <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed2? 'collapse':''">
             <div class="box-body">
                 <address>
-                    Name: <strong class="text-light-blue">Jane Doe</strong>
+                    Name: <strong class="text-light-blue">{{vm.person.spouseFirstName}} {{vm.person.spouseMiddleName.charAt(0)}}. {{vm.person.spouseLastName}}</strong>
                     <br />
-                     Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
-                    <br /> Gender: <strong class="text-light-blue">Male</strong>
+                     Date of birth: <strong class="text-light-blue">{{vm.person.spouseDateOfBirth | date:'MMMM dd, yyyy'}}</strong>
+                    <br /> Gender: <strong class="text-light-blue">{{vm.person.spouseGender}}</strong>
                 </address>
             <h5><strong class="text-light-blue">Children</strong></h5>
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>Last Name</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
+                    <th>Name</th>
                     <th>Date Of Birth</th>
                     <th>Gender</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Pecson</td>
-                    <td>Jake</td>
-                    <td>Doe</td>
-                    <td>December 25, 2020</td>
-                    <td>Male</td>
-                  </tr>
-                  <tr>
-                    <td>Pecson</td>
-                    <td>Joe</td>
-                    <td>Doe</td>
-                    <td>January 1, 2022</td>
-                    <td>Male</td>
-                  </tr>
-                  <tr>
-                    <td>Pecson</td>
-                    <td>Jenny</td>
-                    <td>Doe</td>
-                    <td>November 1, 2024</td>
-                    <td>Female</td>
+                  <tr ng-repeat="child in vm.person.children">
+                    <td>{{child.firstName}} {{child.middleName.charAt(0)}}. {{child.lastName}}</td>
+                    <td>{{child.dateOfBirth | date:'MM/dd/yyyy'}}</td>
+                    <td>{{child.gender}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -105,18 +87,18 @@
                 <div class="col-md-6">
                     <h5><strong class="text-light-blue">Father</strong></h5>
                     <address>
-                        Name: <strong class="text-light-blue">John Anthony Pecson</strong>
-                        <br /> Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
-                        <br /> Gender: <strong class="text-light-blue">Male</strong>
+                        Name: <strong class="text-light-blue">{{vm.person.fatherFirstName}} {{vm.person.fatherMiddleName.charAt(0)}}. {{vm.person.fatherLastName}}</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">{{vm.person.fatherDateOfBirth | date:'MMMM dd, yyyy'}}</strong>
+                        <!-- <br /> Gender: <strong class="text-light-blue">{{vm.person.fatherGender}}</strong> -->
                         <br />
                     </address>
                 </div>
                 <div class="col-md-6">
                     <h5><strong class="text-light-blue">Mother</strong></h5>
                     <address>
-                        Mother's Name: <strong class="text-light-blue">John Anthony Pecson</strong>
-                        <br /> Date of birth: <strong class="text-light-blue">July 1, 2000 </strong>
-                        <br /> Gender: <strong class="text-light-blue">Male</strong>
+                        Mother's Name: <strong class="text-light-blue">{{vm.person.motherFirstName}} {{vm.person.motherMiddleName.charAt(0)}}. {{vm.person.motherLastName}}</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">{{vm.person.motherDateOfBirth | date:'MMMM dd, yyyy'}}</strong>
+                        <!-- <br /> Gender: <strong class="text-light-blue">Male</strong> -->
                     </address>
                 </div>
             </div>
@@ -127,9 +109,9 @@
     <!-- this row will not appear when printing -->
 
     <br />
-    <p>
+    <!-- <p>
         {{vm.person | json}}
-    </p>
+    </p> -->
     <br />
 
     <div class="row no-print">

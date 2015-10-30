@@ -180,6 +180,8 @@ angular.module("baranggoApp.services", [])
 			remarks: remarks
 		});
 	};
+
+	return self;
 })
 
 .factory("BarangayBusinessClearances", function ($http, $q) {
@@ -222,6 +224,8 @@ angular.module("baranggoApp.services", [])
 			dateClosed: dateClosed
 		});
 	};
+
+	return	 self;
 })
 
 .factory("Users", function ($http, $q) {

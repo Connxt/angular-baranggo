@@ -70,15 +70,33 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     })
 
     .state('brgy-clearance', {
-        url:'/brgy-clearance',
+        url:'/brgy-clearance/:personId/:purpose',
         templateUrl: 'views/reports/brgy-clearance.html',
         controller: 'BrgyClearanceCtrl'
+    })
+
+    .state('brgy-clearance-list', {
+        url:'/brgy-clearance-list',
+        templateUrl: 'views/brgy-clearance-list.html',
+        controller: 'BrgyClearanceListCtrl as vm'
+    })
+
+    .state('brgy-bus-clearance-list', {
+        url:'/brgy-bus-clearance-list',
+        templateUrl: 'views/brgy-bus-clearance-list.html',
+        controller: 'BrgyBusinessClearanceCtrl'
     })
 
     .state('brgy-bus-clearance', {
         url:'/brgy-bus-clearance',
         templateUrl: 'views/reports/brgy-bus-clearance.html',
-        controller: 'BrgyBusinessClearanceCtrl'
+        controller: 'BrgyBusinessClearanceListCtrl'
+    })
+
+    .state('cert-of-closure-list', {
+        url:'/cert-of-closure-list',
+        templateUrl: 'views/cert-of-closure-list.html',
+        controller: 'CertificateOfClosureListCtrl'
     })
 
     .state('cert-of-closure', {
