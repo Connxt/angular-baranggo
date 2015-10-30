@@ -13,6 +13,10 @@ class Temp_Person_Info_Model extends CI_Model {
 		return $this->db->query('SELECT * FROM temp_person_infos WHERE person_id=' . $person_id . ' ORDER BY id DESC')->result();
 	}
 
+	function get_latest($person_id) {
+		return $this->db->query('SELECT * FROM temp_person_infos WHERE person_id=' . $person_id . '  ORDER BY id DESC LIMIT 1')->row();	
+	}
+
 	function add(
 		$civil_status,
 		$religion,
