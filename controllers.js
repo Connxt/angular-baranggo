@@ -20,25 +20,35 @@ angular.module("baranggoApp.controllers", [])
       return true;
     };
     
-    vm.getSettings = function() {
-        Barangays.get(vm.settings.brgyId).then(function(res) {
-         settings = res.data;
-         console.log(settings);
-
-            if (!isEmpty(settings)) {
+    vm.getSettings = function(id) {
+        var _id = id;
+        if (isEmpty(vm.settings)) {
+            Settings.get().then(function(res) {
+                settings = res.data;
+                vm.settings.brgyId = settings.barangay_id;
                 vm.settings.brgy = settings.barangay;
                 vm.settings.city = settings.city;
                 vm.settings.province = settings.province;
                 vm.settings.zip = settings.zip_code;
-            };
-        })
+                
+            })
+        } else {
+            Barangays.get(_id).then(function(res) {
+            settings = res.data;
+            console.log("Found settings: " + settings);
+                vm.settings.brgyId = settings.barangay_id;
+                vm.settings.brgy = settings.barangay;
+                vm.settings.city = settings.city;
+                vm.settings.province = settings.province;
+                vm.settings.zip = settings.zip_code;
+            })
+        }
     }
     vm.getSettings();
 
-
-   
-
     vm.save = function(settings) {
+        console.log("Saving settings: " + settings);
+
         Settings.add(vm.settings.brgyId).then(function(res) {
             console.log(res);
         });
@@ -147,7 +157,7 @@ angular.module("baranggoApp.controllers", [])
     }
 }])
 
-.controller('ResidenceCtrl', ['$scope', 'Residences',  function($scope, Residences) {
+.controller('ResidenceCtrl', ['$scope', 'Residences', 'Settings',  function($scope, Residences, Settings) {
     var vm = this;
     vm.residence = {};
     vm.residences = [];
@@ -158,16 +168,29 @@ angular.module("baranggoApp.controllers", [])
     };
 
     // Initialize new residence fields
-    if (window.localStorage['brgy'] != undefined  && window.localStorage['city'] != undefined && window.localStorage['province'] != undefined  && window.localStorage['zip'] != undefined) {
-        vm.residence.brgy = window.localStorage['brgy'];
-        vm.residence.city = window.localStorage['city'];
-        vm.residence.province = window.localStorage['province'];
-        vm.residence.zip = window.localStorage['zip'];
-    };
+    // if (window.localStorage['brgy'] != undefined  && window.localStorage['city'] != undefined && window.localStorage['province'] != undefined  && window.localStorage['zip'] != undefined) {
+    //     vm.residence.brgy = window.localStorage['brgy'];
+    //     vm.residence.city = window.localStorage['city'];
+    //     vm.residence.province = window.localStorage['province'];
+    //     vm.residence.zip = window.localStorage['zip'];
+    // };
 
     setTimeout(function() {
         vm.read();
     }, 1)
+
+    // Get Settings data
+     vm.getSettings = function() {
+            Settings.get().then(function(res) {
+                settings = res.data;
+                vm.residence.brgyId = settings.barangay_id;
+                vm.residence.brgy = settings.barangay;
+                vm.residence.city = settings.city;
+                vm.residence.province = settings.province;
+                vm.residence.zip = settings.zip_code;
+            })
+    }
+    vm.getSettings();
 
     // Create Residence
     vm.save = function(residence) {

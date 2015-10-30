@@ -41,7 +41,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Civil Status</label>
-                                <select class="form-control" ng-model="vm.person.civilStatus">
+                                <select class="form-control" ng-model="vm.person.civilStatus" ng-init="vm.person.civilStatus='Single'">
                                     <option ng-selected="true">Single</option>
                                     <option>Married</option>
                                     <option>Widowed</option>
@@ -53,7 +53,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="vm.person.gender">
+                                <select class="form-control" ng-model="vm.person.gender" ng-init="vm.person.gender='Male'">
                                     <option ng-selected="true">Male</option>
                                     <option>Female</option>
                                 </select>
@@ -99,20 +99,20 @@
 
 
                     <!-- /.row -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Adress</label>
                                 <textarea class="form-control" id="address" placeholder="Enter ..." rows="3" ng-model="vm.person.address"></textarea>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you employed?</label>
-                                <select class="form-control" ng-model="vm.person.isEmployed">
+                                <select class="form-control" ng-model="vm.person.isEmployed"  ng-init="vm.person.isEmployed='yes'">
                                     <option ng-selected="true">Yes</option>
                                     <option>No</option>
                                 </select>
@@ -122,7 +122,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have SSS?</label>
-                                <select class="form-control" ng-model="vm.person.withSSS">
+                                <select class="form-control" ng-model="vm.person.withSSS"  ng-init="vm.person.withSSS='Yes'">
                                     <option ng-selected="true">Yes</option>
                                     <option>No</option>
                                 </select>
@@ -133,7 +133,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Highest educational attainment</label>
-                                <select class="form-control" ng-model="vm.person.educationalAttainment">
+                                <select class="form-control" ng-model="vm.person.educationalAttainment"  ng-init="vm.person.educationalAttainment='Yes'">
                                     <option >Elementary Graduate</option>
                                     <option>Elementary Undergraduate</option>
                                     <option>High School Graduate</option>
@@ -156,7 +156,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have PhilHealth?</label>
-                                <select class="form-control" ng-model="vm.person.withPhilHeath">
+                                <select class="form-control" ng-model="vm.person.withPhilHeath"  ng-init="vm.person.withPhilHeath='Yes'">
                                     <option ng-selected="true">Yes</option>
                                     <option>No</option>
                                 </select>
@@ -167,7 +167,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you a voter?</label>
-                                <select class="form-control" ng-model="vm.person.isVoter">
+                                <select class="form-control" ng-model="vm.person.isVoter"  ng-init="vm.person.isVoter='Yes'">
                                     <option ng-selected="true">Yes</option>
                                     <option>No</option>
                                 </select>
@@ -178,7 +178,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have electricity?</label>
-                                <select class="form-control" ng-model="vm.person.withElectricity">
+                                <select class="form-control" ng-model="vm.person.withElectricity"  ng-init="vm.person.withElectricity='Yes'">
                                     <option ng-selected="true">Yes</option>
                                     <option>No</option>
                                 </select>
@@ -239,7 +239,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="vm.person.spouse.gender">
+                                <select class="form-control" ng-model="vm.person.spouse.gender" ng-init="vm.person.spouse.gender='Female'">
                                     <option>Male</option>
                                     <option ng-selected="true">Female</option>
                                 </select>
@@ -303,11 +303,12 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="vm.child.gender" id="child.gender">
+                                <select class="form-control" ng-model="vm.child.gender" id="child.gender" ng-init="vm.child.gender='Male'">
                                <option ng-selected="true">Male</option>
                                     <option>Female</option>
                                 </select>
                             </div>
+                             <p>{{vm.child.gender}}</p>
                             
                         </div>
                         <div class="col-md-3">
@@ -335,7 +336,7 @@
         <p>To add new children, fillup the form above and click the "Add" button.</p>
     </div>
     <hr />
-    <p>{{vm.person.children}}</p>
+    <!-- <p>{{vm.person.children}}</p> -->
     <p>{{Form.child.firstName.$untouched}}</p>
     <div class="row">
         <b><h3>List of children</h3></b>

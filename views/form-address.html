@@ -12,8 +12,8 @@
     <p ng-hide="isEmpty(vm.foundAddress)">Found Address:</p>
     <pre  ng-hide="isEmpty(vm.foundAddress)"><p>
     Block {{vm.foundAddress.block_no}} Lot {{vm.foundAddress.lot_no}}, {{vm.foundAddress.street}} St., Sitio {{vm.foundAddress.sitio}}, {{vm.foundAddress.subdivision}} Subdivision,<br>
-    Barangay {{vm.foundAddress.brgy}}, {{vm.foundAddress.city}} City <br>
-    {{vm.foundAddress.zip}}, {{vm.foundAddress.province}}</p></pre>
+    Barangay {{vm.foundAddress.barangay}}, {{vm.foundAddress.city}} City <br>
+    {{vm.foundAddress.zip_code}}, {{vm.foundAddress.province}}</p></pre>
     <div>
         <a ui-sref="residences">New member? Get your Residence ID.</a>
     </div>
