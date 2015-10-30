@@ -337,7 +337,8 @@ class Api extends REST_Controller {
 
 		foreach($barangay_clearances as $barangay_clearance) {
 			$person = $this->person_model->get($barangay_clearance->person_id);
-			$residence = $this->residence_model->get($person->residence_id);
+			$temp_person_info = $this->temp_person_info_model->get_latest($person->id);
+			$residence = $this->residence_model->get($temp_person_info->residence_id);
 			$barangay = $this->barangay_model->get($residence->barangay_id);
 			$city = $this->city_model->get($barangay->city_id);
 			$province = $this->province_model->get($city->province_id);
@@ -371,7 +372,8 @@ class Api extends REST_Controller {
 		}
 		else {
 			$person = $this->person_model->get($barangay_clearance->person_id);
-			$residence = $this->residence_model->get($person->residence_id);
+			$temp_person_info = $this->temp_person_info_model->get_latest($person->id);
+			$residence = $this->residence_model->get($temp_person_info->residence_id);
 			$barangay = $this->barangay_model->get($residence->barangay_id);
 			$city = $this->city_model->get($barangay->city_id);
 			$province = $this->province_model->get($city->province_id);
@@ -415,7 +417,8 @@ class Api extends REST_Controller {
 
 		foreach($barangay_business_clearances as $barangay_business_clearance) {
 			$person = $this->person_model->get($barangay_business_clearance->person_id);
-			$residence = $this->residence_model->get($person->residence_id);
+			$temp_person_info = $this->temp_person_info_model->get_latest($person->id);
+			$residence = $this->residence_model->get($temp_person_info->residence_id);
 			$barangay = $this->barangay_model->get($residence->barangay_id);
 			$city = $this->city_model->get($barangay->city_id);
 			$province = $this->province_model->get($city->province_id);
@@ -449,7 +452,8 @@ class Api extends REST_Controller {
 		}
 		else {
 			$person = $this->person_model->get($barangay_business_clearance->person_id);
-			$residence = $this->residence_model->get($person->residence_id);
+			$temp_person_info = $this->temp_person_info_model->get_latest($person->id);
+			$residence = $this->residence_model->get($temp_person_info->residence_id);
 			$barangay = $this->barangay_model->get($residence->barangay_id);
 			$city = $this->city_model->get($barangay->city_id);
 			$province = $this->province_model->get($city->province_id);
@@ -494,7 +498,8 @@ class Api extends REST_Controller {
 
 		foreach($certificates_of_closure as $certificate_of_closure) {
 			$person = $this->person_model->get($certificate_of_closure->person_id);
-			$residence = $this->residence_model->get($person->residence_id);
+			$temp_person_info = $this->temp_person_info_model->get_latest($person->id);
+			$residence = $this->residence_model->get($temp_person_info->residence_id);
 			$barangay = $this->barangay_model->get($residence->barangay_id);
 			$city = $this->city_model->get($barangay->city_id);
 			$province = $this->province_model->get($city->province_id);
@@ -528,7 +533,8 @@ class Api extends REST_Controller {
 		}
 		else {
 			$person = $this->person_model->get($certificate_of_closure->person_id);
-			$residence = $this->residence_model->get($person->residence_id);
+			$temp_person_info = $this->temp_person_info_model->get_latest($person->id);
+			$residence = $this->residence_model->get($temp_person_info->residence_id);
 			$barangay = $this->barangay_model->get($residence->barangay_id);
 			$city = $this->city_model->get($barangay->city_id);
 			$province = $this->province_model->get($city->province_id);
