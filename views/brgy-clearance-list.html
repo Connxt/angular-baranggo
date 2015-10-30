@@ -127,7 +127,7 @@
     </div>
     </modal>
 
-    <modal title="Barangay Clearance" visible="showPurposeModal">
+    <modal title="Barangay Clearance" visible="showPurposeModal" data-backdrop="">
         <!-- form start -->
         <form role="form">
             <div class="box-body">
@@ -139,7 +139,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="printPreview()">Print Preview</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="printPreview()" >Print Preview</button>
             </div>
         </form>
     </modal>

@@ -561,8 +561,6 @@ convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
         $scope.showModal = !$scope.showModal;
     };
 
-    $scope.showPurposeModal = false;
-
     $scope.togglePurposesModal = function() {
         $scope.showPurposeModal = !$scope.showPurposeModal;
     };
@@ -576,9 +574,13 @@ convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
 
     $scope.printPreview = function() {
         $scope.togglePurposesModal();
-        
+
         $state.go('brgy-clearance', { personId: vm.brgyClearance.id , purpose: vm.brgyClearance.purpose });
     }
+
+    $(window).on('popstate', function() {
+        $(".modal-backdrop").remove();
+    });
 
 }])
 
