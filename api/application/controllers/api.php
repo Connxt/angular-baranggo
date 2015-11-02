@@ -25,11 +25,26 @@ class Api extends REST_Controller {
 	 * Persons
 	 */
 	public function persons_get() {
-		$this->response($this->person_model->get_all());
 		$persons = $this->person_model->get_all();
 
 		foreach($persons as $person) {
 			$person->temp_person_info = $this->temp_person_info_model->get($person->id);
+
+			foreach($person->temp_person_info as $temp_info) {
+				$residence = $this->residence_model->get($temp_info->residence_id);
+				$temp_info->residence = new stdClass();
+				$temp_info->residence->id = $residence->id;
+				$temp_info->residence->block_no = $residence->block_no;
+				$temp_info->residence->lot_no = $residence->lot_no;
+				$temp_info->residence->street = $residence->street;
+				$temp_info->residence->sitio = $residence->sitio;
+				$temp_info->residence->subdivision = $residence->subdivision;
+				$temp_info->residence->latitude = $residence->latitude;
+				$temp_info->residence->longitude = $residence->longitude;
+				$temp_info->residence->barangay_id = $residence->barangay_id;
+				$temp_info->residence->code = $residence->code;
+			}
+
 			$person->siblings = $this->sibling_model->get_by_person_id($person->id);
 			$person->children = $this->child_model->get_by_person_id($person->id);
 		}
@@ -45,6 +60,22 @@ class Api extends REST_Controller {
 		}
 		else {
 			$person->temp_person_info = $this->temp_person_info_model->get($person->id);
+
+			foreach($person->temp_person_info as $temp_info) {
+				$residence = $this->residence_model->get($temp_info->residence_id);
+				$temp_info->residence = new stdClass();
+				$temp_info->residence->id = $residence->id;
+				$temp_info->residence->block_no = $residence->block_no;
+				$temp_info->residence->lot_no = $residence->lot_no;
+				$temp_info->residence->street = $residence->street;
+				$temp_info->residence->sitio = $residence->sitio;
+				$temp_info->residence->subdivision = $residence->subdivision;
+				$temp_info->residence->latitude = $residence->latitude;
+				$temp_info->residence->longitude = $residence->longitude;
+				$temp_info->residence->barangay_id = $residence->barangay_id;
+				$temp_info->residence->code = $residence->code;
+			}
+			
 			$person->siblings = $this->sibling_model->get_by_person_id($person->id);
 			$person->children = $this->child_model->get_by_person_id($person->id);
 			$this->response($person);
