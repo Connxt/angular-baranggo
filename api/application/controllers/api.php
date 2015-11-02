@@ -41,8 +41,18 @@ class Api extends REST_Controller {
 				$temp_info->residence->subdivision = $residence->subdivision;
 				$temp_info->residence->latitude = $residence->latitude;
 				$temp_info->residence->longitude = $residence->longitude;
-				$temp_info->residence->barangay_id = $residence->barangay_id;
 				$temp_info->residence->code = $residence->code;
+
+				$barangay = $this->barangay_model->get($residence->barangay_id);
+				$city = $this->city_model->get($barangay->city_id);
+				$province = $this->province_model->get($city->province_id);
+
+				$temp_info->residence->barangay_id = $barangay->id;
+				$temp_info->residence->barangay = $barangay->barangay;
+				$temp_info->residence->city_id = $city->id;
+				$temp_info->residence->city = $city->city;
+				$temp_info->residence->province_id = $province->id;
+				$temp_info->residence->province = $province->province;
 			}
 
 			$person->siblings = $this->sibling_model->get_by_person_id($person->id);
@@ -72,10 +82,20 @@ class Api extends REST_Controller {
 				$temp_info->residence->subdivision = $residence->subdivision;
 				$temp_info->residence->latitude = $residence->latitude;
 				$temp_info->residence->longitude = $residence->longitude;
-				$temp_info->residence->barangay_id = $residence->barangay_id;
 				$temp_info->residence->code = $residence->code;
+
+				$barangay = $this->barangay_model->get($residence->barangay_id);
+				$city = $this->city_model->get($barangay->city_id);
+				$province = $this->province_model->get($city->province_id);
+
+				$temp_info->residence->barangay_id = $barangay->id;
+				$temp_info->residence->barangay = $barangay->barangay;
+				$temp_info->residence->city_id = $city->id;
+				$temp_info->residence->city = $city->city;
+				$temp_info->residence->province_id = $province->id;
+				$temp_info->residence->province = $province->province;
 			}
-			
+
 			$person->siblings = $this->sibling_model->get_by_person_id($person->id);
 			$person->children = $this->child_model->get_by_person_id($person->id);
 			$this->response($person);
