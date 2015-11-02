@@ -283,12 +283,7 @@ console.log("PersonId: " + personId + " Purpose: " + purpose);
 
 Persons.get(personId).then(function(res) {
     vm.person = res.data;
-    residenceId = res.data.temp_person_info[0].residence_id;
-
-    Residences.get(residenceId).then(function(result) {
-        console.log(JSON.stringify(result.data));
-        vm.residence = result.data;
-    })
+    vm.residence = res.data.temp_person_info[0].residence;
 })
 
 
