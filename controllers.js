@@ -63,17 +63,14 @@ angular.module("baranggoApp.controllers", [])
 .controller("HomeCtrl", ['Persons','$scope', function(Persons,$scope) {
 
 
-    var day = moment(moment()._d).format('Do');
-    var month = moment(moment()._d).format('MMMM')
-
-    alert(day + " day of " + month);
+   
 
     Persons.getAll().then(function(response) {
         console.log(response);
     })
 }])
 
-.controller("CensusCtrl", ['$scope', 'Persons', function($scope, Persons) {
+.controller("PersonCtrl", ['$scope', 'Persons', function($scope, Persons) {
     var vm = this;
     vm.persons = [];
     
@@ -131,8 +128,6 @@ angular.module("baranggoApp.controllers", [])
         gender: 'Male',
         email: 'raymondef@gmail.com'
     }];
-
-
 }])
 
 .controller('ResidenceCtrl', ['$scope', 'Residences', 'Settings',  function($scope, Residences, Settings) {
@@ -270,12 +265,32 @@ angular.module("baranggoApp.controllers", [])
     
 }])
 
-.controller('BrgyClearanceCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
-
+.controller('BrgyClearanceCtrl', ['$scope', '$stateParams', 'Persons', 'Residences', function($scope, $stateParams, Persons, Residences){
+var vm = this;
 var personId = $stateParams.personId;
 var purpose = $stateParams.purpose;
+vm.purpose = purpose;
+vm.person = null;
+vm.residence = null;
+
+var residenceId = null;
+
+vm.day = moment(moment()._d).format('Do');
+vm.month = moment(moment()._d).format('MMMM');
+vm.year = moment(moment()._d).format('YYYY');
 
 console.log("PersonId: " + personId + " Purpose: " + purpose);
+
+Persons.get(personId).then(function(res) {
+    vm.person = res.data;
+    residenceId = res.data.temp_person_info[0].residence_id;
+
+    Residences.get(residenceId).then(function(result) {
+        console.log(JSON.stringify(result.data));
+        vm.residence = result.data;
+    })
+})
+
 
 var imgUrl = 'images/clearance_logo.png';
 var convertImgToBase64 = function(url, callback){
@@ -337,37 +352,6 @@ var createPDFForBaranggayClearance = function(imgData) {
     string = doc.output("datauristring");
     $("#frm_print_baranggay_clearance").attr("src", string);
 }
-
-// var createPDFForBaranggayBusinessClearance = function(imgData) {
-//     doc = new jsPDF("portrait", "pt");
-//     doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
-//     doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
-//     generateDocumentHeader("REPUBLIC OF THE PHILIPPINES", 
-//                         "PROVINCE OF NEGROS OCCIDENTAL", 
-//                         "CITY OF KABANKALAN", 
-//                         "BARANGGAY II", 
-//                         "OFFICE OF THE PUNONG BARANGGAY");
-//     generateDocumentBody("BARANGAY BUSINESS CLEARANCE", $("#body_baranggay_business_clearance"), 40);
-//     generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 660, 670);
-//     string = doc.output("datauristring");
-//     $("#frm_print_baranggay_business_clearance").attr("src", string);
-// }
-
-// var createPDFForCerfificateOfClosure = function(imgData){
-//     doc = new jsPDF("portrait", "pt");
-//     doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
-//     doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
-//     generateDocumentHeader("REPUBLIC OF THE PHILIPPINES", 
-//                         "PROVINCE OF NEGROS OCCIDENTAL", 
-//                         "CITY OF KABANKALAN", 
-//                         "BARANGGAY II", 
-//                         "OFFICE OF THE PUNONG BARANGGAY");
-//     generateDocumentBody("CERTIFICATE OF CLOSURE", $("#body_certificate_of_closure"), 40);
-//     generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
-//     string = doc.output("datauristring");
-//     $("#frm_print_certificate_of_closure").attr("src", string);
-// }
-
 setTimeout(function() {
 convertImgToBase64(imgUrl, createPDFForBaranggayClearance);
 }, 1);
@@ -543,11 +527,10 @@ convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
     var vm = this;
     vm.persons = [];
     vm.brgyClearance = {};
-
-
+    vm.listOfClearance = [];
 
     BarangayClearances.getAll().then(function(res){
-        console.log(res.data);
+        vm.listOfClearancees = res.data;
     })
 
 
@@ -567,19 +550,18 @@ convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
 
     $scope.promptPurpose = function(id) {
         vm.brgyClearance.id = id;
-        $scope.toggleModal();
-        $scope.togglePurposesModal();
+        $scope.toggleModal(); // Hides the list of persons modal
+        $scope.togglePurposesModal(); // Shows the purpose modal
         // $state.go('brgy-clearance', { personId: id , purpose: 'Employment' });
     }
 
     $scope.printPreview = function() {
-        $scope.togglePurposesModal();
-
+        $scope.togglePurposesModal(); // Hides the modal
         $state.go('brgy-clearance', { personId: vm.brgyClearance.id , purpose: vm.brgyClearance.purpose });
     }
 
     $(window).on('popstate', function() {
-        $(".modal-backdrop").remove();
+        $(".modal-backdrop").remove(); // Removes the grey modal backdrop whenever the modal is hidden
     });
 
 }])

@@ -33,19 +33,26 @@
                 </div>
                 <!-- /.box-title -->
                 <div class="box-body">
-                    <div class="col-md-11">
+                    <div class="col-md-12">
                         <table st-table="rowCollection" class="table table-striped" >
                             <thead>
                                 <tr>
-                                    <th>Residence Id</th>
-                                    <th>Address</th>                                  
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Purpose</th>
+                                    <th>Date Issued</th>                                  
                                 </tr>
                             </thead>
+                            <!-- <p>{{vm.listOfClearancees | json}}</p> -->
                             <tbody>
-                                <tr ng-repeat="row in vm.residences | filter:searchKey">
+                                <tr ng-repeat="row in vm.listOfClearancees | filter:searchKey">
                                     <td>{{row.id}}</td>
-                                    <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.brgy}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
-                                    <td>
+                                    <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
+                                    <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.barangay}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
+                                    <td>{{row.reason}}</td>
+                                    <td>{{row.date_issued | date: 'MMMM dd, yyyy'}}</td>
+                                    <!-- <td>
                                         <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
                                         </button>
@@ -57,7 +64,7 @@
                                         <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             </tbody>
                         </table>
@@ -127,7 +134,7 @@
     </div>
     </modal>
 
-    <modal title="Barangay Clearance" visible="showPurposeModal" data-backdrop="">
+    <modal title="Barangay Clearance" visible="showPurposeModal" >
         <!-- form start -->
         <form role="form">
             <div class="box-body">

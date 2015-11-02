@@ -15,10 +15,10 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     })
 
     // nested list with custom controller
-    .state('censuses', {
-        url: '/censuses',
-        templateUrl: 'views/censuses.html',
-        controller: 'CensusCtrl as vm'
+    .state('persons', {
+        url: '/persons',
+        templateUrl: 'views/persons.html',
+        controller: 'PersonCtrl as vm'
     })
 
     .state('new-record', {
@@ -72,7 +72,7 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     .state('brgy-clearance', {
         url:'/brgy-clearance/:personId/:purpose',
         templateUrl: 'views/reports/brgy-clearance.html',
-        controller: 'BrgyClearanceCtrl'
+        controller: 'BrgyClearanceCtrl as vm' 
     })
 
     .state('brgy-clearance-list', {
