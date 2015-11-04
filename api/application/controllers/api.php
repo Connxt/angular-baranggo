@@ -28,9 +28,9 @@ class Api extends REST_Controller {
 		$persons = $this->person_model->get_all();
 
 		foreach($persons as $person) {
-			$person->temp_person_info = $this->temp_person_info_model->get($person->id);
+			$person->temp_person_infos = $this->temp_person_info_model->get($person->id);
 
-			foreach($person->temp_person_info as $temp_info) {
+			foreach($person->temp_person_infos as $temp_info) {
 				$residence = $this->residence_model->get($temp_info->residence_id);
 				$temp_info->residence = new stdClass();
 				$temp_info->residence->id = $residence->id;
@@ -69,9 +69,9 @@ class Api extends REST_Controller {
 			$this->response(new stdClass());
 		}
 		else {
-			$person->temp_person_info = $this->temp_person_info_model->get($person->id);
+			$person->temp_person_infos = $this->temp_person_info_model->get($person->id);
 
-			foreach($person->temp_person_info as $temp_info) {
+			foreach($person->temp_person_infos as $temp_info) {
 				$residence = $this->residence_model->get($temp_info->residence_id);
 				$temp_info->residence = new stdClass();
 				$temp_info->residence->id = $residence->id;
