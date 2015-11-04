@@ -484,21 +484,21 @@ class Api extends REST_Controller {
 			$barangay_business_clearance->first_name = $person->first_name;
 			$barangay_business_clearance->middle_name = $person->middle_name;
 
-			$barangay_clearance->residence = new stdClass();
-			$barangay_clearance->residence->id = $residence->id;
-			$barangay_clearance->residence->block_no = $residence->block_no;
-			$barangay_clearance->residence->lot_no = $residence->lot_no;
-			$barangay_clearance->residence->street = $residence->street;
-			$barangay_clearance->residence->sitio = $residence->sitio;
-			$barangay_clearance->residence->subdivision = $residence->subdivision;
-			$barangay_clearance->residence->latitude = $residence->latitude;
-			$barangay_clearance->residence->longitude = $residence->longitude;
-			$barangay_clearance->residence->barangay_id = $barangay->id;
-			$barangay_clearance->residence->barangay = $barangay->barangay;
-			$barangay_clearance->residence->city_id = $city->id;
-			$barangay_clearance->residence->city = $city->city;
-			$barangay_clearance->residence->province_id = $province->id;
-			$barangay_clearance->residence->province = $province->province;
+			$barangay_business_clearance->residence = new stdClass();
+			$barangay_business_clearance->residence->id = $residence->id;
+			$barangay_business_clearance->residence->block_no = $residence->block_no;
+			$barangay_business_clearance->residence->lot_no = $residence->lot_no;
+			$barangay_business_clearance->residence->street = $residence->street;
+			$barangay_business_clearance->residence->sitio = $residence->sitio;
+			$barangay_business_clearance->residence->subdivision = $residence->subdivision;
+			$barangay_business_clearance->residence->latitude = $residence->latitude;
+			$barangay_business_clearance->residence->longitude = $residence->longitude;
+			$barangay_business_clearance->residence->barangay_id = $barangay->id;
+			$barangay_business_clearance->residence->barangay = $barangay->barangay;
+			$barangay_business_clearance->residence->city_id = $city->id;
+			$barangay_business_clearance->residence->city = $city->city;
+			$barangay_business_clearance->residence->province_id = $province->id;
+			$barangay_business_clearance->residence->province = $province->province;
 		}
 
 		$this->response($barangay_business_clearances);
@@ -522,21 +522,21 @@ class Api extends REST_Controller {
 			$barangay_business_clearance->first_name = $person->first_name;
 			$barangay_business_clearance->middle_name = $person->middle_name;
 
-			$barangay_clearance->residence = new stdClass();
-			$barangay_clearance->residence->id = $residence->id;
-			$barangay_clearance->residence->block_no = $residence->block_no;
-			$barangay_clearance->residence->lot_no = $residence->lot_no;
-			$barangay_clearance->residence->street = $residence->street;
-			$barangay_clearance->residence->sitio = $residence->sitio;
-			$barangay_clearance->residence->subdivision = $residence->subdivision;
-			$barangay_clearance->residence->latitude = $residence->latitude;
-			$barangay_clearance->residence->longitude = $residence->longitude;
-			$barangay_clearance->residence->barangay_id = $barangay->id;
-			$barangay_clearance->residence->barangay = $barangay->barangay;
-			$barangay_clearance->residence->city_id = $city->id;
-			$barangay_clearance->residence->city = $city->city;
-			$barangay_clearance->residence->province_id = $province->id;
-			$barangay_clearance->residence->province = $province->province;
+			$barangay_business_clearance->residence = new stdClass();
+			$barangay_business_clearance->residence->id = $residence->id;
+			$barangay_business_clearance->residence->block_no = $residence->block_no;
+			$barangay_business_clearance->residence->lot_no = $residence->lot_no;
+			$barangay_business_clearance->residence->street = $residence->street;
+			$barangay_business_clearance->residence->sitio = $residence->sitio;
+			$barangay_business_clearance->residence->subdivision = $residence->subdivision;
+			$barangay_business_clearance->residence->latitude = $residence->latitude;
+			$barangay_business_clearance->residence->longitude = $residence->longitude;
+			$barangay_business_clearance->residence->barangay_id = $barangay->id;
+			$barangay_business_clearance->residence->barangay = $barangay->barangay;
+			$barangay_business_clearance->residence->city_id = $city->id;
+			$barangay_business_clearance->residence->city = $city->city;
+			$barangay_business_clearance->residence->province_id = $province->id;
+			$barangay_business_clearance->residence->province = $province->province;
 
 			$this->response($barangay_business_clearance);
 		}
@@ -571,21 +571,21 @@ class Api extends REST_Controller {
 			$certificate_of_closure->first_name = $person->first_name;
 			$certificate_of_closure->middle_name = $person->middle_name;
 
-			$barangay_clearance->residence = new stdClass();
-			$barangay_clearance->residence->id = $residence->id;
-			$barangay_clearance->residence->block_no = $residence->block_no;
-			$barangay_clearance->residence->lot_no = $residence->lot_no;
-			$barangay_clearance->residence->street = $residence->street;
-			$barangay_clearance->residence->sitio = $residence->sitio;
-			$barangay_clearance->residence->subdivision = $residence->subdivision;
-			$barangay_clearance->residence->latitude = $residence->latitude;
-			$barangay_clearance->residence->longitude = $residence->longitude;
-			$barangay_clearance->residence->barangay_id = $barangay->id;
-			$barangay_clearance->residence->barangay = $barangay->barangay;
-			$barangay_clearance->residence->city_id = $city->id;
-			$barangay_clearance->residence->city = $city->city;
-			$barangay_clearance->residence->province_id = $province->id;
-			$barangay_clearance->residence->province = $province->province;
+			$certificate_of_closure->residence = new stdClass();
+			$certificate_of_closure->residence->id = $residence->id;
+			$certificate_of_closure->residence->block_no = $residence->block_no;
+			$certificate_of_closure->residence->lot_no = $residence->lot_no;
+			$certificate_of_closure->residence->street = $residence->street;
+			$certificate_of_closure->residence->sitio = $residence->sitio;
+			$certificate_of_closure->residence->subdivision = $residence->subdivision;
+			$certificate_of_closure->residence->latitude = $residence->latitude;
+			$certificate_of_closure->residence->longitude = $residence->longitude;
+			$certificate_of_closure->residence->barangay_id = $barangay->id;
+			$certificate_of_closure->residence->barangay = $barangay->barangay;
+			$certificate_of_closure->residence->city_id = $city->id;
+			$certificate_of_closure->residence->city = $city->city;
+			$certificate_of_closure->residence->province_id = $province->id;
+			$certificate_of_closure->residence->province = $province->province;
 		}
 
 		$this->response($certificates_of_closure);
@@ -608,22 +608,22 @@ class Api extends REST_Controller {
 			$certificate_of_closure->last_name = $person->last_name;
 			$certificate_of_closure->first_name = $person->first_name;
 			$certificate_of_closure->middle_name = $person->middle_name;
-			
-			$barangay_clearance->residence = new stdClass();
-			$barangay_clearance->residence->id = $residence->id;
-			$barangay_clearance->residence->block_no = $residence->block_no;
-			$barangay_clearance->residence->lot_no = $residence->lot_no;
-			$barangay_clearance->residence->street = $residence->street;
-			$barangay_clearance->residence->sitio = $residence->sitio;
-			$barangay_clearance->residence->subdivision = $residence->subdivision;
-			$barangay_clearance->residence->latitude = $residence->latitude;
-			$barangay_clearance->residence->longitude = $residence->longitude;
-			$barangay_clearance->residence->barangay_id = $barangay->id;
-			$barangay_clearance->residence->barangay = $barangay->barangay;
-			$barangay_clearance->residence->city_id = $city->id;
-			$barangay_clearance->residence->city = $city->city;
-			$barangay_clearance->residence->province_id = $province->id;
-			$barangay_clearance->residence->province = $province->province;
+
+			$certificate_of_closure->residence = new stdClass();
+			$certificate_of_closure->residence->id = $residence->id;
+			$certificate_of_closure->residence->block_no = $residence->block_no;
+			$certificate_of_closure->residence->lot_no = $residence->lot_no;
+			$certificate_of_closure->residence->street = $residence->street;
+			$certificate_of_closure->residence->sitio = $residence->sitio;
+			$certificate_of_closure->residence->subdivision = $residence->subdivision;
+			$certificate_of_closure->residence->latitude = $residence->latitude;
+			$certificate_of_closure->residence->longitude = $residence->longitude;
+			$certificate_of_closure->residence->barangay_id = $barangay->id;
+			$certificate_of_closure->residence->barangay = $barangay->barangay;
+			$certificate_of_closure->residence->city_id = $city->id;
+			$certificate_of_closure->residence->city = $city->city;
+			$certificate_of_closure->residence->province_id = $province->id;
+			$certificate_of_closure->residence->province = $province->province;
 			
 			$this->response($certificate_of_closure);
 		}
