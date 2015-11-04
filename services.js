@@ -218,11 +218,12 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/certificate_of_closure/id/" + id, {});
 	};
 
-	self.add = function (personId, businessName, businessAddress, dateClosed) {
+	self.add = function (personId, businessName, businessAddress, businessType, dateClosed) {
 		return $http.post("api/certificate_of_closure", {
 			personId: personId,
 			businessName: businessName,
 			businessAddress: businessAddress,
+			businessType : businessType,
 			dateClosed: dateClosed
 		});
 	};

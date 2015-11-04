@@ -95,7 +95,7 @@
                                 <tr ng-repeat="row in vm.persons | filter: searchKey">
                                     <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
                                     <td>{{row.gender}}</td>
-                                    <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.brgy}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
+                                    <td>Block {{row.temp_person_infos[0].residence.block_no}} Lot {{row.temp_person_infos[0].residence.lot_no}}, {{row.temp_person_infos[0].residence.street}} St., Sitio {{row.temp_person_infos[0].residence.sitio}}, {{row.temp_person_infos[0].residence.subdivision}} Subdivision, Brgy. {{row.temp_person_infos[0].residence.brgy}}, {{row.temp_person_infos[0].residence.city}} City {{row.temp_person_infos[0].residence.zip}}, {{row.temp_person_infos[0].residence.province}}</td>
                                     <td>
                                         <button type="button" ng-click="promptBusinessInfo($index, row.id)" class="btn btn-sm btn-success">
                                             <i class="fa fa-print"></i>
