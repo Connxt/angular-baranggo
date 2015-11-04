@@ -1,12 +1,12 @@
 		<iframe id="frm_print_baranggay_business_clearance" style="width:100%; height:630px;"></iframe>
 		<div id="body_baranggay_business_clearance" style="display:none;">
 			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is to certify that Barangay Business Clearance is hereby granted to</p>
-			<p class="center-text"><strong>Company Name</strong></p>
-			<p class="center-text"><strong>Name</strong></p>
-			<p>with business address at <strong>Address</strong></p>
-			<p class="margin-bottom">to pursue or engage in <strong>Type of business</strong></p>
+			<p class="center-text"><strong>{{vm.businessName}}</strong></p>
+			<p class="center-text"><strong>{{vm.businessOwner}}</strong></p>
+			<p>with business address at <strong>{{vm.businessAddress}}</strong></p>
+			<p class="margin-bottom">to pursue or engage in <strong>{{vm.businessType}}</strong></p>
 
 			<p class="margin-bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This business clearance is good for the year 2015 unless otherwise revoked, cancelled or suspended for cause.</p>
-			<p class="margin-bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given and signed this <strong>19th</strong> day of <strong>October 2015</strong> at Barangay II, Kabankalan City, Negros Occidental Valid until October 19, 2016</p>
+			<p class="margin-bottom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given and signed this <strong>{{vm.day}}</strong> day of <strong>{{vm.month}} {{vm.year}}</strong> at Barangay I, Kabankalan City, Negros Occidental Valid until {{vm.month}} {{vm.day1}}, {{vm.getNextYear()}}.</p>
 
 		</div>

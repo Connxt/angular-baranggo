@@ -203,6 +203,8 @@ angular.module("baranggoApp.services", [])
 			businessType: businessType
 		});
 	};
+
+	return self;
 })
 
 .factory("CertificatesOfClosure", function ($http, $q) {

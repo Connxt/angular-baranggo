@@ -1,4 +1,4 @@
-angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services', 'ui.router', 'smart-table', 'validation', 'validation.rule'])
+angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services', 'ui.router', 'smart-table', 'validation', 'validation.rule', 'angularMoment'])
 
 .config(function($urlRouterProvider, $stateProvider) {
 
@@ -70,9 +70,21 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     })
 
     .state('brgy-clearance', {
-        url:'/brgy-clearance/:personId/:purpose',
+        url:'/brgy-clearance/:personId/:purpose/:remarks',
         templateUrl: 'views/reports/brgy-clearance.html',
         controller: 'BrgyClearanceCtrl as vm' 
+    })
+
+    .state('brgy-bus-clearance', {
+        url:'/brgy-bus-clearance/:businessOwner/:businessName/:businessAddress/:businessType',
+        templateUrl: 'views/reports/brgy-bus-clearance.html',
+        controller: 'BrgyBusinessClearanceCtrl as vm'
+    })
+
+    .state('cert-of-closure', {
+        url:'/cert-of-closure',
+        templateUrl: 'views/reports/cert-of-closure.html',
+        controller: 'CertificateOfClosureCtrl'
     })
 
     .state('brgy-clearance-list', {
@@ -84,26 +96,15 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     .state('brgy-bus-clearance-list', {
         url:'/brgy-bus-clearance-list',
         templateUrl: 'views/brgy-bus-clearance-list.html',
-        controller: 'BrgyBusinessClearanceCtrl'
-    })
-
-    .state('brgy-bus-clearance', {
-        url:'/brgy-bus-clearance',
-        templateUrl: 'views/reports/brgy-bus-clearance.html',
-        controller: 'BrgyBusinessClearanceListCtrl'
+        controller: 'BrgyBusinessClearanceListCtrl  as vm'
     })
 
     .state('cert-of-closure-list', {
         url:'/cert-of-closure-list',
         templateUrl: 'views/cert-of-closure-list.html',
-        controller: 'CertificateOfClosureListCtrl'
-    })
-
-    .state('cert-of-closure', {
-        url:'/cert-of-closure',
-        templateUrl: 'views/reports/cert-of-closure.html',
-        controller: 'CertificateOfClosureCtrl'
+        controller: 'CertificateOfClosureListCtrl  as vm'
     });
+
 })
 
 .directive('modal', function() {

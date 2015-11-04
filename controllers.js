@@ -265,16 +265,16 @@ angular.module("baranggoApp.controllers", [])
     
 }])
 
-.controller('BrgyClearanceCtrl', ['$scope', '$stateParams', 'Persons', 'Residences', function($scope, $stateParams, Persons, Residences){
+.controller('BrgyClearanceCtrl', ['$scope', '$stateParams', 'Persons', 'BarangayClearances', function($scope, $stateParams, Persons, BarangayClearances){
 var vm = this;
+console.log($stateParams);
 var personId = $stateParams.personId;
 var purpose = $stateParams.purpose;
+var remarks = $stateParams.remarks;
+
 vm.purpose = purpose;
 vm.person = null;
 vm.residence = null;
-
-var residenceId = null;
-
 vm.day = moment(moment()._d).format('Do');
 vm.month = moment(moment()._d).format('MMMM');
 vm.year = moment(moment()._d).format('YYYY');
@@ -284,7 +284,12 @@ console.log("PersonId: " + personId + " Purpose: " + purpose);
 Persons.get(personId).then(function(res) {
     vm.person = res.data;
     vm.residence = res.data.temp_person_info[0].residence;
-})
+
+    BarangayClearances.add(personId, purpose, remarks).then(function(res) {
+            console.log(res);
+    });
+});
+
 
 
 var imgUrl = 'images/clearance_logo.png';
@@ -353,7 +358,25 @@ convertImgToBase64(imgUrl, createPDFForBaranggayClearance);
 
 
 }])
-.controller('BrgyBusinessClearanceCtrl', ['$scope', function($scope){
+.controller('BrgyBusinessClearanceCtrl', ['$scope', '$stateParams', function($scope, $stateParams){
+
+var vm = this;
+console.log($stateParams);
+vm.businessOwner = $stateParams.businessOwner;
+vm.businessName = $stateParams.businessName;
+vm.businessAddress = $stateParams.businessAddress;
+vm.businessType = $stateParams.businessType;
+
+vm.day = moment(moment()._d).format('Do');
+vm.day1 = moment(moment()._d).format('D');
+vm.month = moment(moment()._d).format('MMMM');
+vm.year = moment(moment()._d).format('YYYY');
+
+vm.getNextYear = function() {
+    return moment(moment()._d).add(1,'year').format('YYYY');
+}
+
+
 var imgUrl = 'images/clearance_logo.png';
 var convertImgToBase64 = function(url, callback){
     var img = new Image();
@@ -552,7 +575,7 @@ convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
 
     $scope.printPreview = function() {
         $scope.togglePurposesModal(); // Hides the modal
-        $state.go('brgy-clearance', { personId: vm.brgyClearance.id , purpose: vm.brgyClearance.purpose });
+        $state.go('brgy-clearance', { personId: vm.brgyClearance.id , purpose: vm.brgyClearance.purpose, remarks: vm.brgyClearance.remarks });
     }
 
     $(window).on('popstate', function() {
@@ -561,19 +584,108 @@ convertImgToBase64(imgUrl, createPDFForCerfificateOfClosure);
 
 }])
 
-.controller('BrgyBusinessClearanceListCtrl', ['$scope', 'BarangayBusinessClearances', function($scope, BarangayBusinessClearances){
+.controller('BrgyBusinessClearanceListCtrl', ['$scope', 'Persons', 'BarangayBusinessClearances', '$state', function($scope, Persons, BarangayBusinessClearances, $state){
+    // BarangayBusinessClearances.getAll().then(function(res){
+    //     console.log(res.data);
+    // })
+
+    var vm = this;
+    vm.persons = [];
+    vm.listOfClearance = [];
+
     BarangayBusinessClearances.getAll().then(function(res){
-        console.log(res.data);
+        vm.listOfBusinessClearances = res.data;
     })
+
+
+    Persons.getAll().then(function(res) {
+        vm.persons = res.data;
+        console.log(vm.persons)
+    })
+
+    $scope.showListOfPersons = false;
+
+    $scope.toggleListOfPersonsModal = function() {
+        $scope.showListOfPersons = !$scope.showListOfPersons;
+    };
+
+    $scope.toggleBusinessInfoModal = function(id) {
+        $scope.showBusinessInfoModal = !$scope.showBusinessInfoModal;
+    }
+
+     $scope.promptBusinessInfo = function(i, id) {
+        vm.personId = id;
+        var name = vm.persons[i].first_name + ' ' + vm.persons[i].middle_name.charAt(0) + '. ' + vm.persons[i].last_name ;
+        vm.businessOwner = name;
+        $scope.toggleListOfPersonsModal();
+        $scope.toggleBusinessInfoModal();
+    }
+
+    $scope.printPreview = function() {
+        BarangayBusinessClearances.add(vm.personId, vm.businessName, vm.businessAddress, vm.businessType);
+        $scope.toggleBusinessInfoModal(); // Hides the toggleBusinessInfoModal
+        $state.go('brgy-bus-clearance', { businessOwner: vm.businessOwner, businessName: vm.businessName, businessAddress: vm.businessAddress, businessType: vm.businessType });
+    }
+
+    $(window).on('popstate', function() {
+        $(".modal-backdrop").remove(); // Removes the grey modal backdrop whenever the modal is hidden
+    });
 
 
 
 }])
 
-.controller('CertificateOfClosureListCtrl', ['$scope', 'CertificatesOfClosure', function($scope, CertificatesOfClosure){
-    CertificatesOfClosure.getAll().then(function(res){
-        console.log(res.data);
+.controller('CertificateOfClosureListCtrl', ['$scope', 'CertificatesOfClosure', 'Persons', '$state', function($scope, CertificatesOfClosure, Persons, $state){
+    // CertificatesOfClosure.getAll().then(function(res){
+    //     console.log(res.data);
+    // })
+
+    var vm = this;
+    vm.persons = [];
+
+    // BarangayBusinessClearances.getAll().then(function(res){
+    //     vm.listOfCertificates = res.data;
+    // })
+
+
+    Persons.getAll().then(function(res) {
+        vm.persons = res.data;
+        console.log(vm.persons)
     })
+
+    $scope.showListOfPersons = false;
+
+    $scope.toggleListOfPersonsModal = function() {
+        $scope.showListOfPersons = !$scope.showListOfPersons;
+    };
+
+    $scope.toggleBusinessInfoModal = function(id) {
+        $scope.showBusinessInfoModal = !$scope.showBusinessInfoModal;
+    }
+
+     $scope.promptBusinessInfo = function(i, id) {
+        vm.personId = id;
+        var name = vm.persons[i].first_name + ' ' + vm.persons[i].middle_name.charAt(0) + '. ' + vm.persons[i].last_name ;
+        vm.businessOwner = name;
+        $scope.toggleListOfPersonsModal();
+        $scope.toggleBusinessInfoModal();
+    }
+
+    $scope.printPreview = function() {
+        // BarangayBusinessClearances.add(vm.personId, vm.businessName, vm.businessAddress, vm.businessType);
+        $scope.toggleBusinessInfoModal(); // Hides the toggleBusinessInfoModal
+        // $state.go('brgy-bus-clearance', { businessOwner: vm.businessOwner, businessName: vm.businessName, businessAddress: vm.businessAddress, businessType: vm.businessType });
+        console.log("Business Owner: " + vm.businessOwner);
+        console.log("Business Name: " + vm.businessName);
+        console.log("Business Address: " + vm.businessAddress);
+        console.log("Business Type: " + vm.businessType);
+        console.log("Date Closed: " + vm.dateClosed);
+    }
+
+    $(window).on('popstate', function() {
+        $(".modal-backdrop").remove(); // Removes the grey modal backdrop whenever the modal is hidden
+    });
+
 
 }])
 

@@ -41,7 +41,8 @@
                                     <th>Name</th>
                                     <th>Address</th>
                                     <th>Purpose</th>
-                                    <th>Date Issued</th>                                  
+                                    <th>Date Issued</th>      
+                                    <th>Remarks</th>                            
                                 </tr>
                             </thead>
                             <!-- <p>{{vm.listOfClearancees | json}}</p> -->
@@ -51,7 +52,8 @@
                                     <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
                                     <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.barangay}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
                                     <td>{{row.reason}}</td>
-                                    <td>{{row.date_issued | date: 'MMMM dd, yyyy'}}</td>
+                                    <td>{{row.date_issued | amDateFormat:'MM/D/YYYY'}}</td>
+                                    <td>{{row.remarks}}</td>
                                     <!-- <td>
                                         <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
@@ -78,7 +80,7 @@
     </div>
     <div ui-view></div>
     
-    <modal title="List Of Persons" visible="showModal">
+    <modal title="List Of Persons" visible="showListOfPersons">
 
         <div class="col-md-4">
             <div class="input-group input-group-md add-on">
@@ -140,7 +142,11 @@
             <div class="box-body">
                         <div class="form-group">
                             <label for="barangay">Purpose</label>
-                            <input class="form-control" id="brgy" type="text" placeholder="eg. Employment" ng-model="vm.brgyClearance.purpose">
+                            <input class="form-control"  type="text" placeholder="eg. Employment" ng-model="vm.brgyClearance.purpose">
+                        </div>
+                        <div class="form-group">
+                            <label for="barangay">Remarks</label>
+                            <textarea class="form-control"  type="text" placeholder="eg. Paid" ng-model="vm.brgyClearance.remarks" rows="3"> </textarea>
                         </div>
                 <!-- /.row -->
             </div>
