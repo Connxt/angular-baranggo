@@ -89,17 +89,14 @@ angular.module("baranggoApp.controllers", [])
     // var persons = Persons.getAll();
     // console.log(persons);
 
-
-
-
-
-
     $scope.toggleModal = function() {
         $scope.showModal = !$scope.showModal;
     };
 
     // View Census Modal
-    $scope.toggleViewCensus = function() {
+    $scope.toggleViewCensus = function(index) {
+        console.log(vm.persons[index]);
+        vm.person = vm.persons[index];
         $scope.showViewCensus = !$scope.showViewCensus;
     }
 
@@ -261,6 +258,117 @@ angular.module("baranggoApp.controllers", [])
     };
 }])
 
+.controller('FormEditCtrl', ['$scope', 'Persons', 'Residences', '$filter', '$stateParams', function($scope, Persons, Residences, $filter, $stateParams) {
+
+    var vm = this;
+
+    vm.childrenToBeRemoved = [];
+
+    $scope.isEmpty = function(obj) {
+        for (var prop in obj) {
+            if (obj.hasOwnProperty(prop))
+                return false;
+        }
+        return true;
+    };
+
+    // if (!$scope.isEmpty($stateParams)) {
+        console.log("StateParams: " + JSON.stringify($stateParams));
+        $scope.personId = $stateParams.personId;
+        $scope.person = {};
+        $scope.person.children = [];
+
+        vm.residences = [];
+        vm.foundAddress = {}
+        vm.person = {};
+        // vm.person.residenceId = 1;
+        vm.person.children = [];
+        vm.person.siblings = [];
+
+        // Read Residence
+        vm.getAllResidence = function() {
+            console.log("1");
+            Residences.getAll().then(function(res) {
+                // console.log(res.data);
+                vm.residences = res.data;
+            })
+        }
+        vm.getAllResidence();
+
+        vm.findAddress = function(residenceId) {
+            console.log("Residence: " + residenceId);
+            console.log("3");
+            // console.log(vm.residences.length);
+            for (var i = 0; i < vm.residences.length; i++) {
+                if (vm.residences[i].id == residenceId) {
+                    console.log("Found: " + vm.residences[i]);
+                    vm.foundAddress = vm.residences[i];
+                    $scope.person.residence = vm.foundAddress;
+                    // console.log($scope.person.residence);
+                    var fmt = JSON.stringify(vm.foundAddress);
+                    console.log(fmt);
+                    break;
+                } else {
+                    console.log("Not Found");
+                    vm.foundAddress = {};
+                }
+            };
+        }
+
+        Persons.get($scope.personId).then(function(res) {
+            $scope.person = res.data;
+            // console.log("Persons" + JSON.stringify($scope.person));
+            var residence = res.data.temp_person_infos[0].residence;
+            $scope.person.residence =  res.data.temp_person_infos[0].residence;
+             $scope.person.residenceId = residence.id;
+
+            console.log("2: Zip: "  + JSON.stringify(res.data.temp_person_infos[0].residence));
+            vm.findAddress(residence.id);
+
+            // $scope.person.residenceId = res.data.temp_person_infos[0].residence.id;
+        })
+
+
+        $scope.isCollapsed = false;
+
+        $scope.getDate = function(date) {
+            var d = date;
+            console.log(d);
+            var d1 = d.split('-');
+            var d2 = new Date(d1[0], d1[1] - 1, d1[2]);
+
+            $scope.myDate  = d2;
+        }
+
+
+        vm.addChild = function(child) {
+            child.id = new Date().getTime();
+            vm.person.children.push(child);
+            console.log(vm.person.children);
+        }
+
+        vm.save = function() {
+            console.log("Personal Info : " + JSON.stringify(vm.person));
+            // console.log("Personal Info non JSON : " + vm.person);
+            vm.person.isEmployed = vm.person.isEmployed == 'Yes' ? 1 : 0;
+            vm.person.withSSS = vm.person.withSSS == 'Yes' ? 1 : 0;
+            vm.person.withPhilhealth = vm.person.withPhilhealth == 'Yes' ? 1 : 0;
+            vm.person.isVoter = vm.person.isVoter == 'Yes' ? 1 : 0;
+            vm.person.withElectricity = vm.person.withElectricity == 'Yes' ? 1 : 0;
+
+            Persons.add(vm.person).then(function(res) {
+                console.log(res);
+            });
+        }
+
+        vm.delete = function(id) {
+            // console.log(index);
+            vm.childrenToBeRemoved.push(id);
+            console.log("Delete: " + JSON.stringify(vm.childrenToBeRemoved));
+        }
+    // }
+}])
+
 .controller('MapCtrl', ['$scope', function($scope) {
 
 }])
@@ -283,7 +391,7 @@ angular.module("baranggoApp.controllers", [])
 
         Persons.get(personId).then(function(res) {
             vm.person = res.data;
-            vm.residence = res.data.temp_person_info[0].residence;
+            vm.residence = res.data.temp_person_infos[0].residence;
 
             BarangayClearances.add(personId, purpose, remarks).then(function(res) {
                 console.log(res);
@@ -660,9 +768,10 @@ angular.module("baranggoApp.controllers", [])
     var vm = this;
     vm.persons = [];
 
-    // BarangayBusinessClearances.getAll().then(function(res){
-    //     vm.listOfCertificates = res.data;
-    // })
+    CertificatesOfClosure.getAll().then(function(res) {
+        vm.listOfCertificates = res.data;
+        console.log(vm.listOfCertificates)
+    })
 
 
     Persons.getAll().then(function(res) {
@@ -697,6 +806,7 @@ angular.module("baranggoApp.controllers", [])
         console.log("Business Address: " + vm.businessAddress);
         console.log("Business Type: " + vm.businessType);
         console.log("Date Closed: " + vm.dateClosed);
+        CertificatesOfClosure.add(vm.personId, vm.businessName, vm.businessAddress, vm.businessType, vm.dateClosed)
     }
 
     $(window).on('popstate', function() {

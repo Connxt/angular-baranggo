@@ -1,4 +1,4 @@
-angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services', 'ui.router', 'smart-table', 'validation', 'validation.rule', 'angularMoment'])
+angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services', 'ui.router', 'smart-table', 'validation', 'validation.rule', 'angularMoment', '720kb.datepicker'])
 
 .config(function($urlRouterProvider, $stateProvider) {
 
@@ -33,6 +33,8 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
         controller: 'ResidenceCtrl as vm'
     })
 
+    
+
     .state('form', {
         url: '/form',
         templateUrl: 'views/form.html',
@@ -61,6 +63,36 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
         url: '/confirm',
         templateUrl: 'views/form-confirm.html',
         controller: 'FormCtrl'
+    })
+
+    .state('form-edit', {
+        url: '/form-edit',
+        templateUrl: 'views/form-edit.html',
+        controller: 'FormEditCtrl as vm'
+    })
+
+    .state('form-edit.address', {
+        url: '/address/:personId',
+        templateUrl: 'views/form-edit-address.html',
+        controller: 'FormEditCtrl'
+    })
+
+    .state('form-edit.profile', {
+        url: '/profile/:personId',
+        templateUrl: 'views/form-edit-profile.html',
+        controller: 'FormEditCtrl'
+    })
+
+    .state('form-edit.parents', {
+        url: '/parents/:personId',
+        templateUrl: 'views/form-edit-parents.html',
+        controller: 'FormEditCtrl'
+    })
+
+    .state('form-edit.confirm', {
+        url: '/confirm/:personId',
+        templateUrl: 'views/form-edit-confirm.html',
+        controller: 'FormEditCtrl'
     })
 
     .state('map', {

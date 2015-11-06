@@ -84,6 +84,7 @@
                         <table st-table="rowCollection" class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Name</th>
                                     <th>Gender</th>
                                     <th>Address</th>
@@ -93,6 +94,7 @@
                             <tbody>
 
                                 <tr ng-repeat="row in vm.persons | filter: searchKey">
+                                    <td>{{row.id}}</td>
                                     <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
                                     <td>{{row.gender}}</td>
                                     <td>Block {{row.temp_person_infos[0].residence.block_no}} Lot {{row.temp_person_infos[0].residence.lot_no}}, {{row.temp_person_infos[0].residence.street}} St., Sitio {{row.temp_person_infos[0].residence.sitio}}, {{row.temp_person_infos[0].residence.subdivision}} Subdivision, Brgy. {{row.temp_person_infos[0].residence.brgy}}, {{row.temp_person_infos[0].residence.city}} City {{row.temp_person_infos[0].residence.zip}}, {{row.temp_person_infos[0].residence.province}}</td>

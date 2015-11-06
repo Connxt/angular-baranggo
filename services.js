@@ -7,7 +7,7 @@ angular.module("baranggoApp.services", [])
 		return $http.get("api/persons", {});
 	};
 
-	self.get = function (id) {
+	self.get = function(id) {
 		return $http.get("api/person/id/" + id, {});
 	};
 

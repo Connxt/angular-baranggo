@@ -1,0 +1,35 @@
+<form name="Form">
+    <!-- <div class="form-group" ng-class="{ ' has-error': Form.residenceId.$invalid }">
+        <label for="residenceId">Please provide a valid Residence ID</label>
+        <input type="text" class="form-control" id="residenceId" name="residenceId" ng-model="person.residenceId" validator="number" no-validation-message="true">
+        number-error-message="<label class='control-label'></label>" number--success-message="Good Number" 
+    </div> -->
+    <div class="form-group" ng-class="{ ' has-error': Form.residenceId.$invalid }">
+        <label for="phone">Please provide a valid Residence ID</label>
+        <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="person.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(person.residenceId)">
+    </div>
+    
+    <!-- <p ng-hide="isEmpty(vm.foundAddress)">Found Address:</p> -->
+    <pre  ng-hide="isEmpty(vm.foundAddress)"><p>
+    Block {{vm.foundAddress.block_no}} Lot {{vm.foundAddress.lot_no}}, {{vm.foundAddress.street}} St., Sitio {{vm.foundAddress.sitio}}, {{vm.foundAddress.subdivision}} Subdivision,<br>
+    Brgy. {{vm.foundAddress.barangay}}, {{vm.foundAddress.city}} City <br>
+    {{vm.foundAddress.zip_code}}, {{vm.foundAddress.province}}</p></pre>
+
+     <pre  ng-hide="!isEmpty(vm.foundAddress)"><p>
+    Block {{person.residence.block_no}} Lot {{person.residence.lot_no}}, {{person.residence.street}} St., Sitio {{person.residence.sitio}}, {{person.residence.subdivision}} Subdivision,<br>
+    Brgy. {{person.residence.barangay}}, {{person.residence.city}} City <br>
+    {{person.residence.zip_code}}, {{person.residence.province}}</p></pre>
+
+    <!-- <p>{{person}}</p> -->
+    <div>
+        <a ui-sref="residences">New member? Get your Residence ID.</a>
+    </div>
+    <br />
+    <div class="form-group row">
+        <div class="col-xs-3 col-xs-offset-3 pull-right">
+            <button ui-sref="form-edit.profile({personId : personId})" class="btn btn-block btn-primary" ng-disabled="Form.$invalid || !Form.residenceId.$viewValue "> Next
+                <span class="fa  fa-arrow-right"></span>
+            </button>
+        </div>
+    </div>
+</form>

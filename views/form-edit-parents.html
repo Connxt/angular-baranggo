@@ -1,0 +1,132 @@
+<form role="form" name="ParentForm">
+<div class="row">
+    <div class="panel  panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><b>Father's Info</b></h4>
+        </div>
+        <p>Person : {{person}}</p>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    {{residenceId}}
+                </div>
+                <!-- /.row -->
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherFirstName.$invalid }">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" name="fatherFirstName" type="text" placeholder="Juan" ng-model="person.father_first_name" validator="required" no-validation-message="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherLastName.$invalid }">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" name="fatherLastName" type="text" placeholder="Dela Cruz" ng-model="person.father_last_name" validator="required" no-validation-message="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherMiddleName.$invalid }">
+                            <label for="fatherMiddleName">Middle Name</label>
+                            <input class="form-control" name="fatherMiddleName" type="text" placeholder="Garcia" ng-model="person.father_middle_name" validator="required" no-validation-message="true">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <!-- <input class="form-control" name="fatherDateOfBirth" ng-model="vm.person.fatherDateOfBirth" type="date"> -->
+                            <datepicker date-format="M/d/yyyy" date-set="{{person.father_date_of_birth}}">
+                                  <input ng-model="person.father_date_of_birth" class="form-control" type="text"/>
+                            </datepicker>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
+                            <label for="placeOfBirth">Place Of Birth</label>
+                            <input class="form-control" name="fatherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="vm.person.fatherPlaceOfBirth">
+                        </div>
+                    </div> -->
+                </div>
+                <!-- /.row -->
+            </div>
+        <!-- </form> -->
+    </div>
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="panel  panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><b> Mother's Info</b></h4>
+        </div>
+        <!-- <form role="form"> -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    {{residenceId}}
+                </div>
+                <!-- /.row -->
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.motherFirstName.$invalid }">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" name="motherFirstName" type="text" placeholder="Victoria" ng-model="person.mother_first_name" validator="required" no-validation-message="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.motherLastName.$invalid }">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" name="motherLastName" type="text" placeholder="Santiago" ng-model="person.mother_last_name" validator="required" no-validation-message="true">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{ ' has-error': ParentForm.motherMiddleName.$invalid }">
+                            <label for="middleName">Middle Name</label>
+                            <input class="form-control" name="motherMiddleName" type="text" placeholder="Mendoza" ng-model="person.mother_middle_name" validator="required" no-validation-message="true">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="dateOfBirth">Date of Birth</label>
+                            <!-- <input class="form-control" name="motherDateOfBirth" ng-model="vm.person.motherDateOfBirth" type="date"> -->
+                            <datepicker date-format="M/d/yyyy" date-set="{{person.mother_date_of_birth}}">
+                                  <input ng-model="person.mother_date_of_birth" class="form-control" type="text"/>
+                            </datepicker>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="placeOfBirth">Place Of Birth</label>
+                            <input class="form-control" name="motherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="vm.person.motherPlaceOfBirth">
+                        </div>
+                    </div> -->
+                </div>
+                <!-- /.row -->
+            </div>
+        
+        <hr />
+    </div>
+    <!-- /.row -->
+    <p></p>
+    <!-- <p>{{vm.person}}</p> -->
+    <br />
+    <br />
+    
+    </form>
+
+    <div class="col-xs-2 col-xs-offset-3 pull-right">
+        <a ui-sref="form-edit.confirm({personId : personId})" class="btn btn-block btn-primary">
+    Next<span class="fa  fa-arrow-right"></span>
+    </a></div>

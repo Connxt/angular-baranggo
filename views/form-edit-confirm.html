@@ -1,0 +1,124 @@
+<div class="text-center">
+    <span class="fa fa-thumbs-up"></span>
+    <h3>Almost Done!</h3>
+</div>
+<!-- <section class="invoice"> -->
+    <div class="panel box box-primary">
+        <div class="box-header with-border">
+            <h4 class="box-title">
+                          <a ng-click="isCollapsed1 = !isCollapsed1">
+                            Personal Information
+                          </a>
+                        </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed1? 'collapse':''">
+            <div class="box-body">
+                <address>
+                    Name: <strong class="text-light-blue">{{person.first_name}} {{person.middle_name.charAt(0)}}. {{person.last_name}}</strong>
+                </address>
+                <p>{{person | json}}</p>
+                <address>
+                    <!-- <strong>Admin, Inc.</strong> -->
+                    Address: <strong class="text-light-blue"> Block {{person.residence.block_no}} Lot {{person.residence.lot_no}}, {{person.residence.street}} St., Sitio {{person.residence.sitio}}, {{person.residence.subdivision}} Subdivision, Brgy. {{person.residence.barangay}}, {{person.residence.city}} City, {{person.residence.zip_code}}, {{person.residence.province}}</strong>
+                    <br> Contact #: <strong class="text-light-blue">{{person.contact_no}}</strong>
+                    <br> Email: <strong class="text-light-blue">{{person.email}}</strong>
+                    <br /> Date of birth: <strong class="text-light-blue">{{person.date_of_birth  | date:'MMMM dd, yyyy'}}</strong>
+                    <br /> Place of birth: <strong class="text-light-blue">{{person.place_of_birth}} </strong>
+                    <br /> Status: <strong class="text-light-blue">{{person.temp_person_infos[0].civil_status}}</strong>
+                    <br /> Gender: <strong class="text-light-blue">{{person.gender}}</strong>
+                    <br /> Education: <strong class="text-light-blue">{{person.temp_person_infos[0].educational_attainment}}</strong>
+                    <br />
+                    <br /> Employed? <strong class="text-light-blue">{{ person.temp_person_infos[0].is_employed == 1? 'Yes':'No'}}</strong>
+                    <br /> SSS? <strong class="text-light-blue">{{ person.temp_person_infos[0].with_sss == 1? 'Yes':'No'}}</strong>
+                    <br /> Philhealth? <strong class="text-light-blue">{{ person.temp_person_infos[0].with_philhealth == 1? 'Yes':'No'}}</strong>
+                    <br /> Voter? <strong class="text-light-blue">{{ person.temp_person_infos[0].is_voter == 1? 'Yes':'No'}}</strong>
+                    <br /> Electricity? <strong class="text-light-blue">{{ person.temp_person_infos[0].with_electricity == 1? 'Yes':'No'}}</strong>
+                </address>
+                <address>
+                </address>
+            </div>
+        </div>
+    </div>
+    <div class="panel box box-primary">
+        <div class="box-header with-border">
+            <h4 class="box-title">
+                          <a ng-click="isCollapsed2 = !isCollapsed2">
+                            Spouse Information
+                          </a>
+                        </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed2? 'collapse':''">
+            <div class="box-body">
+                <address>
+                    Name: <strong class="text-light-blue">{{person.temp_person_infos[0].spouse_first_name}} {{person.temp_person_infos[0].spouse_middle_name.charAt(0)}}. {{person.temp_person_infos[0].spouse_last_name}}</strong>
+                    <br />
+                     Date of birth: <strong class="text-light-blue">{{person.temp_person_infos[0].spouse_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
+                    <br /> Gender: <strong class="text-light-blue">{{person.temp_person_infos[0].gender}}</strong>
+                </address>
+            <h5><strong class="text-light-blue">Children</strong></h5>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="child in person.children">
+                    <td>{{child.first_name}} {{child.middle_name.charAt(0)}}. {{child.last_name}}</td>
+                    <td>{{child.date_of_birth | date:'MM/dd/yyyy'}}</td>
+                    <td>{{child.gender}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+        </div>
+    </div>
+    <div class="panel box box-primary">
+        <div class="box-header with-border">
+            <h4 class="box-title">
+                          <a ng-click="isCollapsed3 = !isCollapsed3">
+                            Parent Information
+                          </a>
+                        </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed3? 'collapse':''">
+            <div class="box-body">
+                <div class="col-md-6">
+                    <h5><strong class="text-light-blue">Father</strong></h5>
+                    <address>
+                        Name: <strong class="text-light-blue">{{person.father_first_name}} {{person.father_middle_name.charAt(0)}}. {{person.father_last_name}}</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">{{person.father_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
+                        <!-- <br /> Gender: <strong class="text-light-blue">{{person.fatherGender}}</strong> -->
+                        <br />
+                    </address>
+                </div>
+                <div class="col-md-6">
+                    <h5><strong class="text-light-blue">Mother</strong></h5>
+                    <address>
+                        Mother's Name: <strong class="text-light-blue">{{person.mother_first_name}} {{person.mother_middle_name.charAt(0)}}. {{person.mother_last_name}}</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">{{person.mother_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
+                        <!-- <br /> Gender: <strong class="text-light-blue">Male</strong> -->
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.row -->
+    <!-- this row will not appear when printing -->
+
+    <br />
+    <!-- <p>
+        {{person | json}}
+    </p> -->
+    <br />
+
+    <div class="row no-print">
+        <div class="col-xs-12">
+            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+            <button class="btn btn-success pull-right" ng-click="vm.save()"><i class="fa fa-check"></i>Submit Form</button>
+            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+        </div>
+    </div>

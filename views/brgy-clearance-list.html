@@ -80,7 +80,7 @@
     </div>
     <div ui-view></div>
     
-    <modal title="List Of Persons" visible="showListOfPersons">
+    <modal title="List Of Persons" visible="showModal">
 
         <div class="col-md-4">
             <div class="input-group input-group-md add-on">
@@ -107,6 +107,7 @@
                         <table st-table="rowCollection" class="table table-striped" >
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Name</th>
                                     <th>Gender</th>
                                     <th>Address</th>   
@@ -115,6 +116,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="row in vm.persons | filter: searchKey">
+                                    <td>{{row.id}}</td>
                                     <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
                                     <td>{{row.gender}}</td>
                                     <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.brgy}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>

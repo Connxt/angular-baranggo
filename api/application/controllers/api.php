@@ -92,6 +92,7 @@ class Api extends REST_Controller {
 				$temp_info->residence->barangay = $barangay->barangay;
 				$temp_info->residence->city_id = $city->id;
 				$temp_info->residence->city = $city->city;
+				$temp_info->residence->zip_code = $city->zip_code;
 				$temp_info->residence->province_id = $province->id;
 				$temp_info->residence->province = $province->province;
 			}
