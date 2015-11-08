@@ -39,7 +39,7 @@ angular.module("baranggoApp.services", [])
 			civilStatus: civilStatus,
 			religion: religion,
 			annualIncome: fatherDateOfBirth,
-			educationalAttainment: College,
+			educationalAttainment: educationalAttainment,
 			isEmployed: isEmployed,
 			isVoter: isVoter,
 			isDeceased: 0, // should not be changed
@@ -53,7 +53,7 @@ angular.module("baranggoApp.services", [])
 			spouseGender: spouseGender,
 			spouseDateOfBirth: spouseDateOfBirth,
 			residenceId: residenceId,
-			siblings: sibings,
+			siblings: siblings,
 			// [
 			// 	{
 			// 		id: 10,

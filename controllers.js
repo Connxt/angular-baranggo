@@ -85,7 +85,6 @@ angular.module("baranggoApp.controllers", [])
     })
 
 
-
     // var persons = Persons.getAll();
     // console.log(persons);
 
@@ -104,6 +103,15 @@ angular.module("baranggoApp.controllers", [])
     $scope.toggleEditCensus = function() {
         $scope.showEditCensus = !$scope.showEditCensus;
     };
+
+    // Delete person
+    $scope.deletePerson = function() {
+        Persons.getAll().then(function(res) {
+        var persons = JSON.stringify(res);
+        vm.persons = res.data;
+        console.log(res.data)
+    })
+    }
 
     //
     vm.rowCollection = [{
@@ -263,6 +271,23 @@ angular.module("baranggoApp.controllers", [])
     var vm = this;
 
     vm.childrenToBeRemoved = [];
+    vm.childrenToBeAdded = [];
+
+
+    // if (!$scope.isEmpty($stateParams)) {
+    console.log("StateParams: " + JSON.stringify($stateParams));
+    $scope.personId = $stateParams.personId;
+    $scope.person = {};
+    $scope.person.children = [];
+
+    vm.residences = [];
+    vm.foundAddress = {}
+    vm.person = {};
+    // vm.person.residenceId = 1;
+    vm.person.children = [];
+    vm.person.siblings = [];
+
+    $scope.isCollapsed = false;
 
     $scope.isEmpty = function(obj) {
         for (var prop in obj) {
@@ -272,101 +297,125 @@ angular.module("baranggoApp.controllers", [])
         return true;
     };
 
-    // if (!$scope.isEmpty($stateParams)) {
-        console.log("StateParams: " + JSON.stringify($stateParams));
-        $scope.personId = $stateParams.personId;
-        $scope.person = {};
-        $scope.person.children = [];
-
-        vm.residences = [];
-        vm.foundAddress = {}
-        vm.person = {};
-        // vm.person.residenceId = 1;
-        vm.person.children = [];
-        vm.person.siblings = [];
-
-        // Read Residence
-        vm.getAllResidence = function() {
-            console.log("1");
-            Residences.getAll().then(function(res) {
-                // console.log(res.data);
-                vm.residences = res.data;
-            })
-        }
-        vm.getAllResidence();
-
-        vm.findAddress = function(residenceId) {
-            console.log("Residence: " + residenceId);
-            console.log("3");
-            // console.log(vm.residences.length);
-            for (var i = 0; i < vm.residences.length; i++) {
-                if (vm.residences[i].id == residenceId) {
-                    console.log("Found: " + vm.residences[i]);
-                    vm.foundAddress = vm.residences[i];
-                    $scope.person.residence = vm.foundAddress;
-                    // console.log($scope.person.residence);
-                    var fmt = JSON.stringify(vm.foundAddress);
-                    console.log(fmt);
-                    break;
-                } else {
-                    console.log("Not Found");
-                    vm.foundAddress = {};
-                }
-            };
-        }
-
-        Persons.get($scope.personId).then(function(res) {
-            $scope.person = res.data;
-            // console.log("Persons" + JSON.stringify($scope.person));
-            var residence = res.data.temp_person_infos[0].residence;
-            $scope.person.residence =  res.data.temp_person_infos[0].residence;
-             $scope.person.residenceId = residence.id;
-
-            console.log("2: Zip: "  + JSON.stringify(res.data.temp_person_infos[0].residence));
-            vm.findAddress(residence.id);
-
-            // $scope.person.residenceId = res.data.temp_person_infos[0].residence.id;
+    // Read Residence
+    vm.getAllResidence = function() {
+        console.log("1");
+        Residences.getAll().then(function(res) {
+            // console.log(res.data);
+            vm.residences = res.data;
         })
+    }
+    vm.getAllResidence();
+
+    vm.findAddress = function(residenceId) {
+        console.log("Residence: " + residenceId);
+        console.log("3");
+        // console.log(vm.residences.length);
+        for (var i = 0; i < vm.residences.length; i++) {
+            if (vm.residences[i].id == residenceId) {
+                console.log("Found: " + vm.residences[i]);
+                vm.foundAddress = vm.residences[i];
+                $scope.person.residence = vm.foundAddress;
+                // console.log($scope.person.residence);
+                var fmt = JSON.stringify(vm.foundAddress);
+                console.log(fmt);
+                break;
+            } else {
+                console.log("Not Found");
+                vm.foundAddress = {};
+            }
+        };
+    }
+
+    Persons.get($scope.personId).then(function(res) {
+        $scope.person = res.data;
+        // console.log("Persons" + JSON.stringify($scope.person));
+        var residence = res.data.temp_person_infos[0].residence;
+        $scope.person.residence = res.data.temp_person_infos[0].residence;
+        $scope.person.residenceId = residence.id;
+        vm.person.children = res.data.children;
+        vm.findAddress(residence.id);
+        // $scope.person.residenceId = res.data.temp_person_infos[0].residence.id;
+    })
 
 
-        $scope.isCollapsed = false;
+    $scope.getDate = function(date) {
+        var d = date;
+        console.log(d);
+        var d1 = d.split('-');
+        var d2 = new Date(d1[0], d1[1] - 1, d1[2]);
+        $scope.myDate = d2;
+    }
 
-        $scope.getDate = function(date) {
-            var d = date;
-            console.log(d);
-            var d1 = d.split('-');
-            var d2 = new Date(d1[0], d1[1] - 1, d1[2]);
+    vm.addChild = function(child) {
+        child.id = new Date().getTime();
+        vm.person.children.push(child);
+        vm.childrenToBeAdded.push(child);
+        console.log("Children from scope" + JSON.stringify(vm.person.children));
+    }
 
-            $scope.myDate  = d2;
-        }
+    vm.update = function(person) {
+        console.log(JSON.stringify(person));
+        var updatePerson = person;
 
+        console.log("Personal Info : " + JSON.stringify(vm.person));
+        // console.log("Personal Info non JSON : " + vm.person);
+        vm.person.isEmployed = vm.person.isEmployed == 'Yes' ? 1 : 0;
+        vm.person.withSSS = vm.person.withSSS == 'Yes' ? 1 : 0;
+        vm.person.withPhilhealth = vm.person.withPhilhealth == 'Yes' ? 1 : 0;
+        vm.person.isVoter = vm.person.isVoter == 'Yes' ? 1 : 0;
+        vm.person.withElectricity = vm.person.withElectricity == 'Yes' ? 1 : 0;
 
-        vm.addChild = function(child) {
-            child.id = new Date().getTime();
-            vm.person.children.push(child);
-            console.log(vm.person.children);
-        }
+        Persons.update(person.id,
+            person.last_name,
+            person.first_name,
+            person.middle_name,
+            person.date_of_birth,
+            person.place_of_birth,
+            person.gender,
+            person.mother_last_name,
+            person.mother_first_name,
+            person.mother_middle_name,
+            person.mother_date_of_birth,
+            person.father_last_name,
+            person.father_first_name,
+            person.father_middle_name,
+            person.father_date_of_birth,
+            person.contact_no,
+            person.email,
+            person.temp_person_infos[0].civil_status,
+            'religion',
+            'annual income',
+            person.educational_attainment,
+            person.temp_person_infos[0].is_employed,
+            person.temp_person_infos[0].is_voter,
+            'deceased',
+            person.temp_person_infos[0].with_philhealth,
+            person.temp_person_infos[0].with_sss,
+            person.temp_person_infos[0].with_electricity,
+            'water',
+            person.temp_person_infos[0].spouse_last_name,
+            person.temp_person_infos[0].spouse_first_name,
+            person.temp_person_infos[0].spouse_middle_name,
+            person.temp_person_infos[0].spouse_gender,
+            person.temp_person_infos[0].spouse_date_of_birth,
+            person.residenceId, [], [], [],
+            person.children,
+            vm.childrenToBeAdded,
+            vm.childrenToBeRemoved
 
-        vm.save = function() {
-            console.log("Personal Info : " + JSON.stringify(vm.person));
-            // console.log("Personal Info non JSON : " + vm.person);
-            vm.person.isEmployed = vm.person.isEmployed == 'Yes' ? 1 : 0;
-            vm.person.withSSS = vm.person.withSSS == 'Yes' ? 1 : 0;
-            vm.person.withPhilhealth = vm.person.withPhilhealth == 'Yes' ? 1 : 0;
-            vm.person.isVoter = vm.person.isVoter == 'Yes' ? 1 : 0;
-            vm.person.withElectricity = vm.person.withElectricity == 'Yes' ? 1 : 0;
+        ).then(function(res) {
+            console.log(res);
+        });
+    }
 
-            Persons.add(vm.person).then(function(res) {
-                console.log(res);
-            });
-        }
-
-        vm.delete = function(id) {
+    vm.delete = function(child) {
             // console.log(index);
+            console.log(JSON.stringify(child));
             vm.childrenToBeRemoved.push(id);
             console.log("Delete: " + JSON.stringify(vm.childrenToBeRemoved));
         }
-    // }
+        // }
 }])
 
 .controller('MapCtrl', ['$scope', function($scope) {

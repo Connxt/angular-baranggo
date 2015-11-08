@@ -43,7 +43,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Civil Status</label>
-                                <select class="form-control" ng-model="vm.person.civilStatus" ng-init="vm.person.civilStatus='Single'">
+                                <select class="form-control" ng-model="person.temp_person_infos[0].civil_status">
                                     <option ng-selected="person.temp_person_infos[0].civil_status=='Single'?true:false">Single</option>
                                     <option ng-selected="person.temp_person_infos[0].civil_status=='Married'?true:false">Married</option>
                                     <option ng-selected="person.temp_person_infos[0].civil_status=='Widowed'?true:false">Widowed</option>
@@ -55,7 +55,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="vm.person.gender" ng-init="vm.person.gender='Male'">
+                                <select class="form-control" ng-model="person.gender">
                                     <option ng-selected="person.gender=='Male'?true:false">Male</option>
                                     <option ng-selected="person.gender=='Female'?true:false">Female</option>
                                 </select>
@@ -119,7 +119,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you employed?</label>
-                                <select class="form-control" ng-model="person.is_employed" >
+                                <select class="form-control" ng-model="person.temp_person_infos[0].is_employed" >
                                     <option ng-selected="person.temp_person_infos[0].is_employed==1?true:false">Yes</option>
                                     <option ng-selected="person.temp_person_infos[0].is_employed==0?true:false">No</option>
                                 </select>
@@ -129,7 +129,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have SSS?</label>
-                                <select class="form-control" ng-model="person.with_sss">
+                                <select class="form-control" ng-model="person.temp_person_infos[0].with_sss">
                                     <option ng-selected="person.temp_person_infos[0].with_sss==1?true:false">Yes</option>
                                     <option ng-selected="person.temp_person_infos[0].with_sss==0?true:false">No</option>
                                 </select>
@@ -171,7 +171,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have PhilHealth?</label>
-                                <select class="form-control" ng-model="person.with_philhealth">
+                                <select class="form-control" ng-model="person.temp_person_infos[0].with_philhealth">
                                     <option ng-selected="person.temp_person_infos[0].with_philhealth==1?true:false">Yes</option>
                                     <option ng-selected="person.temp_person_infos[0].with_philhealth==0?true:false">No</option>
                                 </select>
@@ -182,7 +182,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you a voter?</label>
-                                <select class="form-control" ng-model="person.is_voter">
+                                <select class="form-control" ng-model="person.temp_person_infos[0].is_voter">
                                     <option ng-selected="person.temp_person_infos[0].is_voter==1?true:false">Yes</option>
                                     <option ng-selected="person.temp_person_infos[0].is_voter==0?true:false">No</option>
                                 </select>
@@ -193,7 +193,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have electricity?</label>
-                                <select class="form-control" ng-model="vm.person.with_electricity">
+                                <select class="form-control" ng-model="person.temp_person_infos[0].with_electricity">
                                     <option ng-selected="person.temp_person_infos[0].with_electricity==1?true:false">Yes</option>
                                     <option ng-selected="person.temp_person_infos[0].with_electricity==0?true:false">No</option>
                                 </select>
@@ -254,7 +254,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="person.gender">
+                                <select class="form-control" ng-model="person.temp_person_infos[0].spouse_gender">
                                     <option ng-selected="person.temp_person_infos[0].spouse_gender=='Male'?true:false">Male</option>
                                     <option ng-selected="person.temp_person_infos[0].spouse_gender=='Female'?true:false">Female</option>
                                 </select>
@@ -297,21 +297,21 @@
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': ChildForm.childFirstName.$invalid }">
                                 <label for="firstName">First Name</label>
-                                <input class="form-control" name="childFirstName" id="childFirstName" type="text" placeholder="Joselito" ng-model="vm.child.firstName" validator="required" no-validation-message="true">
+                                <input class="form-control" name="childFirstName" id="childFirstName" type="text" placeholder="Joselito" ng-model="vm.child.first_name" validator="required" no-validation-message="true">
                                 
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': ChildForm.childLastName.$invalid }">
                                 <label for="lastName">Last Name</label>
-                                <input class="form-control" name="childLastName" id="childLastName" type="text" placeholder="Dela Cruz" ng-model="vm.child.lastName" validator="required" no-validation-message="true">
+                                <input class="form-control" name="childLastName" id="childLastName" type="text" placeholder="Dela Cruz" ng-model="vm.child.last_name" validator="required" no-validation-message="true">
                                 
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': ChildForm.childMiddleName.$invalid }">
                                 <label for="middleName">Middle Name</label>
-                                <input class="form-control" name="childMiddleName" id="childMiddleName" type="text" placeholder="Lopez" ng-model="vm.child.middleName" validator="required" no-validation-message="true">
+                                <input class="form-control" name="childMiddleName" id="childMiddleName" type="text" placeholder="Lopez" ng-model="vm.child.middle_name" validator="required" no-validation-message="true">
                               
                             </div>
                         </div>
@@ -332,7 +332,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="dateOfBirth">Date of Birth</label>
-                                <input class="form-control" id="child.dateOfBirth" type="date" ng-model="vm.child.dateOfBirth" name="child.dateOfBirth">
+                                <input class="form-control" id="child.date_of_birth" type="date" ng-model="vm.child.date_of_birth" name="child.dateOfBirth">
                                 
                             </div>
                         </div>
@@ -379,11 +379,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="child in person.children">
+                            <p>{{vm.person.children}}</p>
+                                <tr ng-repeat="child in vm.person.children">
                                     <td>{{child.first_name}}</td>
                                     <td>{{child.last_name}}</td>
                                     <td>{{child.middle_name}}</td>
-                                    <td>{{child.date_of_birth | date:'MM/dd/yyyy'}}</td>
+                                    <td>{{child.date_of_birth | amDateFormat:'MM/DD/YYYY'}}</td>
                                     <td>{{child.gender}}</td>
                                     <td>
                                        <!--  <button type="button" ng-click="" class="btn btn-sm btn-success">
@@ -394,7 +395,7 @@
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         &nbsp; -->
-                                        <button type="button" ng-click="vm.delete(child.id); person.children.splice(index, 1)" class="btn btn-sm btn-danger">
+                                        <button type="button" ng-click="vm.delete(child); person.children.splice(index, 1)" class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     </td>
