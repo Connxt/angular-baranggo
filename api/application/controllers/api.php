@@ -635,6 +635,7 @@ class Api extends REST_Controller {
 			$this->post('personId'),
 			$this->post('businessName'),
 			$this->post('businessAddress'),
+			$this->post('businessType'),
 			$this->post('dateClosed')
 		);
 

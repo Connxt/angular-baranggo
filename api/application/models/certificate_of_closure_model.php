@@ -13,11 +13,12 @@ class Certificate_Of_Closure_Model extends CI_Model {
 		return $this->db->query('SELECT * FROM certificates_of_closure WHERE id=' . $id)->row();
 	}
 
-	function add($person_id, $business_name, $business_address, $date_closed) {
+	function add($person_id, $business_name, $business_address, $business_type, $date_closed) {
 		$this->db->insert('certificates_of_closure', array(
 			'person_id' => $person_id,
 			'business_name' => $business_name,
 			'business_address' => $business_address,
+			'business_type' => $business_type,
 			'date_closed' => $date_closed,
 			'date_issued' => date('Y-m-d H:i:s'),
 			'created_at' => date('Y-m-d H:i:s')
