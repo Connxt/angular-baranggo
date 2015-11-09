@@ -93,7 +93,7 @@ angular.module("baranggoApp.services", [])
 			// 		dateOfBirth: "1992-10-07"
 			// 	}
 			// ]
-			childrenToBeAdded: childrenToBeRemoved,
+			childrenToBeAdded: childrenToBeAdded,
 			// [
 			// 	{
 			// 		lastName: "lastName",
