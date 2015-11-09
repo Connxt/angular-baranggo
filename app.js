@@ -1,4 +1,4 @@
-angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services', 'ui.router', 'smart-table', 'validation', 'validation.rule', 'angularMoment', '720kb.datepicker', 'ui.bootstrap', 'angular-confirm'])
+angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services', 'ui.router', 'smart-table', 'validation', 'validation.rule', 'angularMoment', 'ui.bootstrap', 'angular-confirm'])
 
 .config(function($urlRouterProvider, $stateProvider) {
 

@@ -15,9 +15,7 @@
                     </div>
                     <!-- /.row -->
                     <br>
-                    
                     <p>Please fill all the required (*) fields.</p>
-
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': Form.firstName.$invalid }">
@@ -65,46 +63,37 @@
                         <div class="col-md-3">
                             <div class="form-group" ng-class="{ ' has-error': Form.lastName.$invalid }">
                                 <label for="placeOfBirth">Place of Birth</label>
-                                <input type="text" class="form-control" id="placeOfBirth" ng-model="person.place_of_birth"  placeholder="Kabankalan City" validator="required" no-validation-message="true">
+                                <input type="text" class="form-control" id="placeOfBirth" ng-model="person.place_of_birth" placeholder="Kabankalan City" validator="required" no-validation-message="true">
                             </div>
                         </div>
-                        <!-- {{person.date_of_birth}} -->
-                        <!-- <button ng-click="getDate(person.date_of_birth)">Date is {{myDate}}</button> -->
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="dateOfBirth">Date of Birth</label>
-                                <!-- <input class="form-control" id="vm.person.dateOfBirth"  ng-model="myDate" type="date"> -->
-                                <datepicker date-format="M/d/yyyy" date-set="{{person.date_of_birth}}">
-                                  <input ng-model="person.date_of_birth" class="form-control" type="text"/>
-                                </datepicker>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.date_of_birth" is-open="opened1" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened1')"><i class="fa  fa-calendar"></i></button>
+                                  </span>
+                                </div>
+                                <!-- /input-group -->
                             </div>
                         </div>
-
                     </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group" ng-class="{ ' has-error': Form.contactNo.$invalid }">
                                 <label for="contactNo">Phone</label>
-                                <input class="form-control" name="contactNo" id="contactNo" type="text"
-                                ng-model="person.contact_no" 
-                                placeholder="09123456789"
-                                validator="number"
-                                no-validation-message="true">
+                                <input class="form-control" name="contactNo" id="contactNo" type="text" ng-model="person.contact_no" placeholder="09123456789" validator="number" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group" ng-class="{ ' has-error': Form.email.$invalid }">
                                 <label for="email">Email</label>
-                                <input class="form-control" name="email" id="email" type="text"
-                                ng-model="person.email"
-                                placeholder="you@company.com"
-                                validator="email" no-validation-message="true">
+                                <input class="form-control" name="email" id="email" type="text" ng-model="person.email" placeholder="you@company.com" validator="email" no-validation-message="true">
                             </div>
                         </div>
-                    </div><!-- /.row -->
-
-
+                    </div>
+                    <!-- /.row -->
                     <!-- /.row -->
                     <!-- <div class="row">
                         <div class="col-md-12">
@@ -119,7 +108,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you employed?</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].is_employed" >
+                                <select class="form-control" ng-model="person.temp_person_infos[0].is_employed">
                                     <option ng-selected="person.temp_person_infos[0].is_employed==1?true:false">Yes</option>
                                     <option ng-selected="person.temp_person_infos[0].is_employed==0?true:false">No</option>
                                 </select>
@@ -141,23 +130,15 @@
                             <div class="form-group">
                                 <label>Highest educational attainment</label>
                                 <select class="form-control" ng-model="person.educational_attainment">
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='Elementary Graduate'?true:false">Elementary Graduate</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='Elementary Undergraduate'?true:false">Elementary Undergraduate</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='High School Graduate'?true:false">High School Graduate</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='College Graduate'?true:false">College Graduate</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='College Undergraduate'?true:false">College Undergraduate</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='Vocational'?true:false">Vocational</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='No Formal Education'?true:false">No Formal Education</option>
-
-                                    <option  ng-selected="person.temp_person_infos[0].educational_attainment=='Post Graduate'?true:false">Post Graduate</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Elementary Graduate'?true:false">Elementary Graduate</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Elementary Undergraduate'?true:false">Elementary Undergraduate</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='High School Graduate'?true:false">High School Graduate</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='College Graduate'?true:false">College Graduate</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='College Undergraduate'?true:false">College Undergraduate</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Vocational'?true:false">Vocational</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='No Formal Education'?true:false">No Formal Education</option>
+                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Post Graduate'?true:false">Post Graduate</option>
                                 </select>
-                                
                             </div>
                             <!-- <p>{{vm.person.educationalAttainment}}</p> -->
                         </div>
@@ -265,129 +246,129 @@
                             <div class="form-group">
                                 <label for="spouseDateOfBirth">Date of Birth</label>
                                 <!-- <input class="form-control" ng-model="vm.person.spouseDateOfBirth" type="date"> -->
-                                <datepicker date-format="M/d/yyyy" date-set="{{person.temp_person_infos[0].spouse_date_of_birth}}">
+                                <!--  <datepicker date-format="M/d/yyyy" date-set="{{person.temp_person_infos[0].spouse_date_of_birth}}">
                                   <input ng-model="person.temp_person_infos[0].spouse_date_of_birth" class="form-control" type="text"/>
-                                </datepicker>
+                                </datepicker> -->
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.temp_person_infos[0].spouse_date_of_birth" is-open="opened2" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened2')"><i class="fa  fa-calendar"></i></button>
+                                  </span>
+                                </div>
+                                <!-- /input-group -->
                             </div>
                         </div>
+                        <!-- /.row -->
                     </div>
-                    <!-- /.row -->
-                </div>
             </form>
-        </div>
-    </div>
-    <!-- /.row -->
-    <div class="row">
-        <div class="panel  panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title"><b>Children Info</b></h4>
             </div>
-            <form role="form" name="ChildForm">
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-                        {{residenceId}}
-                    </div>
-                    <!-- /.row -->
-                    <br>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group" ng-class="{ ' has-error': ChildForm.childFirstName.$invalid }">
-                                <label for="firstName">First Name</label>
-                                <input class="form-control" name="childFirstName" id="childFirstName" type="text" placeholder="Joselito" ng-model="vm.child.first_name" validator="required" no-validation-message="true">
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group" ng-class="{ ' has-error': ChildForm.childLastName.$invalid }">
-                                <label for="lastName">Last Name</label>
-                                <input class="form-control" name="childLastName" id="childLastName" type="text" placeholder="Dela Cruz" ng-model="vm.child.last_name" validator="required" no-validation-message="true">
-                                
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group" ng-class="{ ' has-error': ChildForm.childMiddleName.$invalid }">
-                                <label for="middleName">Middle Name</label>
-                                <input class="form-control" name="childMiddleName" id="childMiddleName" type="text" placeholder="Lopez" ng-model="vm.child.middle_name" validator="required" no-validation-message="true">
-                              
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label>Gender</label>
-                                <select class="form-control" ng-model="vm.child.gender" id="child.gender" ng-init="vm.child.gender='Male'">
-                               <option ng-selected="true">Male</option>
-                                    <option>Female</option>
-                                </select>
-                            </div>
-                             <!-- <p>{{vm.child.gender}}</p> -->
-                            
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="dateOfBirth">Date of Birth</label>
-                                <input class="form-control" id="child.date_of_birth" type="date" ng-model="vm.child.date_of_birth" name="child.dateOfBirth">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                    <div class="col-xs-2 col-xs-offset-3 pull-right">
-                        <button class="btn btn-block btn-primary" ng-click="vm.addChild(vm.child); vm.child={}" ng-disabled="ChildForm.$invalid || !ChildForm.$dirty">Add</button>
-                    </div>
-                    
-                </div>
-            </form>
         </div>
-        <!-- box-body -->
-    </div>
-    <!-- /.row -->
-    <br />
-    <div class="callout callout-info" ng-hide="vm.person.children.length>0">
-        <h4>No children added yet.</h4>
-        <p>To add new children, fillup the form above and click the "Add" button.</p>
-    </div>
-    <hr />
-    <!-- <p>{{vm.person.children}}</p> -->
-    <!-- <p>{{Form.child.firstName.$untouched}}</p> -->
-    <div class="row">
-        <b><h3>List of children</h3></b>
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
+        <!-- /.row -->
+        <div class="row">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><b>Children Info</b></h4>
                 </div>
-                <!-- /.box-header -->
-                <div class="box-title">
-                </div>
-                <!-- /.box-title -->
-                <div class="box-body">
-                    <div class="col-md-11">
-                        <table st-table="rowCollection" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Middle Name</th>
-                                    <th>Date Of Birth</th>
-                                    <th>Gender</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <p>{{vm.person.children}}</p>
-                                <tr ng-repeat="child in vm.person.children">
-                                    <td>{{child.first_name}}</td>
-                                    <td>{{child.last_name}}</td>
-                                    <td>{{child.middle_name}}</td>
-                                    <td>{{child.date_of_birth | amDateFormat:'MM/DD/YYYY'}}</td>
-                                    <td>{{child.gender}}</td>
-                                    <td>
-                                       <!--  <button type="button" ng-click="" class="btn btn-sm btn-success">
+                <form role="form" name="ChildForm">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            {{residenceId}}
+                        </div>
+                        <!-- /.row -->
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{ ' has-error': ChildForm.childFirstName.$invalid }">
+                                    <label for="firstName">First Name</label>
+                                    <input class="form-control" name="childFirstName" id="childFirstName" type="text" placeholder="Joselito" ng-model="vm.child.first_name" validator="required" no-validation-message="true">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{ ' has-error': ChildForm.childLastName.$invalid }">
+                                    <label for="lastName">Last Name</label>
+                                    <input class="form-control" name="childLastName" id="childLastName" type="text" placeholder="Dela Cruz" ng-model="vm.child.last_name" validator="required" no-validation-message="true">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group" ng-class="{ ' has-error': ChildForm.childMiddleName.$invalid }">
+                                    <label for="middleName">Middle Name</label>
+                                    <input class="form-control" name="childMiddleName" id="childMiddleName" type="text" placeholder="Lopez" ng-model="vm.child.middle_name" validator="required" no-validation-message="true">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select class="form-control" ng-model="vm.child.gender" id="child.gender" ng-init="vm.child.gender='Male'">
+                                        <option ng-selected="true">Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                                <!-- <p>{{vm.child.gender}}</p> -->
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="dateOfBirth">Date of Birth</label>
+                                    <input class="form-control" id="child.date_of_birth" type="date" ng-model="vm.child.date_of_birth" name="child.dateOfBirth">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <div class="col-xs-2 col-xs-offset-3 pull-right">
+                            <button class="btn btn-block btn-primary" ng-click="vm.addChild(vm.child); vm.child={}" ng-disabled="ChildForm.$invalid || !ChildForm.$dirty">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- box-body -->
+        </div>
+        <!-- /.row -->
+        <br />
+        <div class="callout callout-info" ng-hide="vm.person.children.length>0">
+            <h4>No children added yet.</h4>
+            <p>To add new children, fillup the form above and click the "Add" button.</p>
+        </div>
+        <hr />
+        <!-- <p>{{vm.person.children}}</p> -->
+        <!-- <p>{{Form.child.firstName.$untouched}}</p> -->
+        <div class="row">
+            <b><h3>List of children</h3></b>
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-title">
+                    </div>
+                    <!-- /.box-title -->
+                    <div class="box-body">
+                        <div class="col-md-11">
+                            <table st-table="rowCollection" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Middle Name</th>
+                                        <th>Date Of Birth</th>
+                                        <th>Gender</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <p>{{vm.person.children}}</p>
+                                    <tr ng-repeat="child in vm.person.children">
+                                        <td>{{child.first_name}}</td>
+                                        <td>{{child.last_name}}</td>
+                                        <td>{{child.middle_name}}</td>
+                                        <td>{{child.date_of_birth | amDateFormat:'MM/DD/YYYY'}}</td>
+                                        <td>{{child.gender}}</td>
+                                        <td>
+                                            <!--  <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                         &nbsp;
@@ -395,29 +376,27 @@
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         &nbsp; -->
-                                        <button type="button" ng-click="vm.delete(child); person.children.splice(index, 1)" class="btn btn-sm btn-danger">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <button type="button" ng-click="vm.delete(child); person.children.splice(index, 1)" class="btn btn-sm btn-danger">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
+                <!-- /.box -->
             </div>
-            <!-- /.box -->
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-    <br />
-    <br />
-    <div class="col-xs-2 col-xs-offset-3 pull-right">
-    <button ui-sref="form-edit.parents({personId : personId})" class="btn btn-block btn-primary" ng-disabled="Form.$invalid || !Form.$dirty"> Next
-            <span class="fa  fa-arrow-right"></span>
-        </button>
-
-        
-    </div>
+        <!-- /.row -->
+        <br />
+        <br />
+        <div class="col-xs-2 col-xs-offset-3 pull-right">
+            <button ui-sref="form-edit.parents({personId : personId})" class="btn btn-block btn-primary" ng-disabled=""> Next
+                <span class="fa  fa-arrow-right"></span>
+            </button>
+        </div>
 </form>

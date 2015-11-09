@@ -270,6 +270,15 @@ angular.module("baranggoApp.controllers", [])
 
     var vm = this;
 
+     $scope.open = function($event,opened) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope[opened] = true;
+  };
+
+    
+
     vm.childrenToBeRemoved = [];
     vm.childrenToBeAdded = [];
 
@@ -385,15 +394,15 @@ angular.module("baranggoApp.controllers", [])
             person.email,
             person.temp_person_infos[0].civil_status,
             'religion',
-            'annual income',
+            '0',
             person.educational_attainment,
             person.temp_person_infos[0].is_employed,
             person.temp_person_infos[0].is_voter,
-            'deceased',
+            '0',
             person.temp_person_infos[0].with_philhealth,
             person.temp_person_infos[0].with_sss,
             person.temp_person_infos[0].with_electricity,
-            'water',
+            '0',
             person.temp_person_infos[0].spouse_last_name,
             person.temp_person_infos[0].spouse_first_name,
             person.temp_person_infos[0].spouse_middle_name,

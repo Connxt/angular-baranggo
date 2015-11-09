@@ -41,9 +41,17 @@
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
                             <label for="dateOfBirth">Date of Birth</label>
                             <!-- <input class="form-control" name="fatherDateOfBirth" ng-model="vm.person.fatherDateOfBirth" type="date"> -->
-                            <datepicker date-format="M/d/yyyy" date-set="{{person.father_date_of_birth}}">
+                            <!-- <datepicker date-format="M/d/yyyy" date-set="{{person.father_date_of_birth}}">
                                   <input ng-model="person.father_date_of_birth" class="form-control" type="text"/>
-                            </datepicker>
+                            </datepicker> -->
+
+                            <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.father_date_of_birth" is-open="opened3" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened3')"><i class="fa  fa-calendar"></i></button>
+                                  </span>
+                                </div><!-- /input-group -->
                         </div>
                     </div>
                     <!-- <div class="col-md-3">
@@ -101,9 +109,17 @@
                         <div class="form-group">
                             <label for="dateOfBirth">Date of Birth</label>
                             <!-- <input class="form-control" name="motherDateOfBirth" ng-model="vm.person.motherDateOfBirth" type="date"> -->
-                            <datepicker date-format="M/d/yyyy" date-set="{{person.mother_date_of_birth}}">
+                            <!-- <datepicker date-format="M/d/yyyy" date-set="{{person.mother_date_of_birth}}">
                                   <input ng-model="person.mother_date_of_birth" class="form-control" type="text"/>
-                            </datepicker>
+                            </datepicker> -->
+
+                            <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.mother_date_of_birth" is-open="opened4" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened4')"><i class="fa  fa-calendar"></i></button>
+                                  </span>
+                                </div><!-- /input-group -->
                         </div>
                     </div>
                     <!-- <div class="col-md-3">
