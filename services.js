@@ -38,7 +38,7 @@ angular.module("baranggoApp.services", [])
 			email: email,
 			civilStatus: civilStatus,
 			religion: religion,
-			annualIncome: fatherDateOfBirth,
+			annualIncome: annualIncome,
 			educationalAttainment: educationalAttainment,
 			isEmployed: isEmployed,
 			isVoter: isVoter,
