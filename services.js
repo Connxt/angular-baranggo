@@ -114,6 +114,10 @@ angular.module("baranggoApp.services", [])
 		});
 	};
 
+	self.delete = function (id) {
+		return $http.delete("http://localhost/angular-baranggo/api/person/" + id, {});
+	}
+
 	return self;
 })
 

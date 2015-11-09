@@ -269,6 +269,10 @@ class Api extends REST_Controller {
 		$this->response($person);
 	}
 
+	public function person_delete($id) {
+		$this->response($this->person_model->delete($id));
+	}
+
 	/**
 	 * Residences
 	 */
