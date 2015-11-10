@@ -220,7 +220,7 @@ class Api extends REST_Controller {
 			$this->put('residenceId')
 		);
 
-		$siblings = $this->post('siblings');
+		$siblings = $this->put('siblings');
 		foreach($siblings as $sibling) {
 			$this->sibling_model->update(
 				$sibling['id'],
@@ -232,7 +232,7 @@ class Api extends REST_Controller {
 			);
 		}
 
-		$siblings_to_be_added = $this->post('siblingsToBeAdded');
+		$siblings_to_be_added = $this->put('siblingsToBeAdded');
 		foreach($siblings_to_be_added as $sibling) {
 			$this->sibling_model->add(
 				$person_id,
@@ -244,12 +244,12 @@ class Api extends REST_Controller {
 			);
 		}
 
-		$siblings_to_be_removed = $this->post('siblingsToBeRemoved');
+		$siblings_to_be_removed = $this->put('siblingsToBeRemoved');
 		foreach($siblings_to_be_removed as $sibling) {
 			$this->sibling_model->delete($sibling);
 		}
 
-		$children = $this->post('children');
+		$children = $this->put('children');
 		foreach($children as $child) {
 			$this->child_model->add(
 				$person_id,
@@ -267,6 +267,10 @@ class Api extends REST_Controller {
 		$person->children = $this->child_model->get_by_person_id($person->id);
 
 		$this->response($person);
+	}
+
+	public function person_delete($id) {
+		$this->response($this->person_model->delete($id));
 	}
 
 	/**

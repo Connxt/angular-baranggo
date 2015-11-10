@@ -318,6 +318,17 @@ angular.module("baranggoApp.controllers", [])
         vm.person.isVoter = vm.person.isVoter == 'Yes' ? 1 : 0;
         vm.person.withElectricity = vm.person.withElectricity == 'Yes' ? 1 : 0;
 
+        var childrenToBeUpdated = [];
+        for(var i = 0; i < person.children.length; i++) {
+            childrenToBeUpdated.push({
+                lastName: person.children[i].last_name,
+                firstName: person.children[i].first_name,
+                middleName: person.children[i].middle_name,
+                gender: person.children[i].gender,
+                dateOfBirth: person.children[i].date_of_birth
+            });
+        }
+
         Persons.update(person.id,
             person.last_name,
             person.first_name,
@@ -352,7 +363,8 @@ angular.module("baranggoApp.controllers", [])
             person.temp_person_infos[0].spouse_gender,
             person.temp_person_infos[0].spouse_date_of_birth,
             person.residenceId, [], [], [],
-            person.children,
+            // person.children,
+            childrenToBeUpdated,
             vm.childrenToBeAdded,
             vm.childrenToBeRemoved
 
@@ -407,7 +419,6 @@ angular.module("baranggoApp.controllers", [])
 
         $scope[opened] = true;
     };
-
 }])
 
 .controller('FormEditParentCtrl', ['$scope', 'Person', 'Persons', function($scope, Person, Persons) {
@@ -434,8 +445,6 @@ angular.module("baranggoApp.controllers", [])
     formatDay: 'dd',
     startingDay: 1
   };
-
-   
 }])
 
 .controller('FormConfirmCtrl', ['$scope', 'Persons', 'Person', function($scope, Persons, Person) {
@@ -450,7 +459,6 @@ angular.module("baranggoApp.controllers", [])
 }])
 
 .controller('MapCtrl', ['$scope', function($scope) {
-
 }])
 
 .controller('BrgyClearanceCtrl', ['$scope', '$stateParams', 'Persons', 'BarangayClearances', function($scope, $stateParams, Persons, BarangayClearances) {

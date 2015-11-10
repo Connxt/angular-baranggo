@@ -60,7 +60,7 @@ $route['persons']['get'] = 'api/persons';
 $route['person/id/(:num)']['get'] = 'api/person/id/$1';
 $route['person']['post'] = 'api/person';
 $route['person']['put'] = 'api/person';
-$route['person/id/(:num)']['delete'] = 'api/person/id/$1';
+$route['person/(:num)']['delete'] = 'api/person/$1';
 
 /**
  * Residences
