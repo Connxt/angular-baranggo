@@ -20,19 +20,19 @@
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': Form.firstName.$invalid }">
                                 <label for="firstName">First Name * </label>
-                                <input name="firstName" class="form-control" id="firstName" type="text" placeholder="Jose" ng-model="person.first_name" validator="required" no-validation-message="true">
+                                <input name="firstName" class="form-control" id="firstName" type="text" placeholder="Jose" ng-model="vm.person.first_name" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': Form.lastName.$invalid }">
                                 <label for="lastName">Last Name *</label>
-                                <input name="lastName" class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="person.last_name" validator="required" no-validation-message="true">
+                                <input name="lastName" class="form-control" id="lastName" type="text" placeholder="Dela Cruz" ng-model="vm.person.last_name" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="middleName">Middle Name *</label>
-                                <input name="middleName" class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="person.middle_name" validator="required" no-validation-message="true">
+                                <input name="middleName" class="form-control" id="middleName" type="text" placeholder="Santiago" ng-model="vm.person.middle_name" validator="required" no-validation-message="true">
                             </div>
                         </div>
                     </div>
@@ -41,11 +41,11 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Civil Status</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].civil_status">
-                                    <option ng-selected="person.temp_person_infos[0].civil_status=='Single'?true:false">Single</option>
-                                    <option ng-selected="person.temp_person_infos[0].civil_status=='Married'?true:false">Married</option>
-                                    <option ng-selected="person.temp_person_infos[0].civil_status=='Widowed'?true:false">Widowed</option>
-                                    <option ng-selected="person.temp_person_infos[0].civil_status=='Seperated'?true:false">Seperated</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].civil_status">
+                                    <option ng-selected="vm.person.temp_person_infos[0].civil_status=='Single'?true:false">Single</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].civil_status=='Married'?true:false">Married</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].civil_status=='Widowed'?true:false">Widowed</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].civil_status=='Seperated'?true:false">Seperated</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.civilStatus}}</p> -->
@@ -53,9 +53,9 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="person.gender">
-                                    <option ng-selected="person.gender=='Male'?true:false">Male</option>
-                                    <option ng-selected="person.gender=='Female'?true:false">Female</option>
+                                <select class="form-control" ng-model="vm.person.gender">
+                                    <option ng-selected="vm.person.gender=='Male'?true:false">Male</option>
+                                    <option ng-selected="vm.person.gender=='Female'?true:false">Female</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.gender}}</p> -->
@@ -63,16 +63,16 @@
                         <div class="col-md-3">
                             <div class="form-group" ng-class="{ ' has-error': Form.lastName.$invalid }">
                                 <label for="placeOfBirth">Place of Birth</label>
-                                <input type="text" class="form-control" id="placeOfBirth" ng-model="person.place_of_birth" placeholder="Kabankalan City" validator="required" no-validation-message="true">
+                                <input type="text" class="form-control" id="placeOfBirth" ng-model="vm.person.place_of_birth" placeholder="Kabankalan City" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="dateOfBirth">Date of Birth</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.date_of_birth" is-open="opened1" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+                                    <input type="text" class="form-control" placeholder="{{vm.person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="vm.person.date_of_birth" is-open="opened1" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
                                     <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened1')"><i class="fa  fa-calendar"></i></button>
+                                    <button class="btn btn-default" type="button" ng-click="vm.open($event,'opened1')"><i class="fa  fa-calendar"></i></button>
                                   </span>
                                 </div>
                                 <!-- /input-group -->
@@ -83,13 +83,13 @@
                         <div class="col-md-6">
                             <div class="form-group" ng-class="{ ' has-error': Form.contactNo.$invalid }">
                                 <label for="contactNo">Phone</label>
-                                <input class="form-control" name="contactNo" id="contactNo" type="text" ng-model="person.contact_no" placeholder="09123456789" validator="number" no-validation-message="true">
+                                <input class="form-control" name="contactNo" id="contactNo" type="text" ng-model="vm.person.contact_no" placeholder="09123456789" validator="number" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group" ng-class="{ ' has-error': Form.email.$invalid }">
                                 <label for="email">Email</label>
-                                <input class="form-control" name="email" id="email" type="text" ng-model="person.email" placeholder="you@company.com" validator="email" no-validation-message="true">
+                                <input class="form-control" name="email" id="email" type="text" ng-model="vm.person.email" placeholder="you@company.com" validator="email" no-validation-message="true">
                             </div>
                         </div>
                     </div>
@@ -108,9 +108,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you employed?</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].is_employed">
-                                    <option ng-selected="person.temp_person_infos[0].is_employed==1?true:false">Yes</option>
-                                    <option ng-selected="person.temp_person_infos[0].is_employed==0?true:false">No</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].is_employed">
+                                    <option ng-selected="vm.person.temp_person_infos[0].is_employed==1?true:false">Yes</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].is_employed==0?true:false">No</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.isEmployed}}</p> -->
@@ -118,9 +118,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have SSS?</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].with_sss">
-                                    <option ng-selected="person.temp_person_infos[0].with_sss==1?true:false">Yes</option>
-                                    <option ng-selected="person.temp_person_infos[0].with_sss==0?true:false">No</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].with_sss">
+                                    <option ng-selected="vm.person.temp_person_infos[0].with_sss==1?true:false">Yes</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].with_sss==0?true:false">No</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.withSSS}}</p> -->
@@ -129,15 +129,15 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Highest educational attainment</label>
-                                <select class="form-control" ng-model="person.educational_attainment">
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Elementary Graduate'?true:false">Elementary Graduate</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Elementary Undergraduate'?true:false">Elementary Undergraduate</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='High School Graduate'?true:false">High School Graduate</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='College Graduate'?true:false">College Graduate</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='College Undergraduate'?true:false">College Undergraduate</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Vocational'?true:false">Vocational</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='No Formal Education'?true:false">No Formal Education</option>
-                                    <option ng-selected="person.temp_person_infos[0].educational_attainment=='Post Graduate'?true:false">Post Graduate</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].educational_attainment">
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='Elementary Graduate'?true:false">Elementary Graduate</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='Elementary Undergraduate'?true:false">Elementary Undergraduate</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='High School Graduate'?true:false">High School Graduate</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='College Graduate'?true:false">College Graduate</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='College Undergraduate'?true:false">College Undergraduate</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='Vocational'?true:false">Vocational</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='No Formal Education'?true:false">No Formal Education</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].educational_attainment=='Post Graduate'?true:false">Post Graduate</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.educationalAttainment}}</p> -->
@@ -152,9 +152,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have PhilHealth?</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].with_philhealth">
-                                    <option ng-selected="person.temp_person_infos[0].with_philhealth==1?true:false">Yes</option>
-                                    <option ng-selected="person.temp_person_infos[0].with_philhealth==0?true:false">No</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].with_philhealth">
+                                    <option ng-selected="vm.person.temp_person_infos[0].with_philhealth==1?true:false">Yes</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].with_philhealth==0?true:false">No</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.withPhilhealth}}</p> -->
@@ -163,9 +163,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Are you a voter?</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].is_voter">
-                                    <option ng-selected="person.temp_person_infos[0].is_voter==1?true:false">Yes</option>
-                                    <option ng-selected="person.temp_person_infos[0].is_voter==0?true:false">No</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].is_voter">
+                                    <option ng-selected="vm.person.temp_person_infos[0].is_voter==1?true:false">Yes</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].is_voter==0?true:false">No</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.isVoter}}</p> -->
@@ -174,9 +174,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have electricity?</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].with_electricity">
-                                    <option ng-selected="person.temp_person_infos[0].with_electricity==1?true:false">Yes</option>
-                                    <option ng-selected="person.temp_person_infos[0].with_electricity==0?true:false">No</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].with_electricity">
+                                    <option ng-selected="vm.person.temp_person_infos[0].with_electricity==1?true:false">Yes</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].with_electricity==0?true:false">No</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.withElectricity}}</p> -->
@@ -214,19 +214,19 @@
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': SpouseForm.spouseFirstName.$invalid }">
                                 <label for="firstName">First Name</label>
-                                <input class="form-control" name="spouseFirstName" id="spouseFirstName" type="text" placeholder="Sarah" ng-model="person.temp_person_infos[0].spouse_first_name" validator="required" no-validation-message="true">
+                                <input class="form-control" name="spouseFirstName" id="spouseFirstName" type="text" placeholder="Sarah" ng-model="vm.person.temp_person_infos[0].spouse_first_name" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': SpouseForm.spouseLastName.$invalid }">
                                 <label for="lastName">Last Name</label>
-                                <input class="form-control" name="spouseLastName" id="spouseLastName" type="text" placeholder="Lopez" ng-model="person.temp_person_infos[0].spouse_last_name" validator="required" no-validation-message="true">
+                                <input class="form-control" name="spouseLastName" id="spouseLastName" type="text" placeholder="Lopez" ng-model="vm.person.temp_person_infos[0].spouse_last_name" validator="required" no-validation-message="true">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group" ng-class="{ ' has-error': SpouseForm.spouseMiddleName.$invalid }">
                                 <label for="middleName">Middle Name</label>
-                                <input class="form-control" name="spouseMiddleName" id="spouseMiddleName" type="text" placeholder="Santos" ng-model="person.temp_person_infos[0].spouse_middle_name" validator="required" no-validation-message="true">
+                                <input class="form-control" name="spouseMiddleName" id="spouseMiddleName" type="text" placeholder="Santos" ng-model="vm.person.temp_person_infos[0].spouse_middle_name" validator="required" no-validation-message="true">
                             </div>
                         </div>
                     </div>
@@ -235,9 +235,9 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Gender</label>
-                                <select class="form-control" ng-model="person.temp_person_infos[0].spouse_gender">
-                                    <option ng-selected="person.temp_person_infos[0].spouse_gender=='Male'?true:false">Male</option>
-                                    <option ng-selected="person.temp_person_infos[0].spouse_gender=='Female'?true:false">Female</option>
+                                <select class="form-control" ng-model="vm.person.temp_person_infos[0].spouse_gender">
+                                    <option ng-selected="vm.person.temp_person_infos[0].spouse_gender=='Male'?true:false">Male</option>
+                                    <option ng-selected="vm.person.temp_person_infos[0].spouse_gender=='Female'?true:false">Female</option>
                                 </select>
                             </div>
                             <!-- <p>{{vm.person.spouseGender}}</p> -->
@@ -246,13 +246,13 @@
                             <div class="form-group">
                                 <label for="spouseDateOfBirth">Date of Birth</label>
                                 <!-- <input class="form-control" ng-model="vm.person.spouseDateOfBirth" type="date"> -->
-                                <!--  <datepicker date-format="M/d/yyyy" date-set="{{person.temp_person_infos[0].spouse_date_of_birth}}">
-                                  <input ng-model="person.temp_person_infos[0].spouse_date_of_birth" class="form-control" type="text"/>
+                                <!--  <datepicker date-format="M/d/yyyy" date-set="{{vm.person.temp_person_infos[0].spouse_date_of_birth}}">
+                                  <input ng-model="vm.person.temp_person_infos[0].spouse_date_of_birth" class="form-control" type="text"/>
                                 </datepicker> -->
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.temp_person_infos[0].spouse_date_of_birth" is-open="opened2" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+                                    <input type="text" class="form-control" placeholder="" datepicker-popup="dd/MM/yyyy" ng-model="vm.person.temp_person_infos[0].spouse_date_of_birth" is-open="opened2" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
                                     <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened2')"><i class="fa  fa-calendar"></i></button>
+                                    <button class="btn btn-default" type="button" ng-click="vm.open($event,'opened2')"><i class="fa  fa-calendar"></i></button>
                                   </span>
                                 </div>
                                 <!-- /input-group -->
@@ -360,7 +360,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <p>{{vm.person.children}}</p>
                                     <tr ng-repeat="child in vm.person.children">
                                         <td>{{child.first_name}}</td>
                                         <td>{{child.last_name}}</td>

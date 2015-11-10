@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-md-3 col-md-offset-6">
-            <button class="btn btn-block btn-primary" ng-click="toggleModal()">New Residence</button>
+            <button class="btn btn-block btn-primary" ng-click="vm.toggleViewResidenceModal()">New Residence</button>
         </div>
         
         <br />
@@ -67,7 +67,7 @@
     </div>
     <div ui-view></div>
     
-    <modal title="Add New Residence" visible="showModal">
+    <modal title="Add New Residence" visible="vm.showViewResidenceModal">
         <!-- form start -->
         <form role="form">
             <div class="box-body">

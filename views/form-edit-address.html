@@ -6,24 +6,19 @@
     </div> -->
     <div class="form-group" ng-class="{ ' has-error': Form.residenceId.$invalid }">
         <label for="phone">Please provide a valid Residence ID</label>
-        <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="person.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(person.residenceId)">
+        <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="vm.person.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(person.residenceId)">
     </div>
     
-    <!-- <p ng-hide="isEmpty(vm.foundAddress)">Found Address:</p> -->
-    <pre  ng-hide="isEmpty(vm.foundAddress)"><p>
-    Block {{vm.foundAddress.block_no}} Lot {{vm.foundAddress.lot_no}}, {{vm.foundAddress.street}} St., Sitio {{vm.foundAddress.sitio}}, {{vm.foundAddress.subdivision}} Subdivision,<br>
-    Brgy. {{vm.foundAddress.barangay}}, {{vm.foundAddress.city}} City <br>
-    {{vm.foundAddress.zip_code}}, {{vm.foundAddress.province}}</p></pre>
-
-     <pre  ng-hide="!isEmpty(vm.foundAddress)"><p>
-    Block {{person.residence.block_no}} Lot {{person.residence.lot_no}}, {{person.residence.street}} St., Sitio {{person.residence.sitio}}, {{person.residence.subdivision}} Subdivision,<br>
-    Brgy. {{person.residence.barangay}}, {{person.residence.city}} City <br>
-    {{person.residence.zip_code}}, {{person.residence.province}}</p></pre>
+    <!-- <p ng-hide="isEmpty(vm.residence)">Found Address:</p> -->
+    <pre  ng-hide="isEmpty(vm.residence)"><p>
+    Block {{vm.residence.block_no}} Lot {{vm.residence.lot_no}}, {{vm.residence.street}} St., Sitio {{vm.residence.sitio}}, {{vm.residence.subdivision}} Subdivision,<br>
+    Brgy. {{vm.residence.barangay}}, {{vm.residence.city}} City <br>
+    {{vm.residence.zip_code}}, {{vm.residence.province}}</p></pre>
 
     <!-- <p>{{person}}</p> -->
-    <div>
+  <!--   <div>
         <a ui-sref="residences">New member? Get your Residence ID.</a>
-    </div>
+    </div> -->
     <br />
     <div class="form-group row">
         <div class="col-xs-3 col-xs-offset-3 pull-right">

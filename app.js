@@ -72,27 +72,27 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
     })
 
     .state('form-edit.address', {
-        url: '/address/:personId',
+        url: '/address/:personId/:residenceId',
         templateUrl: 'views/form-edit-address.html',
-        controller: 'FormEditCtrl as vm'
+        controller: 'FormEditAddressCtrl as vm'
     })
 
     .state('form-edit.profile', {
-        url: '/profile/:personId',
+        url: '/profile',
         templateUrl: 'views/form-edit-profile.html',
-        controller: 'FormEditCtrl as vm'
+        controller: 'FormEditProfileCtrl as vm'
     })
 
     .state('form-edit.parents', {
-        url: '/parents/:personId',
+        url: '/parents',
         templateUrl: 'views/form-edit-parents.html',
-        controller: 'FormEditCtrl as vm'
+        controller: 'FormEditParentCtrl as vm'
     })
 
     .state('form-edit.confirm', {
-        url: '/confirm/:personId',
+        url: '/confirm',
         templateUrl: 'views/form-edit-confirm.html',
-        controller: 'FormEditCtrl as vm'
+        controller: 'FormConfirmCtrl as vm'
     })
 
     .state('map', {

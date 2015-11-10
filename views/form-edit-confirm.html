@@ -14,19 +14,19 @@
         <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed1? 'collapse':''">
             <div class="box-body">
                 <address>
-                    Name: <strong class="text-light-blue">{{person.first_name}} {{person.middle_name.charAt(0)}}. {{person.last_name}}</strong>
+                    Name: <strong class="text-light-blue">{{vm.person.first_name}} {{vm.person.middle_name.charAt(0)}}. {{vm.person.last_name}}</strong>
                 </address>
-                <p>{{person | json}}</p>
+<!--                 <p>{{vm.person | json}}</p> -->
                 <address>
                     <!-- <strong>Admin, Inc.</strong> -->
-                    Address: <strong class="text-light-blue"> Block {{person.residence.block_no}} Lot {{person.residence.lot_no}}, {{person.residence.street}} St., Sitio {{person.residence.sitio}}, {{person.residence.subdivision}} Subdivision, Brgy. {{person.residence.barangay}}, {{person.residence.city}} City, {{person.residence.zip_code}}, {{person.residence.province}}</strong>
-                    <br> Contact #: <strong class="text-light-blue">{{person.contact_no}}</strong>
-                    <br> Email: <strong class="text-light-blue">{{person.email}}</strong>
-                    <br /> Date of birth: <strong class="text-light-blue">{{person.date_of_birth  | date:'MMMM dd, yyyy'}}</strong>
-                    <br /> Place of birth: <strong class="text-light-blue">{{person.place_of_birth}} </strong>
-                    <br /> Status: <strong class="text-light-blue">{{person.temp_person_infos[0].civil_status}}</strong>
-                    <br /> Gender: <strong class="text-light-blue">{{person.gender}}</strong>
-                    <br /> Education: <strong class="text-light-blue">{{person.temp_person_infos[0].educational_attainment}}</strong>
+                    Address: <strong class="text-light-blue"> Block {{vm.person.temp_person_infos[0].residence.block_no}} Lot {{vm.person.temp_person_infos[0].residence.lot_no}}, {{vm.person.temp_person_infos[0].residence.street}} St., Sitio {{vm.person.temp_person_infos[0].residence.sitio}}, {{vm.person.temp_person_infos[0].residence.subdivision}} Subdivision, Brgy. {{vm.person.temp_person_infos[0].residence.barangay}}, {{vm.person.temp_person_infos[0].residence.city}} City, {{vm.person.temp_person_infos[0].residence.zip_code}}, {{vm.person.temp_person_infos[0].residence.province}}</strong>
+                    <br> Contact #: <strong class="text-light-blue">{{vm.person.contact_no}}</strong>
+                    <br> Email: <strong class="text-light-blue">{{vm.person.email}}</strong>
+                    <br /> Date of birth: <strong class="text-light-blue">{{vm.person.date_of_birth  | date:'MMMM dd, yyyy'}}</strong>
+                    <br /> Place of birth: <strong class="text-light-blue">{{vm.person.place_of_birth}} </strong>
+                    <br /> Status: <strong class="text-light-blue">{{vm.person.temp_person_infos[0].civil_status}}</strong>
+                    <br /> Gender: <strong class="text-light-blue">{{vm.person.gender}}</strong>
+                    <br /> Education: <strong class="text-light-blue">{{vm.person.temp_person_infos[0].educational_attainment}}</strong>
                     <br />
                     <br /> Employed? <strong class="text-light-blue">{{ person.temp_person_infos[0].is_employed == 1? 'Yes':'No'}}</strong>
                     <br /> SSS? <strong class="text-light-blue">{{ person.temp_person_infos[0].with_sss == 1? 'Yes':'No'}}</strong>
@@ -50,10 +50,10 @@
         <div id="collapseThree" class="panel-collapse " ng-class="isCollapsed2? 'collapse':''">
             <div class="box-body">
                 <address>
-                    Name: <strong class="text-light-blue">{{person.temp_person_infos[0].spouse_first_name}} {{person.temp_person_infos[0].spouse_middle_name.charAt(0)}}. {{person.temp_person_infos[0].spouse_last_name}}</strong>
+                    Name: <strong class="text-light-blue">{{vm.person.temp_person_infos[0].spouse_first_name}} {{vm.person.temp_person_infos[0].spouse_middle_name.charAt(0)}}. {{vm.person.temp_person_infos[0].spouse_last_name}}</strong>
                     <br />
-                     Date of birth: <strong class="text-light-blue">{{person.temp_person_infos[0].spouse_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
-                    <br /> Gender: <strong class="text-light-blue">{{person.temp_person_infos[0].gender}}</strong>
+                     Date of birth: <strong class="text-light-blue">{{vm.person.temp_person_infos[0].spouse_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
+                    <br /> Gender: <strong class="text-light-blue">{{vm.person.temp_person_infos[0].gender}}</strong>
                 </address>
             <h5><strong class="text-light-blue">Children</strong></h5>
               <table class="table table-striped">
@@ -88,17 +88,17 @@
                 <div class="col-md-6">
                     <h5><strong class="text-light-blue">Father</strong></h5>
                     <address>
-                        Name: <strong class="text-light-blue">{{person.father_first_name}} {{person.father_middle_name.charAt(0)}}. {{person.father_last_name}}</strong>
-                        <br /> Date of birth: <strong class="text-light-blue">{{person.father_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
-                        <!-- <br /> Gender: <strong class="text-light-blue">{{person.fatherGender}}</strong> -->
+                        Name: <strong class="text-light-blue">{{vm.person.father_first_name}} {{vm.person.father_middle_name.charAt(0)}}. {{vm.person.father_last_name}}</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">{{vm.person.father_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
+                        <!-- <br /> Gender: <strong class="text-light-blue">{{vm.person.fatherGender}}</strong> -->
                         <br />
                     </address>
                 </div>
                 <div class="col-md-6">
                     <h5><strong class="text-light-blue">Mother</strong></h5>
                     <address>
-                        Mother's Name: <strong class="text-light-blue">{{person.mother_first_name}} {{person.mother_middle_name.charAt(0)}}. {{person.mother_last_name}}</strong>
-                        <br /> Date of birth: <strong class="text-light-blue">{{person.mother_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
+                        Mother's Name: <strong class="text-light-blue">{{vm.person.mother_first_name}} {{vm.person.mother_middle_name.charAt(0)}}. {{vm.person.mother_last_name}}</strong>
+                        <br /> Date of birth: <strong class="text-light-blue">{{vm.person.mother_date_of_birth | date:'MMMM dd, yyyy'}}</strong>
                         <!-- <br /> Gender: <strong class="text-light-blue">Male</strong> -->
                     </address>
                 </div>
@@ -111,7 +111,7 @@
 
     <br />
     <!-- <p>
-        {{person | json}}
+        {{vm.person | json}}
     </p> -->
     <br />
 

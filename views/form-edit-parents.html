@@ -4,7 +4,6 @@
         <div class="panel-heading">
             <h4 class="panel-title"><b>Father's Info</b></h4>
         </div>
-        <p>Person : {{person}}</p>
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -19,19 +18,19 @@
                     <div class="col-md-4">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherFirstName.$invalid }">
                             <label for="firstName">First Name</label>
-                            <input class="form-control" name="fatherFirstName" type="text" placeholder="Juan" ng-model="person.father_first_name" validator="required" no-validation-message="true">
+                            <input class="form-control" name="fatherFirstName" type="text" placeholder="Juan" ng-model="vm.person.father_first_name" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherLastName.$invalid }">
                             <label for="lastName">Last Name</label>
-                            <input class="form-control" name="fatherLastName" type="text" placeholder="Dela Cruz" ng-model="person.father_last_name" validator="required" no-validation-message="true">
+                            <input class="form-control" name="fatherLastName" type="text" placeholder="Dela Cruz" ng-model="vm.person.father_last_name" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherMiddleName.$invalid }">
                             <label for="fatherMiddleName">Middle Name</label>
-                            <input class="form-control" name="fatherMiddleName" type="text" placeholder="Garcia" ng-model="person.father_middle_name" validator="required" no-validation-message="true">
+                            <input class="form-control" name="fatherMiddleName" type="text" placeholder="Garcia" ng-model="vm.person.father_middle_name" validator="required" no-validation-message="true">
                         </div>
                     </div>
                 </div>
@@ -40,16 +39,16 @@
                     <div class="col-md-3">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <!-- <input class="form-control" name="fatherDateOfBirth" ng-model="vm.person.fatherDateOfBirth" type="date"> -->
-                            <!-- <datepicker date-format="M/d/yyyy" date-set="{{person.father_date_of_birth}}">
-                                  <input ng-model="person.father_date_of_birth" class="form-control" type="text"/>
+                            <!-- <input class="form-control" name="fatherDateOfBirth" ng-model="vm.vm.person.fatherDateOfBirth" type="date"> -->
+                            <!-- <datepicker date-format="M/d/yyyy" date-set="{{vm.person.father_date_of_birth}}">
+                                  <input ng-model="vm.person.father_date_of_birth" class="form-control" type="text"/>
                             </datepicker> -->
 
                             <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.father_date_of_birth" is-open="opened3" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+                                  <input type="text" class="form-control" placeholder="{{vm.person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="vm.person.father_date_of_birth" is-open="opened3" min="minDate" max="" datepicker-options="vm.dateOptions" date-disabled="" ng-required="true" >
 
                                   <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened3')"><i class="fa  fa-calendar"></i></button>
+                                    <button class="btn btn-default" type="button" ng-click="vm.open($event,'opened3')"><i class="fa  fa-calendar"></i></button>
                                   </span>
                                 </div><!-- /input-group -->
                         </div>
@@ -57,7 +56,7 @@
                     <!-- <div class="col-md-3">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.fatherDateOfBirth.$invalid }">
                             <label for="placeOfBirth">Place Of Birth</label>
-                            <input class="form-control" name="fatherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="vm.person.fatherPlaceOfBirth">
+                            <input class="form-control" name="fatherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="vm.vm.person.fatherPlaceOfBirth">
                         </div>
                     </div> -->
                 </div>
@@ -87,19 +86,19 @@
                     <div class="col-md-4">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.motherFirstName.$invalid }">
                             <label for="firstName">First Name</label>
-                            <input class="form-control" name="motherFirstName" type="text" placeholder="Victoria" ng-model="person.mother_first_name" validator="required" no-validation-message="true">
+                            <input class="form-control" name="motherFirstName" type="text" placeholder="Victoria" ng-model="vm.person.mother_first_name" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.motherLastName.$invalid }">
                             <label for="lastName">Last Name</label>
-                            <input class="form-control" name="motherLastName" type="text" placeholder="Santiago" ng-model="person.mother_last_name" validator="required" no-validation-message="true">
+                            <input class="form-control" name="motherLastName" type="text" placeholder="Santiago" ng-model="vm.person.mother_last_name" validator="required" no-validation-message="true">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group" ng-class="{ ' has-error': ParentForm.motherMiddleName.$invalid }">
                             <label for="middleName">Middle Name</label>
-                            <input class="form-control" name="motherMiddleName" type="text" placeholder="Mendoza" ng-model="person.mother_middle_name" validator="required" no-validation-message="true">
+                            <input class="form-control" name="motherMiddleName" type="text" placeholder="Mendoza" ng-model="vm.person.mother_middle_name" validator="required" no-validation-message="true">
                         </div>
                     </div>
                 </div>
@@ -108,16 +107,16 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <!-- <input class="form-control" name="motherDateOfBirth" ng-model="vm.person.motherDateOfBirth" type="date"> -->
-                            <!-- <datepicker date-format="M/d/yyyy" date-set="{{person.mother_date_of_birth}}">
-                                  <input ng-model="person.mother_date_of_birth" class="form-control" type="text"/>
+                            <!-- <input class="form-control" name="motherDateOfBirth" ng-model="vm.vm.person.motherDateOfBirth" type="date"> -->
+                            <!-- <datepicker date-format="M/d/yyyy" date-set="{{vm.person.mother_date_of_birth}}">
+                                  <input ng-model="vm.person.mother_date_of_birth" class="form-control" type="text"/>
                             </datepicker> -->
 
                             <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="{{person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="person.mother_date_of_birth" is-open="opened4" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
+                                  <input type="text" class="form-control" placeholder="{{vm.person.date_of_birth}}" datepicker-popup="dd/MM/yyyy" ng-model="vm.person.mother_date_of_birth" is-open="opened4" min="minDate" max="" datepicker-options="" date-disabled="" ng-required="true">
 
                                   <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="open($event,'opened4')"><i class="fa  fa-calendar"></i></button>
+                                    <button class="btn btn-default" type="button" ng-click="vm.open($event,'opened4')"><i class="fa  fa-calendar"></i></button>
                                   </span>
                                 </div><!-- /input-group -->
                         </div>
@@ -125,7 +124,7 @@
                     <!-- <div class="col-md-3">
                         <div class="form-group">
                             <label for="placeOfBirth">Place Of Birth</label>
-                            <input class="form-control" name="motherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="vm.person.motherPlaceOfBirth">
+                            <input class="form-control" name="motherPlaceOfBirth" type="text" placeholder="Kabankalan City" ng-model="vm.vm.person.motherPlaceOfBirth">
                         </div>
                     </div> -->
                 </div>
@@ -136,7 +135,7 @@
     </div>
     <!-- /.row -->
     <p></p>
-    <!-- <p>{{vm.person}}</p> -->
+    <!-- <p>{{vm.vm.person}}</p> -->
     <br />
     <br />
     
