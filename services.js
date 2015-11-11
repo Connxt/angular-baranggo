@@ -276,7 +276,8 @@ angular.module("baranggoApp.services", [])
 
     person.children = [];
     person.siblings = [];
-    person.ToBeAdded = [];
+    person.childrenToBeUpdated = [];
+    person.childrenToBeAdded = [];
     person.childrenToBeRemoved = [];
 
 
@@ -295,6 +296,39 @@ angular.module("baranggoApp.services", [])
 
     person.getPersonId = function() {
         return person.personId;
+    }
+
+    person.setProfile = function(personProfile) {
+        person.profile = personProfile;
+
+        console.log(person.profile);
+    }
+
+    person.getProfile = function() {
+        return person.profile;
+    }
+
+    person.resetChildrenToBeUpdated = function() {
+        person.childrenToBeUpdated = [];
+    }
+
+    person.setChildrenToBeUpdated = function(id, firstname, lastName, middleName, gender, dateOfBirth) {
+       person.childrenToBeUpdated.push({
+            id: id,
+            firstName: firstname, 
+            lastName: lastName, 
+            middleName: middleName,
+            gender: gender, 
+            dateOfBirth: dateOfBirth
+        })
+    }
+
+    person.spliceChildrenToBeUpdated = function(index) {
+        person.childrenToBeUpdated.splice(index, 1);
+    }
+
+    person.getChildrenToBeUpdated = function() {
+        return person.childrenToBeUpdated;
     }
 
     person.setChildrenToBeAdded = function(firstname, lastName, middleName, dateOfBirth, gender) {

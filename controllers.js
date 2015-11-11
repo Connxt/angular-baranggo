@@ -116,7 +116,7 @@ angular.module("baranggoApp.controllers", [])
     vm.read();
 
     // setTimeout(function() {
-        vm.read();
+    vm.read();
     // }, 1)
 
     // Get Settings data
@@ -319,7 +319,7 @@ angular.module("baranggoApp.controllers", [])
         vm.person.withElectricity = vm.person.withElectricity == 'Yes' ? 1 : 0;
 
         var childrenToBeUpdated = [];
-        for(var i = 0; i < person.children.length; i++) {
+        for (var i = 0; i < person.children.length; i++) {
             childrenToBeUpdated.push({
                 lastName: person.children[i].last_name,
                 firstName: person.children[i].first_name,
@@ -402,28 +402,31 @@ angular.module("baranggoApp.controllers", [])
     // console.log("Residence Id: " + JSON.stringify(residenceId));
 }])
 
-.controller('FormEditProfileCtrl', ['$scope', 'Persons','Person', function($scope, Persons, Person) {
+.controller('FormEditProfileCtrl', ['$scope', 'Persons', 'Person', function($scope, Persons, Person) {
     var vm = this;
     vm.children = [];
     vm.childrenToBeAdded = [];
-    vm.childrenToBeRemove= [];
+    vm.childrenToBeRemove = [];
 
     Persons.get(Person.getPersonId()).then(function(res) {
         vm.person = res.data;
-        vm.person.children =  res.data.children;
-        console.log("Children: " + JSON.stringify(vm.person.children));
+        vm.person.children = res.data.children;
+        Person.resetChildrenToBeUpdated();
 
-        for(var i = 0; i < vm.person.children.length; i++) {
-            vm.children.push({
-                id:  vm.person.children[i].id,
-                lastName: vm.person.children[i].last_name,
-                firstName: vm.person.children[i].first_name,
-                middleName: vm.person.children[i].middle_name,
-                gender: vm.person.children[i].gender,
-                dateOfBirth: vm.person.children[i].date_of_birth
-            });
+
+        for (var i = 0; i < vm.person.children.length; i++) {
+            Person.setChildrenToBeUpdated(
+                vm.person.children[i].id,
+                vm.person.children[i].last_name,
+                vm.person.children[i].first_name,
+                vm.person.children[i].middle_name,
+                vm.person.children[i].gender,
+                vm.person.children[i].date_of_birth
+            );
         }
-        // Person.setProfile()
+        vm.children = Person.getChildrenToBeUpdated();
+
+
     })
 
     // Datepicker
@@ -439,19 +442,36 @@ angular.module("baranggoApp.controllers", [])
     }
 
     vm.addChild = function(child) {
-        child.id = guid();    
-        console.log("Guid: " + child.id); 
+        child.id = guid();
         vm.children.push(child);
         vm.childrenToBeAdded.push(child);
+
+        // Person.setChildrenToBeUpdated(
+        //        child.id,
+        //        child.lastName,
+        //        child.firstName,
+        //        child.middleName,
+        //        child.gender,
+        //        child.dateOfBirth
+        //    );
+        vm.children = [];
+        vm.children = Person.getChildrenToBeUpdated();
 
         console.log("Children to be added: " + JSON.stringify(vm.childrenToBeAdded));
         // Person.setChildrenToBeAdded
     }
 
-    vm.removeChild = function(childId) {
+    vm.removeChild = function(index, childId) {
         vm.childrenToBeRemove.push(childId);
+        Person.spliceChildrenToBeUpdated(index);
         Person.setChildrenToBeRemove(childId);
+
+        vm.children = Person.getChildrenToBeUpdated();
         console.log("Children to be remove: " + vm.childrenToBeRemove);
+    }
+
+    vm.setPersonProfile = function() {
+        Person.setProfile(vm.person);
     }
 
 
@@ -461,7 +481,14 @@ angular.module("baranggoApp.controllers", [])
     var vm = this;
     vm.person = {};
 
-     // Datepicker
+    vm.person = Person.getProfile();
+    console.log(JSON.stringify(vm.person));
+
+    vm.setPersonProfile = function() {
+        Person.setProfile(vm.person);
+    }
+
+    // Datepicker
     vm.open = function($event, opened) {
         $event.preventDefault();
         $event.stopPropagation();
@@ -469,263 +496,270 @@ angular.module("baranggoApp.controllers", [])
         $scope[opened] = true;
     };
 
-    Persons.get(Person.getPersonId()).then(function(res) {
-        vm.person = res.data;
-        console.log("Person: " + JSON.stringify(vm.person));
-        // Person.setProfile()
-    })
+   
+
+    // Persons.get(Person.getPersonId()).then(function(res) {
+    //     vm.person = res.data;
+    //     console.log("Person: " + JSON.stringify(vm.person));
+    //     // Person.setProfile()
+    // })
 
     vm.dateOptions = {
-    formatYear: 'yy',
-    formatMonth: 'MMMM',
-    formatDay: 'dd',
-    startingDay: 1
-  };
+        formatYear: 'yy',
+        formatMonth: 'MMMM',
+        formatDay: 'dd',
+        startingDay: 1
+    };
+
+     
 }])
 
 .controller('FormConfirmCtrl', ['$scope', 'Persons', 'Person', function($scope, Persons, Person) {
     var vm = this;
     vm.person = {};
 
-    Persons.get(Person.getPersonId()).then(function(res) {
-        vm.person = res.data;
-        console.log("Person: " + JSON.stringify(vm.person));
+    // Persons.get(Person.getPersonId()).then(function(res) {
+    //     vm.person = res.data;
+    //     console.log("Person: " + JSON.stringify(vm.person));
+        vm.person = Person.getProfile();
+        console.log(JSON.stringify(vm.person));
+
+        vm.children = Person.getChildrenToBeUpdated();
         // Person.setProfile()
-    })
+    // })
 
     vm.update = function() {
-        var p = vm.person;
-        var childrenToBeUpdated = p.children;
+        var p = Person.getProfile();
+        var childrenToBeUpdated = Person.getChildrenToBeUpdated();
         var childrenToBeAdded = Person.getChildrenToBeAdded();
         var childrenToBeRemove = Person.getChildrenToBeRemove();
 
         // console.log("Person: " + JSON.stringify(p.temp_person_infos[0].spouse_first_name));
-        console.log("Person ", p.id, p.last_name, p.first_name, p.middle_name, p.date_of_birth, p.place_of_birth, p.gender, p.mother_last_name, p.mother_first_name, p.mother_middle_name, p.mother_date_of_birth, p.father_last_name, p.father_first_name, p.father_middle_name, p.father_date_of_birth, p.contact_no, p.email, p.temp_person_infos[0].civil_status, 'religion', '0', p.temp_person_infos[0].educational_attainment, p.temp_person_infos[0].is_employed, p.temp_person_infos[0].is_voter, '0', p.temp_person_infos[0].with_philhealth, p.temp_person_infos[0].with_sss, p.temp_person_infos[0].with_electricity, '0', p.temp_person_infos[0].spouse_last_name, p.temp_person_infos[0].spouse_first_name, p.temp_person_infos[0].spouse_middle_name, p.temp_person_infos[0].spouse_gender, p.temp_person_infos[0].spouse_date_of_birth, p.temp_person_infos[0].residence_id, [], [], [], childrenToBeUpdated, childrenToBeAdded, childrenToBeRemove);
-        // Persons.update(p.id, p.last_name, p.first_name, p.middle_name, p.date_of_birth, p.place_of_birth, p.gender, p.mother_last_name, p.mother_first_name, p.mother_middle_name, p.motherr_date_of_birth, p.father_last_name, p.father_first_name, p.father_middle_name, p.father_date_of_birth, p.contact_no, p.email, p.civil_status, 'religion', '0', p.educational_attainment, p.is_employed, p.is_voter, '0', p.with_philhealth, p.with_sss, p.with_electricity, '0', p.temp_person_infos[0].spouse_last_name, p.temp_person_infos[0].spouse_first_name, p.temp_person_infos[0].spouse_middle_name, p.temp_person_infos[0].spouse_gender, p.spouse_date_of_birth, p.temp_person_infos[0].residence_id, [], [], [], childrenToBeUpdated, childrenToBeAdded, childrenToBeRemove).then(function(res) {
-        //     console.log(JSON.stringify("Result" + res.data))
-        // });
+        // console.log("Person ", p.id, p.last_name, p.first_name, p.middle_name, p.date_of_birth, p.place_of_birth, p.gender, p.mother_last_name, p.mother_first_name, p.mother_middle_name, p.mother_date_of_birth, p.father_last_name, p.father_first_name, p.father_middle_name, p.father_date_of_birth, p.contact_no, p.email, p.temp_person_infos[0].civil_status, 'religion', '0', p.temp_person_infos[0].educational_attainment, p.temp_person_infos[0].is_employed, p.temp_person_infos[0].is_voter, '0', p.temp_person_infos[0].with_philhealth, p.temp_person_infos[0].with_sss, p.temp_person_infos[0].with_electricity, '0', p.temp_person_infos[0].spouse_last_name, p.temp_person_infos[0].spouse_first_name, p.temp_person_infos[0].spouse_middle_name, p.temp_person_infos[0].spouse_gender, p.temp_person_infos[0].spouse_date_of_birth, p.temp_person_infos[0].residence_id, [], [], [], childrenToBeUpdated, childrenToBeAdded, childrenToBeRemove);
+        Persons.update(p.id, p.last_name, p.first_name, p.middle_name, p.date_of_birth, p.place_of_birth, p.gender, p.mother_last_name, p.mother_first_name, p.mother_middle_name, p.mother_date_of_birth, p.father_last_name, p.father_first_name, p.father_middle_name, p.father_date_of_birth, p.contact_no, p.email, p.temp_person_infos[0].civil_status, 'religion', '0', p.temp_person_infos[0].educational_attainment, p.temp_person_infos[0].is_employed, p.temp_person_infos[0].is_voter, '0', p.temp_person_infos[0].with_philhealth, p.temp_person_infos[0].with_sss, p.temp_person_infos[0].with_electricity, '0', p.temp_person_infos[0].spouse_last_name, p.temp_person_infos[0].spouse_first_name, p.temp_person_infos[0].spouse_middle_name, p.temp_person_infos[0].spouse_gender, p.temp_person_infos[0].spouse_date_of_birth, p.temp_person_infos[0].residence_id, [], [], [], childrenToBeUpdated, childrenToBeAdded, childrenToBeRemove).then(function(res) {
+            console.log(JSON.stringify("Result" + res.data))
+        });
     }
 }])
 
-.controller('MapCtrl', ['$scope', function($scope) {
-}])
+.controller('MapCtrl', ['$scope', function($scope) {}])
 
 .controller('BrgyClearanceCtrl', ['$scope', '$stateParams', 'Persons', 'BarangayClearances', function($scope, $stateParams, Persons, BarangayClearances) {
-        var vm = this;
-        console.log($stateParams);
-        var personId = $stateParams.personId;
-        var purpose = $stateParams.purpose;
-        var remarks = $stateParams.remarks;
+    var vm = this;
+    console.log($stateParams);
+    var personId = $stateParams.personId;
+    var purpose = $stateParams.purpose;
+    var remarks = $stateParams.remarks;
 
-        vm.purpose = purpose;
-        vm.person = null;
-        vm.residence = null;
-        vm.day = moment(moment()._d).format('Do');
-        vm.month = moment(moment()._d).format('MMMM');
-        vm.year = moment(moment()._d).format('YYYY');
+    vm.purpose = purpose;
+    vm.person = null;
+    vm.residence = null;
+    vm.day = moment(moment()._d).format('Do');
+    vm.month = moment(moment()._d).format('MMMM');
+    vm.year = moment(moment()._d).format('YYYY');
 
-        console.log("PersonId: " + personId + " Purpose: " + purpose);
+    console.log("PersonId: " + personId + " Purpose: " + purpose);
 
-        Persons.get(personId).then(function(res) {
-            vm.person = res.data;
-            vm.residence = res.data.temp_person_infos[0].residence;
+    Persons.get(personId).then(function(res) {
+        vm.person = res.data;
+        vm.residence = res.data.temp_person_infos[0].residence;
 
-            BarangayClearances.add(personId, purpose, remarks).then(function(res) {
-                console.log(res);
-            });
+        BarangayClearances.add(personId, purpose, remarks).then(function(res) {
+            console.log(res);
         });
+    });
 
-        var imgUrl = 'images/clearance_logo.png';
-        var convertImgToBase64 = function(url, callback) {
-            var img = new Image();
-            img.onError = function() {
-                alert('Cannot load image: "' + url + '"');
-            };
-            img.onload = function() {
-                callback(img);
-            };
-            img.src = url;
-        }
+    var imgUrl = 'images/clearance_logo.png';
+    var convertImgToBase64 = function(url, callback) {
+        var img = new Image();
+        img.onError = function() {
+            alert('Cannot load image: "' + url + '"');
+        };
+        img.onload = function() {
+            callback(img);
+        };
+        img.src = url;
+    }
 
-        var createText = function(text, alignment, x, y, fontType, fontSize, fontName) {
-            return doc.alignedText(text, {
-                align: alignment
-            }, x, y, fontType, fontSize, fontName);
-        }
+    var createText = function(text, alignment, x, y, fontType, fontSize, fontName) {
+        return doc.alignedText(text, {
+            align: alignment
+        }, x, y, fontType, fontSize, fontName);
+    }
 
-        var createParagraphTextFromHtml = function(dom, x, y, width) {
-            return doc.fromHTML(dom.get(0), x, y, {
-                'width': width
-            });
-        }
+    var createParagraphTextFromHtml = function(dom, x, y, width) {
+        return doc.fromHTML(dom.get(0), x, y, {
+            'width': width
+        });
+    }
 
-        var generateDocumentHeader = function(firstLine, secondLine, thirdLine, fourthLine, fifthLine, imageLeft, imageRight) {
-            createText(firstLine, "center", 0, 50, "normal", 12, "times");
-            createText(secondLine, "center", 0, 70, "normal", 12, "times");
-            createText(thirdLine, "center", 0, 90, "normal", 12, "times");
-            createText(fourthLine, "center", 0, 110, "bold", 12, "times");
-            createText(fifthLine, "center", 0, 130, "bold", 14, "times");
-            doc.setLineWidth(1.5);
-            doc.line(40, 150, 555.28, 150);
-        }
+    var generateDocumentHeader = function(firstLine, secondLine, thirdLine, fourthLine, fifthLine, imageLeft, imageRight) {
+        createText(firstLine, "center", 0, 50, "normal", 12, "times");
+        createText(secondLine, "center", 0, 70, "normal", 12, "times");
+        createText(thirdLine, "center", 0, 90, "normal", 12, "times");
+        createText(fourthLine, "center", 0, 110, "bold", 12, "times");
+        createText(fifthLine, "center", 0, 130, "bold", 14, "times");
+        doc.setLineWidth(1.5);
+        doc.line(40, 150, 555.28, 150);
+    }
 
-        var generateDocumentBody = function(text, dom, y) {
-            createText(text, "center", 0, 230, "bold", 20, "times");
-            createText("Control No: __________", "right", 0, 270, "normal", 12, "times");
-            createText("TO WHOM IT MAY CONCERN:", "left", 0, 310, "normal", 12, "times");
-            createParagraphTextFromHtml(dom, y, 340, 535);
-        }
+    var generateDocumentBody = function(text, dom, y) {
+        createText(text, "center", 0, 230, "bold", 20, "times");
+        createText("Control No: __________", "right", 0, 270, "normal", 12, "times");
+        createText("TO WHOM IT MAY CONCERN:", "left", 0, 310, "normal", 12, "times");
+        createParagraphTextFromHtml(dom, y, 340, 535);
+    }
 
-        var generateDocumentFooter = function(nameText, descriptionText, nameX, descriptionX) {
-            createText(nameText, "", 370, nameX, "normal", 12, "times");
-            createText(descriptionText, "", 380, descriptionX, "italic", 10, "times");
-        }
+    var generateDocumentFooter = function(nameText, descriptionText, nameX, descriptionX) {
+        createText(nameText, "", 370, nameX, "normal", 12, "times");
+        createText(descriptionText, "", 380, descriptionX, "italic", 10, "times");
+    }
 
-        // ***
-        // * events
-        // ***
-        var createPDFForBaranggayClearance = function(imgData) {
-            doc = new jsPDF("portrait", "pt");
-            doc.margins = 10;
-            doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
-            doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
-            generateDocumentHeader("REPUBLIC OF THE PHILIPPINES",
-                "PROVINCE OF NEGROS OCCIDENTAL",
-                "CITY OF KABANKALAN",
-                "BARANGGAY II",
-                "OFFICE OF THE PUNONG BARANGGAY");
-            generateDocumentBody("BARANGGAY CLEARANCE", $("#body_baranggay_clearance"), 40);
-            generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
-            string = doc.output("datauristring");
-            $("#frm_print_baranggay_clearance").attr("src", string);
-        }
-        setTimeout(function() {
-            convertImgToBase64(imgUrl, createPDFForBaranggayClearance);
-        }, 1);
-
-
-    }])
-
-    .controller('BrgyBusinessClearanceCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
-
-        var vm = this;
-        console.log($stateParams);
-        vm.businessOwner = $stateParams.businessOwner;
-        vm.businessName = $stateParams.businessName;
-        vm.businessAddress = $stateParams.businessAddress;
-        vm.businessType = $stateParams.businessType;
-
-        vm.day = moment(moment()._d).format('Do');
-        vm.day1 = moment(moment()._d).format('D');
-        vm.month = moment(moment()._d).format('MMMM');
-        vm.year = moment(moment()._d).format('YYYY');
-
-        vm.getNextYear = function() {
-            return moment(moment()._d).add(1, 'year').format('YYYY');
-        }
+    // ***
+    // * events
+    // ***
+    var createPDFForBaranggayClearance = function(imgData) {
+        doc = new jsPDF("portrait", "pt");
+        doc.margins = 10;
+        doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
+        doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
+        generateDocumentHeader("REPUBLIC OF THE PHILIPPINES",
+            "PROVINCE OF NEGROS OCCIDENTAL",
+            "CITY OF KABANKALAN",
+            "BARANGGAY II",
+            "OFFICE OF THE PUNONG BARANGGAY");
+        generateDocumentBody("BARANGGAY CLEARANCE", $("#body_baranggay_clearance"), 40);
+        generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
+        string = doc.output("datauristring");
+        $("#frm_print_baranggay_clearance").attr("src", string);
+    }
+    setTimeout(function() {
+        convertImgToBase64(imgUrl, createPDFForBaranggayClearance);
+    }, 1);
 
 
-        var imgUrl = 'images/clearance_logo.png';
-        var convertImgToBase64 = function(url, callback) {
-            var img = new Image();
-            img.onError = function() {
-                alert('Cannot load image: "' + url + '"');
-            };
-            img.onload = function() {
-                callback(img);
-            };
-            img.src = url;
-        }
+}])
 
-        var createText = function(text, alignment, x, y, fontType, fontSize, fontName) {
-            return doc.alignedText(text, {
-                align: alignment
-            }, x, y, fontType, fontSize, fontName);
-        }
+.controller('BrgyBusinessClearanceCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
 
-        var createParagraphTextFromHtml = function(dom, x, y, width) {
-            return doc.fromHTML(dom.get(0), x, y, {
-                'width': width
-            });
-        }
+    var vm = this;
+    console.log($stateParams);
+    vm.businessOwner = $stateParams.businessOwner;
+    vm.businessName = $stateParams.businessName;
+    vm.businessAddress = $stateParams.businessAddress;
+    vm.businessType = $stateParams.businessType;
 
-        var generateDocumentHeader = function(firstLine, secondLine, thirdLine, fourthLine, fifthLine, imageLeft, imageRight) {
-            createText(firstLine, "center", 0, 50, "normal", 12, "times");
-            createText(secondLine, "center", 0, 70, "normal", 12, "times");
-            createText(thirdLine, "center", 0, 90, "normal", 12, "times");
-            createText(fourthLine, "center", 0, 110, "bold", 12, "times");
-            createText(fifthLine, "center", 0, 130, "bold", 14, "times");
-            doc.setLineWidth(1.5);
-            doc.line(40, 150, 555.28, 150);
-        }
+    vm.day = moment(moment()._d).format('Do');
+    vm.day1 = moment(moment()._d).format('D');
+    vm.month = moment(moment()._d).format('MMMM');
+    vm.year = moment(moment()._d).format('YYYY');
 
-        var generateDocumentBody = function(text, dom, y) {
-            createText(text, "center", 0, 230, "bold", 20, "times");
-            createText("Control No: __________", "right", 0, 270, "normal", 12, "times");
-            createText("TO WHOM IT MAY CONCERN:", "left", 0, 310, "normal", 12, "times");
-            createParagraphTextFromHtml(dom, y, 340, 535);
-        }
-
-        var generateDocumentFooter = function(nameText, descriptionText, nameX, descriptionX) {
-            createText(nameText, "", 370, nameX, "normal", 12, "times");
-            createText(descriptionText, "", 380, descriptionX, "italic", 10, "times");
-        }
-
-        // ***
-        // * events
-        // ***
-        // var createPDFForBaranggayClearance = function(imgData) {
-        //     doc = new jsPDF("portrait", "pt");
-        //     doc.margins = 10;
-        //     doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
-        //     doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
-        //     generateDocumentHeader("REPUBLIC OF THE PHILIPPINES", 
-        //                         "PROVINCE OF NEGROS OCCIDENTAL", 
-        //                         "CITY OF KABANKALAN", 
-        //                         "BARANGGAY II", 
-        //                         "OFFICE OF THE PUNONG BARANGGAY");
-        //     generateDocumentBody("BARANGGAY CLEARANCE", $("#body_baranggay_clearance"), 40);
-        //     generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
-        //     string = doc.output("datauristring");
-        //     $("#frm_print_baranggay_clearance").attr("src", string);
-        // }
-
-        var createPDFForBaranggayBusinessClearance = function(imgData) {
-            doc = new jsPDF("portrait", "pt");
-            doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
-            doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
-            generateDocumentHeader("REPUBLIC OF THE PHILIPPINES",
-                "PROVINCE OF NEGROS OCCIDENTAL",
-                "CITY OF KABANKALAN",
-                "BARANGGAY II",
-                "OFFICE OF THE PUNONG BARANGGAY");
-            generateDocumentBody("BARANGAY BUSINESS CLEARANCE", $("#body_baranggay_business_clearance"), 40);
-            generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 660, 670);
-            string = doc.output("datauristring");
-            $("#frm_print_baranggay_business_clearance").attr("src", string);
-        }
-
-        // var createPDFForCerfificateOfClosure = function(imgData){
-        //     doc = new jsPDF("portrait", "pt");
-        //     doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
-        //     doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
-        //     generateDocumentHeader("REPUBLIC OF THE PHILIPPINES", 
-        //                         "PROVINCE OF NEGROS OCCIDENTAL", 
-        //                         "CITY OF KABANKALAN", 
-        //                         "BARANGGAY II", 
-        //                         "OFFICE OF THE PUNONG BARANGGAY");
-        //     generateDocumentBody("CERTIFICATE OF CLOSURE", $("#body_certificate_of_closure"), 40);
-        //     generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
-        //     string = doc.output("datauristring");
-        //     $("#frm_print_certificate_of_closure").attr("src", string);
-        // }
-
-        setTimeout(function() {
-            convertImgToBase64(imgUrl, createPDFForBaranggayBusinessClearance);
-        }, 1);
+    vm.getNextYear = function() {
+        return moment(moment()._d).add(1, 'year').format('YYYY');
+    }
 
 
-    }])
+    var imgUrl = 'images/clearance_logo.png';
+    var convertImgToBase64 = function(url, callback) {
+        var img = new Image();
+        img.onError = function() {
+            alert('Cannot load image: "' + url + '"');
+        };
+        img.onload = function() {
+            callback(img);
+        };
+        img.src = url;
+    }
+
+    var createText = function(text, alignment, x, y, fontType, fontSize, fontName) {
+        return doc.alignedText(text, {
+            align: alignment
+        }, x, y, fontType, fontSize, fontName);
+    }
+
+    var createParagraphTextFromHtml = function(dom, x, y, width) {
+        return doc.fromHTML(dom.get(0), x, y, {
+            'width': width
+        });
+    }
+
+    var generateDocumentHeader = function(firstLine, secondLine, thirdLine, fourthLine, fifthLine, imageLeft, imageRight) {
+        createText(firstLine, "center", 0, 50, "normal", 12, "times");
+        createText(secondLine, "center", 0, 70, "normal", 12, "times");
+        createText(thirdLine, "center", 0, 90, "normal", 12, "times");
+        createText(fourthLine, "center", 0, 110, "bold", 12, "times");
+        createText(fifthLine, "center", 0, 130, "bold", 14, "times");
+        doc.setLineWidth(1.5);
+        doc.line(40, 150, 555.28, 150);
+    }
+
+    var generateDocumentBody = function(text, dom, y) {
+        createText(text, "center", 0, 230, "bold", 20, "times");
+        createText("Control No: __________", "right", 0, 270, "normal", 12, "times");
+        createText("TO WHOM IT MAY CONCERN:", "left", 0, 310, "normal", 12, "times");
+        createParagraphTextFromHtml(dom, y, 340, 535);
+    }
+
+    var generateDocumentFooter = function(nameText, descriptionText, nameX, descriptionX) {
+        createText(nameText, "", 370, nameX, "normal", 12, "times");
+        createText(descriptionText, "", 380, descriptionX, "italic", 10, "times");
+    }
+
+    // ***
+    // * events
+    // ***
+    // var createPDFForBaranggayClearance = function(imgData) {
+    //     doc = new jsPDF("portrait", "pt");
+    //     doc.margins = 10;
+    //     doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
+    //     doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
+    //     generateDocumentHeader("REPUBLIC OF THE PHILIPPINES", 
+    //                         "PROVINCE OF NEGROS OCCIDENTAL", 
+    //                         "CITY OF KABANKALAN", 
+    //                         "BARANGGAY II", 
+    //                         "OFFICE OF THE PUNONG BARANGGAY");
+    //     generateDocumentBody("BARANGGAY CLEARANCE", $("#body_baranggay_clearance"), 40);
+    //     generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
+    //     string = doc.output("datauristring");
+    //     $("#frm_print_baranggay_clearance").attr("src", string);
+    // }
+
+    var createPDFForBaranggayBusinessClearance = function(imgData) {
+        doc = new jsPDF("portrait", "pt");
+        doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
+        doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
+        generateDocumentHeader("REPUBLIC OF THE PHILIPPINES",
+            "PROVINCE OF NEGROS OCCIDENTAL",
+            "CITY OF KABANKALAN",
+            "BARANGGAY II",
+            "OFFICE OF THE PUNONG BARANGGAY");
+        generateDocumentBody("BARANGAY BUSINESS CLEARANCE", $("#body_baranggay_business_clearance"), 40);
+        generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 660, 670);
+        string = doc.output("datauristring");
+        $("#frm_print_baranggay_business_clearance").attr("src", string);
+    }
+
+    // var createPDFForCerfificateOfClosure = function(imgData){
+    //     doc = new jsPDF("portrait", "pt");
+    //     doc.addImage(imgData, 'PNG', 35, 30, 0, 0, 'icon');
+    //     doc.addImage(imgData, 'PNG', 460.28, 30, 0, 0, 'icon');
+    //     generateDocumentHeader("REPUBLIC OF THE PHILIPPINES", 
+    //                         "PROVINCE OF NEGROS OCCIDENTAL", 
+    //                         "CITY OF KABANKALAN", 
+    //                         "BARANGGAY II", 
+    //                         "OFFICE OF THE PUNONG BARANGGAY");
+    //     generateDocumentBody("CERTIFICATE OF CLOSURE", $("#body_certificate_of_closure"), 40);
+    //     generateDocumentFooter("REY G. CORDERO", "Punong Barangay", 630, 640);
+    //     string = doc.output("datauristring");
+    //     $("#frm_print_certificate_of_closure").attr("src", string);
+    // }
+
+    setTimeout(function() {
+        convertImgToBase64(imgUrl, createPDFForBaranggayBusinessClearance);
+    }, 1);
+
+
+}])
 
 .controller('CertificateOfClosureCtrl', ['$scope', function($scope) {
     var imgUrl = 'images/clearance_logo.png';

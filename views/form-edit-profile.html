@@ -347,7 +347,7 @@
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         &nbsp; -->
-                                        <button type="button" ng-click="vm.removeChild(child.id); vm.children.splice($index, 1)" class="btn btn-sm btn-danger">
+                                        <button type="button" ng-click="vm.removeChild($index, child.id); vm.children.splice($index, 1)" class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </button>
                                     </td>
@@ -366,7 +366,7 @@
     <br />
     <br />
     <div class="col-xs-2 col-xs-offset-3 pull-right">
-        <button ui-sref="form-edit.parents({personId : personId})" class="btn btn-block btn-primary" ng-disabled=""> Next
+        <button ui-sref="form-edit.parents({personId : personId})" class="btn btn-block btn-primary" ng-disabled="" ng-click="vm.setPersonProfile()"> Next
             <span class="fa  fa-arrow-right"></span>
         </button>
     </div>
