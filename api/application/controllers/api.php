@@ -274,7 +274,7 @@ class Api extends REST_Controller {
 		}
 
 		$children_to_be_removed = $this->put('childrenToBeRemoved');
-		foreach($childs_to_be_removed as $child) {
+		foreach($children_to_be_removed as $child) {
 			$this->child_model->delete($child);
 		}
 
