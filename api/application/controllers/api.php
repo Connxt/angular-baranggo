@@ -251,6 +251,18 @@ class Api extends REST_Controller {
 
 		$children = $this->put('children');
 		foreach($children as $child) {
+			$this->child_model->update(
+				$child['id'],
+				$child['lastName'],
+				$child['firstName'],
+				$child['middleName'],
+				$child['gender'],
+				$child['dateOfBirth']
+			);
+		}
+
+		$children_to_be_added = $this->put('childrenToBeAdded');
+		foreach($children_to_be_added as $child) {
 			$this->child_model->add(
 				$person_id,
 				$child['lastName'],
@@ -259,6 +271,11 @@ class Api extends REST_Controller {
 				$child['gender'],
 				$child['dateOfBirth']
 			);
+		}
+
+		$children_to_be_removed = $this->put('childrenToBeRemoved');
+		foreach($childs_to_be_removed as $child) {
+			$this->child_model->delete($child);
 		}
 
 		$person = $this->person_model->get($person_id);
