@@ -50,7 +50,7 @@
                                 <tr ng-repeat="row in vm.listOfClearancees | filter:searchKey">
                                     <td>{{row.id}}</td>
                                     <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
-                                    <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.barangay}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
+                                    <td>Block {{row.residence.block_no}} Lot {{row.residence.lot_no}}, {{row.residence.street}} St., Sitio {{row.residence.sitio}}, {{row.residence.subdivision}} Subdivision, Brgy. {{row.residence.barangay}}, {{row.residence.city}} City {{row.residence.zip}}, {{row.residence.province}}</td>
                                     <td>{{row.reason}}</td>
                                     <td>{{row.date_issued | amDateFormat:'MM/D/YYYY'}}</td>
                                     <td>{{row.remarks}}</td>

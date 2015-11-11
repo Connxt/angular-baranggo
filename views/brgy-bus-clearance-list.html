@@ -44,7 +44,7 @@
                                     <td>{{row.id}}</td>
                                     <td>{{row.first_name}} {{row.middle_name.charAt(0)}}. {{row.last_name}}</td>
                                     <td>{{row.business_name}}</td>
-                                    <td>{{row.business_address}}</td>
+                                    <td>Block {{row.residence.block_no}} Lot {{row.residence.lot_no}}, {{row.residence.street}} St., Sitio {{row.residence.sitio}}, {{row.residence.subdivision}} Subdivision, Brgy. {{row.residence.barangay}}, {{row.residence.city}} City {{row.residence.zip}}, {{row.residence.province}}</td>
                                     <td>{{row.business_type}}</td>
                                     <td>{{row.date_issued | amDateFormat:'MM/D/YYYY'}}</td>
                                 </tr>

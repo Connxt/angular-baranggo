@@ -295,40 +295,62 @@ angular.module("baranggoApp.services", [])
         return person.personId;
     }
 
-    person.setProfileInfo = function(personId, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth) {
-        personId = personId;
-        lastName = lastName;
-        firstName = firstName;
-        middleName = middleName;
-        dateOfBirth = dateOfBirth;
-        placeOfBirth = placeOfBirth;
-        gender = gender;
-        contactNo = contactNo;
-        email = email;
-        civilStatus = civilStatus;
-        religion = religion;
-        annualIncome = annualIncome;
-        educationalAttainment = educationalAttainment;
-        isEmployed = isEmployed;
-        isVoter = isVoter;
-        isDeceased = isDeceased;
-        withPhilhealth = withPhilhealth;
-        withSSS = withSSS;
-        withElectricity = withElectricity;
-        withWater = withWater;
-        withWater = spouseLastName;
-        spouseFirstName = spouseFirstName;
-        spouseMiddleName = spouseMiddleName;
-        spouseGender = spouseGender;
-        spouseDateOfBirth = spouseDateOfBirth
+    person.setChildrenToBeAdded = function(firstname, lastName, middleName, dateOfBirth, gender) {
+        person.childrenToBeAdded.push({
+            firstName: firstname, 
+            lastName: lastName, 
+            middleName: middleName, 
+            dateOfBirth: dateOfBirth, 
+            gender: gender
+        })
     }
 
-    person.setParentInfo = function(firstName, lastName) {
-        person.children.push({
-            firstName: firstName,
-            lastName: lastName
-        });
-    };
+    person.getChildrenToBeAdded = function() {
+        return person.childrenToBeAdded;
+    }
+
+    person.setChildrenToBeRemove = function() {
+
+    }
+
+    person.getChildrenToBeRemove = function() {
+
+    }
+
+    // person.setProfileInfo = function(personId, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth) {
+    //     personId = personId;
+    //     lastName = lastName;
+    //     firstName = firstName;
+    //     middleName = middleName;
+    //     dateOfBirth = dateOfBirth;
+    //     placeOfBirth = placeOfBirth;
+    //     gender = gender;
+    //     contactNo = contactNo;
+    //     email = email;
+    //     civilStatus = civilStatus;
+    //     religion = religion;
+    //     annualIncome = annualIncome;
+    //     educationalAttainment = educationalAttainment;
+    //     isEmployed = isEmployed;
+    //     isVoter = isVoter;
+    //     isDeceased = isDeceased;
+    //     withPhilhealth = withPhilhealth;
+    //     withSSS = withSSS;
+    //     withElectricity = withElectricity;
+    //     withWater = withWater;
+    //     withWater = spouseLastName;
+    //     spouseFirstName = spouseFirstName;
+    //     spouseMiddleName = spouseMiddleName;
+    //     spouseGender = spouseGender;
+    //     spouseDateOfBirth = spouseDateOfBirth
+    // }
+
+    // person.setParentInfo = function(firstName, lastName) {
+    //     person.children.push({
+    //         firstName: firstName,
+    //         lastName: lastName
+    //     });
+    // };
 
 
     return person;

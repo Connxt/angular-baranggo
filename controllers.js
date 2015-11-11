@@ -404,12 +404,26 @@ angular.module("baranggoApp.controllers", [])
 
 .controller('FormEditProfileCtrl', ['$scope', 'Persons','Person', function($scope, Persons, Person) {
     var vm = this;
+    vm.children = [];
+    vm.childrenToBeAdded = [];
+    vm.childrenToBeRemove= [];
 
     Persons.get(Person.getPersonId()).then(function(res) {
         vm.person = res.data;
-        vm.person.children = res.data.children;
+        vm.person.children =  res.data.children;
+        console.log("Children: " + JSON.stringify(vm.person.children));
 
-        Person.setProfile()
+        for(var i = 0; i < vm.person.children.length; i++) {
+            vm.children.push({
+                id:  vm.person.children[i].id,
+                lastName: vm.person.children[i].last_name,
+                firstName: vm.person.children[i].first_name,
+                middleName: vm.person.children[i].middle_name,
+                gender: vm.person.children[i].gender,
+                dateOfBirth: vm.person.children[i].date_of_birth
+            });
+        }
+        // Person.setProfile()
     })
 
     // Datepicker
@@ -419,6 +433,27 @@ angular.module("baranggoApp.controllers", [])
 
         $scope[opened] = true;
     };
+
+    guid = function() {
+        return new Date(moment()).getTime();
+    }
+
+    vm.addChild = function(child) {
+        child.id = guid();    
+        console.log("Guid: " + child.id); 
+        vm.children.push(child);
+        vm.childrenToBeAdded.push(child);
+
+        console.log("Children to be added: " + JSON.stringify(vm.childrenToBeAdded));
+        // Person.setChildrenToBeAdded
+    }
+
+    vm.removeChild = function(childId) {
+        vm.childrenToBeRemove.push(childId);
+        console.log("Children to be remove: " + vm.childrenToBeRemove);
+    }
+
+
 }])
 
 .controller('FormEditParentCtrl', ['$scope', 'Person', 'Persons', function($scope, Person, Persons) {
@@ -485,8 +520,6 @@ angular.module("baranggoApp.controllers", [])
                 console.log(res);
             });
         });
-
-
 
         var imgUrl = 'images/clearance_logo.png';
         var convertImgToBase64 = function(url, callback) {
@@ -558,6 +591,7 @@ angular.module("baranggoApp.controllers", [])
 
 
     }])
+
     .controller('BrgyBusinessClearanceCtrl', ['$scope', '$stateParams', function($scope, $stateParams) {
 
         var vm = this;
@@ -757,6 +791,7 @@ angular.module("baranggoApp.controllers", [])
 
     BarangayClearances.getAll().then(function(res) {
         vm.listOfClearancees = res.data;
+        console.log(vm.listOfClearancees);
     })
 
 

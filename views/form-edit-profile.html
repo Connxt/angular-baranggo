@@ -94,16 +94,6 @@
                         </div>
                     </div>
                     <!-- /.row -->
-                    <!-- /.row -->
-                    <!-- <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Adress</label>
-                                <textarea class="form-control" id="address" placeholder="Enter ..." rows="3" ng-model="vm.person.address"></textarea>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- /.row -->
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -147,8 +137,6 @@
                     <br>
                     <!-- /.row -->
                     <div class="row">
-                        <!-- <div class="col-md-12"> -->
-                        <!-- /.col-md-4 -->
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Do you have PhilHealth?</label>
@@ -179,20 +167,17 @@
                                     <option ng-selected="vm.person.temp_person_infos[0].with_electricity==0?true:false">No</option>
                                 </select>
                             </div>
-                            <!-- <p>{{vm.person.withElectricity}}</p> -->
                         </div>
                         <!-- /.col-md-4 -->
-                        <!-- </div> -->
-                        <!-- /.col-md-12 -->
                     </div>
                     <!-- /.row -->
                 </div>
                 <!-- /.box-body -->
+            </form>
+            <!-- form -->
         </div>
-        </form>
     </div>
     <!-- /.panel -->
-    </div>
     <!-- /.row -->
     <div class="row">
         <div class="panel  panel-default">
@@ -201,14 +186,6 @@
             </div>
             <form role="form" name="SpouseForm">
                 <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-4">
-                        </div>
-                        {{residenceId}}
-                    </div>
-                    <!-- /.row -->
                     <br>
                     <div class="row">
                         <div class="col-md-4">
@@ -260,114 +237,109 @@
                         </div>
                         <!-- /.row -->
                     </div>
-            </form>
-            </div>
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title"><b>Children Info</b></h4>
                 </div>
-                <form role="form" name="ChildForm">
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                            {{residenceId}}
-                        </div>
-                        <!-- /.row -->
-                        <br>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group" ng-class="{ ' has-error': ChildForm.childFirstName.$invalid }">
-                                    <label for="firstName">First Name</label>
-                                    <input class="form-control" name="childFirstName" id="childFirstName" type="text" placeholder="Joselito" ng-model="vm.child.first_name" validator="required" no-validation-message="true">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group" ng-class="{ ' has-error': ChildForm.childLastName.$invalid }">
-                                    <label for="lastName">Last Name</label>
-                                    <input class="form-control" name="childLastName" id="childLastName" type="text" placeholder="Dela Cruz" ng-model="vm.child.last_name" validator="required" no-validation-message="true">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group" ng-class="{ ' has-error': ChildForm.childMiddleName.$invalid }">
-                                    <label for="middleName">Middle Name</label>
-                                    <input class="form-control" name="childMiddleName" id="childMiddleName" type="text" placeholder="Lopez" ng-model="vm.child.middle_name" validator="required" no-validation-message="true">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label>Gender</label>
-                                    <select class="form-control" ng-model="vm.child.gender" id="child.gender" ng-init="vm.child.gender='Male'">
-                                        <option ng-selected="true">Male</option>
-                                        <option>Female</option>
-                                    </select>
-                                </div>
-                                <!-- <p>{{vm.child.gender}}</p> -->
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="dateOfBirth">Date of Birth</label>
-                                    <input class="form-control" id="child.date_of_birth" type="date" ng-model="vm.child.date_of_birth" name="child.dateOfBirth">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        <div class="col-xs-2 col-xs-offset-3 pull-right">
-                            <button class="btn btn-block btn-primary" ng-click="vm.addChild(vm.child); vm.child={}" ng-disabled="ChildForm.$invalid || !ChildForm.$dirty">Add</button>
-                        </div>
-                    </div>
-                </form>
+                <!-- /.box-body -->
+            </form>
+            <!-- form -->
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="panel  panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><b>Children Info</b></h4>
             </div>
-            <!-- box-body -->
-        </div>
-        <!-- /.row -->
-        <br />
-        <div class="callout callout-info" ng-hide="vm.person.children.length>0">
-            <h4>No children added yet.</h4>
-            <p>To add new children, fillup the form above and click the "Add" button.</p>
-        </div>
-        <hr />
-        <!-- <p>{{vm.person.children}}</p> -->
-        <!-- <p>{{Form.child.firstName.$untouched}}</p> -->
-        <div class="row">
-            <b><h3>List of children</h3></b>
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header">
+            <form role="form" name="ChildForm">
+                <div class="box-body">
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group" ng-class="{ ' has-error': ChildForm.childFirstName.$invalid }">
+                                <label for="firstName">First Name</label>
+                                <input class="form-control" name="childFirstName" id="childFirstName" type="text" placeholder="Joselito" ng-model="vm.child.firstName" validator="required" no-validation-message="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" ng-class="{ ' has-error': ChildForm.childLastName.$invalid }">
+                                <label for="lastName">Last Name</label>
+                                <input class="form-control" name="childLastName" id="childLastName" type="text" placeholder="Dela Cruz" ng-model="vm.child.lastName" validator="required" no-validation-message="true">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" ng-class="{ ' has-error': ChildForm.childMiddleName.$invalid }">
+                                <label for="middleName">Middle Name</label>
+                                <input class="form-control" name="childMiddleName" id="childMiddleName" type="text" placeholder="Lopez" ng-model="vm.child.middleName" validator="required" no-validation-message="true">
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.box-header -->
-                    <div class="box-title">
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select class="form-control" ng-model="vm.child.gender" id="child.gender" ng-init="vm.child.gender='Male'">
+                                    <option ng-selected="true">Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+                            <!-- <p>{{vm.child.gender}}</p> -->
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="dateOfBirth">Date of Birth</label>
+                                <input class="form-control" id="child.dateOfBirth" type="date" ng-model="vm.child.dateOfBirth" name="child.dateOfBirth">
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.box-title -->
-                    <div class="box-body">
-                        <div class="col-md-11">
-                            <table st-table="rowCollection" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Middle Name</th>
-                                        <th>Date Of Birth</th>
-                                        <th>Gender</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="child in vm.person.children">
-                                        <td>{{child.first_name}}</td>
-                                        <td>{{child.last_name}}</td>
-                                        <td>{{child.middle_name}}</td>
-                                        <td>{{child.date_of_birth | amDateFormat:'MM/DD/YYYY'}}</td>
-                                        <td>{{child.gender}}</td>
-                                        <td>
-                                            <!--  <button type="button" ng-click="" class="btn btn-sm btn-success">
+                    <!-- /.row -->
+                    <div class="col-xs-2 col-xs-offset-3 pull-right">
+                        <button class="btn btn-block btn-primary" ng-click="vm.addChild(vm.child); vm.child={}" ng-disabled="ChildForm.$invalid || !ChildForm.$dirty">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- box-body -->
+    </div>
+    <!-- /.row -->
+    <br />
+    <div class="callout callout-info" ng-hide="vm.children.length>0">
+        <h4>No children added yet.</h4>
+        <p>To add new children, fillup the form above and click the "Add" button.</p>
+    </div>
+    <hr />
+    <!-- <p>{{vm.person.children}}</p> -->
+    <!-- <p>{{Form.child.firstName.$untouched}}</p> -->
+    <div class="row">
+        <b><h3>List of children</h3></b>
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-title">
+                </div>
+                <!-- /.box-title -->
+                <div class="box-body">
+                    <div class="col-md-11">
+                        <table st-table="rowCollection" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Gender</th>
+                                    <th>Date Of Birth</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="child in vm.children">
+                                    <td>{{child.firstName}}</td>
+                                    <td>{{child.lastName}}</td>
+                                    <td>{{child.middleName}}</td>
+                                    <td>{{child.gender}}</td>
+                                    <td>{{child.dateOfBirth | amDateFormat:'MM/DD/YYYY'}}</td>
+                                    <td>
+                                        <!--  <button type="button" ng-click="" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                         &nbsp;
@@ -375,27 +347,27 @@
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         &nbsp; -->
-                                            <button type="button" ng-click="vm.delete(child); person.children.splice(index, 1)" class="btn btn-sm btn-danger">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                        <button type="button" ng-click="vm.removeChild(child.id); vm.children.splice($index, 1)" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash-o"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
+                <!-- /.box-body -->
             </div>
-            <!-- /.col -->
+            <!-- /.box -->
         </div>
-        <!-- /.row -->
-        <br />
-        <br />
-        <div class="col-xs-2 col-xs-offset-3 pull-right">
-            <button ui-sref="form-edit.parents({personId : personId})" class="btn btn-block btn-primary" ng-disabled=""> Next
-                <span class="fa  fa-arrow-right"></span>
-            </button>
-        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <br />
+    <br />
+    <div class="col-xs-2 col-xs-offset-3 pull-right">
+        <button ui-sref="form-edit.parents({personId : personId})" class="btn btn-block btn-primary" ng-disabled=""> Next
+            <span class="fa  fa-arrow-right"></span>
+        </button>
+    </div>
 </form>
