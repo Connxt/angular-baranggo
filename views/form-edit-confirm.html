@@ -65,7 +65,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr ng-repeat="child in person.children">
+                  <tr ng-repeat="child in vm.person.children">
                     <td>{{child.first_name}} {{child.middle_name.charAt(0)}}. {{child.last_name}}</td>
                     <td>{{child.date_of_birth | date:'MM/dd/yyyy'}}</td>
                     <td>{{child.gender}}</td>
@@ -117,8 +117,8 @@
 
     <div class="row no-print">
         <div class="col-xs-12">
-            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-            <button class="btn btn-success pull-right" ng-click="vm.update(person)"><i class="fa fa-check"></i>Submit Form</button>
-            <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button>
+            <!-- <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a> -->
+            <button class="btn btn-success pull-right" ng-click="vm.update(vm.person)"><i class="fa fa-check"></i>Submit Form</button>
+            <!-- <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button> -->
         </div>
     </div>

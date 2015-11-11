@@ -276,6 +276,8 @@ angular.module("baranggoApp.services", [])
 
     person.children = [];
     person.siblings = [];
+    person.ToBeAdded = [];
+    person.childrenToBeRemoved = [];
 
 
     person.setResidenceId = function(residenceId) {
@@ -309,12 +311,12 @@ angular.module("baranggoApp.services", [])
         return person.childrenToBeAdded;
     }
 
-    person.setChildrenToBeRemove = function() {
-
+    person.setChildrenToBeRemove = function(childId) {
+        person.childrenToBeRemoved.push(childId);
     }
 
     person.getChildrenToBeRemove = function() {
-
+        return person.childrenToBeRemoved;
     }
 
     // person.setProfileInfo = function(personId, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth) {

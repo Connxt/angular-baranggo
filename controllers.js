@@ -450,6 +450,7 @@ angular.module("baranggoApp.controllers", [])
 
     vm.removeChild = function(childId) {
         vm.childrenToBeRemove.push(childId);
+        Person.setChildrenToBeRemove(childId);
         console.log("Children to be remove: " + vm.childrenToBeRemove);
     }
 
@@ -491,6 +492,19 @@ angular.module("baranggoApp.controllers", [])
         console.log("Person: " + JSON.stringify(vm.person));
         // Person.setProfile()
     })
+
+    vm.update = function() {
+        var p = vm.person;
+        var childrenToBeUpdated = p.children;
+        var childrenToBeAdded = Person.getChildrenToBeAdded();
+        var childrenToBeRemove = Person.getChildrenToBeRemove();
+
+        // console.log("Person: " + JSON.stringify(p.temp_person_infos[0].spouse_first_name));
+        console.log("Person ", p.id, p.last_name, p.first_name, p.middle_name, p.date_of_birth, p.place_of_birth, p.gender, p.mother_last_name, p.mother_first_name, p.mother_middle_name, p.mother_date_of_birth, p.father_last_name, p.father_first_name, p.father_middle_name, p.father_date_of_birth, p.contact_no, p.email, p.temp_person_infos[0].civil_status, 'religion', '0', p.temp_person_infos[0].educational_attainment, p.temp_person_infos[0].is_employed, p.temp_person_infos[0].is_voter, '0', p.temp_person_infos[0].with_philhealth, p.temp_person_infos[0].with_sss, p.temp_person_infos[0].with_electricity, '0', p.temp_person_infos[0].spouse_last_name, p.temp_person_infos[0].spouse_first_name, p.temp_person_infos[0].spouse_middle_name, p.temp_person_infos[0].spouse_gender, p.temp_person_infos[0].spouse_date_of_birth, p.temp_person_infos[0].residence_id, [], [], [], childrenToBeUpdated, childrenToBeAdded, childrenToBeRemove);
+        // Persons.update(p.id, p.last_name, p.first_name, p.middle_name, p.date_of_birth, p.place_of_birth, p.gender, p.mother_last_name, p.mother_first_name, p.mother_middle_name, p.motherr_date_of_birth, p.father_last_name, p.father_first_name, p.father_middle_name, p.father_date_of_birth, p.contact_no, p.email, p.civil_status, 'religion', '0', p.educational_attainment, p.is_employed, p.is_voter, '0', p.with_philhealth, p.with_sss, p.with_electricity, '0', p.temp_person_infos[0].spouse_last_name, p.temp_person_infos[0].spouse_first_name, p.temp_person_infos[0].spouse_middle_name, p.temp_person_infos[0].spouse_gender, p.spouse_date_of_birth, p.temp_person_infos[0].residence_id, [], [], [], childrenToBeUpdated, childrenToBeAdded, childrenToBeRemove).then(function(res) {
+        //     console.log(JSON.stringify("Result" + res.data))
+        // });
+    }
 }])
 
 .controller('MapCtrl', ['$scope', function($scope) {
