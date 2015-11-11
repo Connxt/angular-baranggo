@@ -3,7 +3,7 @@ angular.module('baranggoApp', ['baranggoApp.controllers', 'baranggoApp.services'
 .config(function($urlRouterProvider, $stateProvider) {
 
     // default
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/map');
 
     $stateProvider
 
