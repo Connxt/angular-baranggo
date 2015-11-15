@@ -1,4 +1,7 @@
 <form name="Form">
+<div class="row">
+    <p>{{vm.person}}</p>
+</div><!-- /.row -->
     <div class="row">
         <div class="panel  panel-default">
             <div class="panel-heading">
@@ -41,7 +44,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Civil Status</label>
-                                <select class="form-control" ng-model="temp_person_infos[0].civil_status" ng-init="">
+                                <select class="form-control" ng-model="vm.person.civilStatus" ng-init="vm.person.civilStatus='Single'">
                                     <option ng-selected="true">Single</option>
                                     <option>Married</option>
                                     <option>Widowed</option>
@@ -396,7 +399,7 @@
     <br />
     <br />
     <div class="col-xs-2 col-xs-offset-3 pull-right">
-    <button ui-sref="form.parents" class="btn btn-block btn-primary" ng-disabled="Form.$invalid || !Form.$dirty"> Next
+    <button ui-sref="form.parents" class="btn btn-block btn-primary" ng-disabled="Form.$invalid || !Form.$dirty" ng-click="alert(vm.person.civilStatus)"> Next
             <span class="fa  fa-arrow-right"></span>
         </button>
 

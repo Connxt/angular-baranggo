@@ -100,7 +100,6 @@ angular.module("baranggoApp.controllers", [])
         })
     }
 
-   
 }])
 
 .controller('ResidenceCtrl', ['$scope', 'Residences', 'Settings', function($scope, Residences, Settings) {
@@ -230,7 +229,7 @@ angular.module("baranggoApp.controllers", [])
     }
 
     vm.save = function() {
-        // console.log("Personal Info : " + JSON.stringify(vm.person));
+        console.log("Personal Info : " + JSON.stringify(vm.person));
         // console.log("Personal Info non JSON : " + vm.person);
         vm.person.isEmployed = vm.person.isEmployed == 'Yes' ? 1 : 0;
         vm.person.withSSS = vm.person.withSSS == 'Yes' ? 1 : 0;
@@ -300,6 +299,7 @@ angular.module("baranggoApp.controllers", [])
 
     Persons.get(Person.getPersonId()).then(function(res) {
         vm.person = res.data;
+        console.log(JSON.stringify(vm.person));
         vm.person.children = res.data.children;
 
         Person.resetChildrenToBeUpdated();
@@ -334,12 +334,13 @@ angular.module("baranggoApp.controllers", [])
         child.id = guid();
         vm.children.push(child);
         vm.childrenToBeAdded.push(child);
+        Person.setChildrenToBeAdded(child.firstName, child.lastName, child.middleName, child.dateOfBirth, child.gender);
 
         vm.children = [];
         vm.children = Person.getChildrenToBeUpdated();
 
         // console.log("Children to be added: " + JSON.stringify(vm.childrenToBeAdded));
-        // Person.setChildrenToBeAdded
+        
     }
 
     vm.removeChild = function(index, childId) {
