@@ -13,7 +13,7 @@ angular.module("baranggoApp.services", [])
 
 
 	self.add = function(person) {
-		alert("Service: " + person);
+		// ("Service: " + person);
 		return $http.post("api/person", person);
 	}; 
 	
@@ -301,7 +301,7 @@ angular.module("baranggoApp.services", [])
     person.setProfile = function(personProfile) {
         person.profile = personProfile;
 
-        console.log(person.profile);
+        // console.log(person.profile);
     }
 
     person.getProfile = function() {

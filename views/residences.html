@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="col-md-3 col-md-offset-6">
-            <button class="btn btn-block btn-primary" ng-click="vm.toggleViewResidenceModal()">New Residence</button>
+            <button class="btn btn-block btn-primary" ng-click="vm.toggleAddResidenceModal()">New Residence</button>
         </div>
         
         <br />
@@ -42,17 +42,17 @@
                                     <td>{{row.id}}</td>
                                     <td>Block {{row.block_no}} Lot {{row.lot_no}}, {{row.street}} St., Sitio {{row.sitio}}, {{row.subdivision}} Subdivision, Brgy. {{row.barangay}}, {{row.city}} City {{row.zip}}, {{row.province}}</td>
                                     <td>
-                                        <button type="button" ng-click="" class="btn btn-sm btn-success">
+                                        <button type="button" ng-click="vm.toggleViewResidenceModal($index)" class="btn btn-sm btn-success">
                                             <i class="fa fa-eye"></i>
                                         </button>
                                         &nbsp;
-                                        <button type="button" ng-click="" class="btn btn-sm btn-primary">
+                                        <!-- <button type="button" ng-click="vm.toggleEditResidenceModal($index)" class="btn btn-sm btn-primary">
                                             <i class="fa fa-pencil"></i>
                                         </button>
                                         &nbsp;
                                         <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
                                             <i class="fa fa-trash-o"></i>
-                                        </button>
+                                        </button> -->
                                     </td>
                                 </tr>
                             </tbody>
@@ -67,7 +67,115 @@
     </div>
     <div ui-view></div>
     
-    <modal title="Add New Residence" visible="vm.showViewResidenceModal">
+    <modal title="Add New Residence" visible="vm.showAddResidenceModal">
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="blockNo">Block No</label>
+                            <input class="form-control" id="blockNo" type="text" placeholder="8" ng-model="vm.residence.blockNo">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="lotNo">Lot No</label>
+                            <input class="form-control" id="lotNo" type="text" placeholder="1" ng-model="vm.residence.lotNo">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="street">Street</label>
+                            <input class="form-control" id="street" type="text" placeholder="Adela" ng-model="vm.residence.street">
+                        </div>
+                    </div>
+                    </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="sitio">Sitio/Purok</label>
+                            <input class="form-control" id="sitio" type="text" placeholder="Naga" ng-model="vm.residence.sitio">
+                        </div>
+                    </div>
+                
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="subdivision">Subdivision</label>
+                            <input class="form-control" id="subdivision" type="text" placeholder="FZO" ng-model="vm.residence.subdivision">
+                        </div>
+                    </div>
+
+                     
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="brgy">Barangay</label>
+                            <input class="form-control" id="brgy" type="text" placeholder="1" ng-model="vm.residence.brgy" disabled>
+                        </div>
+                    </div>
+
+                    </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input class="form-control" id="city" type="text" placeholder="Kabankalan" ng-model="vm.residence.city" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="province">Province</label>
+                            <input class="form-control" id="province" type="text" placeholder="Negros Occidental" ng-model="vm.residence.province" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="zip">Zip Code</label>
+                            <input class="form-control" id="zip" type="text" placeholder="6111" ng-model="vm.residence.zip" disabled>
+                        </div>
+                    </div>
+
+                </div>
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="vm.save(vm.residence)">Save changes</button>
+            </div>
+        </form>
+    </modal>
+
+    <modal title="View Residence" visible="vm.showViewResidenceModal">
+        <!-- form start -->
+        <form role="form">
+            <div class="box-body">
+
+                <div class="panel-collapse " ng-class="isCollapsed1? 'collapse':''">
+                    <div class="row invoice-info">
+                        <div class="col-sm-12 invoice-col">
+                            <br /><h3>Block {{vm.residence.blockNo}} Lot {{vm.residence.lotkNo}}, {{vm.residence.street}} St., Sitio {{vm.residence.sitio}}, {{vm.residence.subdivision}} Subdivision, Brgy. {{vm.residence.brgy}}, {{vm.residence.city}} City {{vm.residence.province}}, {{vm.residence.zip}}</h3>
+                            <br />
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- row invoice-info -->
+                    </div>
+               
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary" ng-click="vm.save(vm.residence)">Save changes</button> -->
+            </div>
+        </form>
+    </modal>
+
+    <modal title="Edit Residence" visible="vm.showEditResidenceModal">
         <!-- form start -->
         <form role="form">
             <div class="box-body">

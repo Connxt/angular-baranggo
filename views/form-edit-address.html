@@ -6,7 +6,7 @@
     </div> -->
     <div class="form-group" ng-class="{ ' has-error': Form.residenceId.$invalid }">
         <label for="phone">Please provide a valid Residence ID</label>
-        <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="vm.person.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(person.residenceId)">
+        <input class="form-control" name="residenceId" id="residenceId" type="text" ng-model="vm.residenceId" placeholder="09123456789" validator="number" no-validation-message="true" ng-change="vm.findAddress(person.residenceId)">
     </div>
     
     <!-- <p ng-hide="isEmpty(vm.residence)">Found Address:</p> -->
