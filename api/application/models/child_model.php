@@ -42,7 +42,7 @@ class Child_Model extends CI_Model {
 	}
 
 	function delete($id) {
-		$this->db->delete('siblings', array('id' => $id));
+		$this->db->delete('children', array('id' => $id));
 		return $this->db->affected_rows();
 	}
 }
