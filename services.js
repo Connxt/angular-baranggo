@@ -1,24 +1,24 @@
 angular.module("baranggoApp.services", [])
 
-.factory("Persons", function ($http) {
+.factory("Persons", function ($http, API_PATH) {
 	var self = this;
 
 	self.getAll = function () {
-		return $http.get("api/persons", {});
+		return $http.get(API_PATH + "persons", {});
 	};
 
 	self.get = function(id) {
-		return $http.get("api/person/id/" + id, {});
+		return $http.get(API_PATH + "person/id/" + id, {});
 	};
 
 
 	self.add = function(person) {
 		// ("Service: " + person);
-		return $http.post("api/person", person);
+		return $http.post(API_PATH + "person", person);
 	}; 
 	
 	self.update = function (id, lastName, firstName, middleName, dateOfBirth, placeOfBirth, gender, motherLastName, motherFirstName, motherMiddleName, motherDateOfBirth, fatherLastName, fatherFirstName, fatherMiddleName, fatherDateOfBirth, contactNo, email, civilStatus, religion, annualIncome, educationalAttainment, isEmployed, isVoter, isDeceased, withPhilhealth, withSSS, withElectricity, withWater, spouseLastName, spouseFirstName, spouseMiddleName, spouseGender, spouseDateOfBirth, residenceId, siblings, siblingsToBeAdded, siblingsToBeRemoved, children, childrenToBeAdded, childrenToBeRemoved) {
-		return $http.put("api/person", {
+		return $http.put(API_PATH + "person", {
 			id: id,
 			lastName: lastName,
 			firstName: firstName,
@@ -121,19 +121,19 @@ angular.module("baranggoApp.services", [])
 	return self;
 })
 
-.factory("Residences", function($http, $q) {
+.factory("Residences", function($http, $q, API_PATH) {
     var self = this;
 
     self.getAll = function() {
-        return $http.get("api/residences", {});
+        return $http.get(API_PATH + "residences", {});
     };
 
     self.get = function(id) {
-        return $http.get("api/residence/id/" + id, {});
+        return $http.get(API_PATH + "residence/id/" + id, {});
     };
 
     // self.add = function (blockNo, lotNo, street, subdivision, latitude, longitude, barangayId, code) {
-    // 	return $http.post("api/residence", {
+    // 	return $http.post(API_PATH + "residence", {
     // 		blockNo: blockNo,
     // 		lotNo: lotNo,
     // 		street: street,
@@ -146,39 +146,39 @@ angular.module("baranggoApp.services", [])
     // };
 
     self.add = function(residence) {
-        return $http.post("api/residence", residence)
+        return $http.post(API_PATH + "residence", residence)
     };
 
     return self;
 })
 
-.factory("Barangays", function($http, $q) {
+.factory("Barangays", function($http, $q, API_PATH) {
     var self = this;
 
     self.getAll = function() {
-        return $http.get("api/barangays", {});
+        return $http.get(API_PATH + "barangays", {});
     };
 
     self.get = function(id) {
-        return $http.get("api/barangay/id/" + id, {});
+        return $http.get(API_PATH + "barangay/id/" + id, {});
     };
 
     return self;
 })
 
-.factory("BarangayClearances", function($http, $q) {
+.factory("BarangayClearances", function($http, $q, API_PATH) {
     var self = this;
 
     self.getAll = function() {
-        return $http.get("api/barangay_clearances", {});
+        return $http.get(API_PATH + "barangay_clearances", {});
     };
 
     self.get = function(id) {
-        return $http.get("api/barangay_clearance/id/" + id, {});
+        return $http.get(API_PATH + "barangay_clearance/id/" + id, {});
     };
 
     self.add = function(personId, reason, remarks) {
-        return $http.post("api/barangay_clearance", {
+        return $http.post(API_PATH + "barangay_clearance", {
             personId: personId,
             reason: reason,
             remarks: remarks
@@ -188,19 +188,19 @@ angular.module("baranggoApp.services", [])
     return self;
 })
 
-.factory("BarangayBusinessClearances", function($http, $q) {
+.factory("BarangayBusinessClearances", function($http, $q, API_PATH) {
     var self = this;
 
     self.getAll = function() {
-        return $http.get("api/barangay_business_clearances", {});
+        return $http.get(API_PATH + "barangay_business_clearances", {});
     };
 
     self.get = function(id) {
-        return $http.get("api/barangay_business_clearance/id/" + id, {});
+        return $http.get(API_PATH + "barangay_business_clearance/id/" + id, {});
     };
 
     self.add = function(personId, businessName, businessAddress, businessType) {
-        return $http.post("api/barangay_business_clearance", {
+        return $http.post(API_PATH + "barangay_business_clearance", {
             personId: personId,
             businessName: businessName,
             businessAddress: businessAddress,
@@ -211,19 +211,19 @@ angular.module("baranggoApp.services", [])
     return self;
 })
 
-.factory("CertificatesOfClosure", function($http, $q) {
+.factory("CertificatesOfClosure", function($http, $q, API_PATH) {
     var self = this;
 
     self.getAll = function() {
-        return $http.get("api/certificates_of_closure", {});
+        return $http.get(API_PATH + "certificates_of_closure", {});
     };
 
     self.get = function(id) {
-        return $http.get("api/certificate_of_closure/id/" + id, {});
+        return $http.get(API_PATH + "certificate_of_closure/id/" + id, {});
     };
 
     self.add = function(personId, businessName, businessAddress, businessType, dateClosed) {
-        return $http.post("api/certificate_of_closure", {
+        return $http.post(API_PATH + "certificate_of_closure", {
             personId: personId,
             businessName: businessName,
             businessAddress: businessAddress,
@@ -235,35 +235,35 @@ angular.module("baranggoApp.services", [])
     return self;
 })
 
-.factory("Users", function($http, $q) {
+.factory("Users", function ($http, $q, API_PATH) {
     var self = this;
 
     self.getAll = function() {
-        return $http.get("api/users", {});
+        return $http.get(API_PATH + "users", {});
     };
 
     self.get = function(id) {
-        return $http.get("api/user/id/" + id, {});
+        return $http.get(API_PATH + "user/id/" + id, {});
     };
 
     return self;
 })
 
-.factory("Settings", function($http, $q) {
+.factory("Settings", function ($http, $q, API_PATH) {
     var self = this;
 
     self.get = function() {
-        return $http.get("api/settings", {});
+        return $http.get(API_PATH + "settings", {});
     };
 
     self.add = function(barangayId) {
-        return $http.post("api/setting", {
+        return $http.post(API_PATH + "setting", {
             barangayId: barangayId
         });
     };
 
     self.update = function(barangayId) {
-        return $http.put("api/setting", {
+        return $http.put(API_PATH + "setting", {
             barangayId: barangayId
         })
     };
@@ -271,7 +271,7 @@ angular.module("baranggoApp.services", [])
     return self;
 })
 
-.factory("Person", function(Residences, $q) {
+.factory("Person", function (Residences, $q) {
     var person = {};
 
     person.children = [];
